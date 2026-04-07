@@ -1,0 +1,4 @@
+interface:
+  display_name: "Livewire Blade CMS Pages"
+  short_description: "Blade and Livewire CMS page guide"
+  default_prompt: "Use $livewire-blade-cms-pages to design a public Blade and Livewire CMS page."

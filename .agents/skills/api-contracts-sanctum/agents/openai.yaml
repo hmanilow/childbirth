@@ -1,0 +1,4 @@
+interface:
+  display_name: "API Contracts Sanctum"
+  short_description: "Sanctum API contracts and auth flow"
+  default_prompt: "Use $api-contracts-sanctum to design /api/v1 endpoint contracts and Sanctum auth expectations."

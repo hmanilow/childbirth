@@ -1,0 +1,4 @@
+interface:
+  display_name: "LMS Courses Access Control"
+  short_description: "LMS course access and progress rules"
+  default_prompt: "Use $lms-courses-access-control to design course access, lessons, and student progress rules."

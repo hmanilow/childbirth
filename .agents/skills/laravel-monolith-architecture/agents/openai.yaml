@@ -1,0 +1,4 @@
+interface:
+  display_name: "Laravel Monolith Architecture"
+  short_description: "Laravel monolith architecture guide"
+  default_prompt: "Use $laravel-monolith-architecture to plan a Laravel 12 domain architecture."

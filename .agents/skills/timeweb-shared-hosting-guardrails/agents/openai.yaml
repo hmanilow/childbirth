@@ -1,0 +1,4 @@
+interface:
+  display_name: "Timeweb Shared Hosting Guardrails"
+  short_description: "Timeweb shared hosting constraints"
+  default_prompt: "Use $timeweb-shared-hosting-guardrails to check a Laravel deploy plan for shared hosting constraints."

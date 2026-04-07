@@ -1,0 +1,4 @@
+interface:
+  display_name: "SEO Local Business Pages"
+  short_description: "Local SEO pages and metadata rules"
+  default_prompt: "Use $seo-local-business-pages to design SEO fields, local landing pages, and sitemap rules."
