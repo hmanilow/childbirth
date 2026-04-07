@@ -5,6 +5,8 @@ namespace App\Domain\Users\Models;
 use App\Domain\Students\Models\CourseAccessGrant;
 use App\Domain\Students\Models\LessonProgress;
 use Database\Factories\UserFactory;
+use Filament\Models\Contracts\FilamentUser;
+use Filament\Panel;
 use Illuminate\Contracts\Auth\MustVerifyEmail;
 use Illuminate\Database\Eloquent\Factories\HasFactory;
 use Illuminate\Database\Eloquent\Relations\HasMany;
@@ -15,7 +17,7 @@ use Spatie\MediaLibrary\HasMedia;
 use Spatie\MediaLibrary\InteractsWithMedia;
 use Spatie\Permission\Traits\HasRoles;
 
-class User extends Authenticatable implements HasMedia
+class User extends Authenticatable implements FilamentUser, HasMedia
 {
     use HasApiTokens;
     use HasFactory;
@@ -50,6 +52,11 @@ class User extends Authenticatable implements HasMedia
     protected static function newFactory(): UserFactory
     {
         return UserFactory::new();
+    }
+
+    public function canAccessPanel(Panel $panel): bool
+    {
+        return $this->is_active && $this->can('admin.access');
     }
 
     public function courseAccessGrants(): HasMany
