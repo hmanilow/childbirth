@@ -3,6 +3,7 @@
 <head>
     <meta charset="utf-8">
     <meta name="viewport" content="width=device-width, initial-scale=1">
+    <meta name="csrf-token" content="{{ csrf_token() }}">
     <title>{{ $seoTitle ?? ($page ?? null)?->seoMeta?->meta_title ?? ($page ?? null)?->title ?? config('app.name') }}</title>
     @if(! empty(($page ?? null)?->seoMeta?->meta_description))
         <meta name="description" content="{{ ($page ?? null)?->seoMeta?->meta_description }}">
