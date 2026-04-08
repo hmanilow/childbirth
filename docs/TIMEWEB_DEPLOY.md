@@ -10,6 +10,7 @@ Required:
 - `php artisan migrate --force`
 - `php artisan db:seed --force`
 - `php artisan storage:link`
+- `php artisan filament:assets`
 - Built assets uploaded to `public/build`
 
 Cron:

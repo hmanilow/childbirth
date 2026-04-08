@@ -16,13 +16,14 @@ Laravel 12 monolith for a Russian maternity school, doula services, CRM, CMS, LM
 
 ## Local Setup
 
-This repository contains the Laravel source scaffold. The current machine does not have `php` or `composer` available, so dependencies were not installed here.
+This repository contains the Laravel source scaffold.
 
 ```bash
 composer install
 cp .env.example .env
 php artisan key:generate
 php artisan migrate --seed
+php artisan filament:assets
 npm install
 npm run build
 ```
@@ -38,8 +39,9 @@ npm run build
 7. Run `php artisan db:seed --class=Database\\Seeders\\RolePermissionSeeder --force`.
 8. Run `php artisan db:seed --class=Database\\Seeders\\SiteSettingsSeeder --force`.
 9. Run `php artisan storage:link`.
-10. Upload already-built frontend assets from `public/build`.
-11. Add cron:
+10. Run `php artisan filament:assets`.
+11. Upload already-built frontend assets from `public/build`.
+12. Add cron:
 
 ```bash
 * * * * * cd /path/to/project && php artisan schedule:run >> /dev/null 2>&1
