@@ -66,6 +66,9 @@ class Course extends DomainModel implements HasMedia
     {
         return $query->where('status', PublishStatus::Published)
             ->where('is_active', true)
-            ->where('published_at', '<=', now());
+            ->where(function (Builder $query): void {
+                $query->whereNull('published_at')
+                    ->orWhere('published_at', '<=', now());
+            });
     }
 }

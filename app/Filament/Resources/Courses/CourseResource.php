@@ -6,6 +6,7 @@ use App\Domain\Courses\Models\Course;
 use Filament\Actions\BulkActionGroup;
 use Filament\Actions\DeleteBulkAction;
 use Filament\Actions\EditAction;
+use Filament\Forms\Components\DateTimePicker;
 use Filament\Forms\Components\Select;
 use Filament\Forms\Components\Textarea;
 use Filament\Forms\Components\TextInput;
@@ -34,12 +35,32 @@ class CourseResource extends Resource
                 Textarea::make('full_description')->label('Полное описание')->columnSpanFull(),
             ])->columns(2),
             Section::make('Продажи и публикация')->schema([
-                TextInput::make('price')->label('Цена')->numeric()->required(),
+                TextInput::make('price')->label('Цена')->numeric()->default(0)->required(),
                 TextInput::make('old_price')->label('Старая цена')->numeric(),
-                Select::make('access_type')->label('Тип доступа')->options(['paid' => 'Платный', 'free' => 'Бесплатный', 'manual' => 'Ручной'])->required(),
-                Select::make('status')->label('Статус')->options(['draft' => 'Черновик', 'published' => 'Опубликовано', 'scheduled' => 'Запланировано', 'archived' => 'Архив'])->required(),
-                Select::make('is_active')->label('Активен')->options([1 => 'Да', 0 => 'Нет'])->required(),
-                Select::make('is_featured')->label('Рекомендуемый')->options([1 => 'Да', 0 => 'Нет'])->required(),
+                Select::make('access_type')
+                    ->label('Тип доступа')
+                    ->options(['paid' => 'Платный', 'free' => 'Бесплатный', 'manual' => 'Ручной'])
+                    ->default('paid')
+                    ->required(),
+                Select::make('status')
+                    ->label('Статус')
+                    ->options(['draft' => 'Черновик', 'published' => 'Опубликовано', 'scheduled' => 'Запланировано', 'archived' => 'Архив'])
+                    ->default('draft')
+                    ->required(),
+                DateTimePicker::make('published_at')
+                    ->label('Дата публикации')
+                    ->seconds(false)
+                    ->helperText('Если статус "Опубликовано" и дата пустая, курс виден сразу. Будущая дата скрывает курс до наступления времени.'),
+                Select::make('is_active')
+                    ->label('Активен')
+                    ->options([1 => 'Да', 0 => 'Нет'])
+                    ->default(1)
+                    ->required(),
+                Select::make('is_featured')
+                    ->label('Рекомендуемый')
+                    ->options([1 => 'Да', 0 => 'Нет'])
+                    ->default(0)
+                    ->required(),
             ])->columns(3),
         ]);
     }
@@ -53,6 +74,7 @@ class CourseResource extends Resource
                 TextColumn::make('status')->label('Статус')->badge(),
                 IconColumn::make('is_active')->label('Активен')->boolean(),
                 IconColumn::make('is_featured')->label('Рек.')->boolean(),
+                TextColumn::make('published_at')->label('Дата публикации')->dateTime('d.m.Y H:i')->sortable()->toggleable(),
                 TextColumn::make('updated_at')->label('Обновлено')->dateTime('d.m.Y H:i')->sortable(),
             ])
             ->actions([EditAction::make()])
