@@ -2,25 +2,21 @@
 
 namespace App\Domain\Leads\Models;
 
-use App\Domain\Core\Models\DomainModel;
-use App\Domain\Users\Models\User;
+use Illuminate\Database\Eloquent\Model;
 use Illuminate\Database\Eloquent\Relations\BelongsTo;
+use App\Models\User;
 
-class LeadNote extends DomainModel
+class LeadNote extends Model
 {
-    protected $fillable = [
-        'lead_id',
-        'user_id',
-        'body',
-    ];
+    protected $fillable = ['lead_id', 'user_id', 'body', 'type'];
 
     public function lead(): BelongsTo
     {
         return $this->belongsTo(Lead::class);
     }
 
-    public function user(): BelongsTo
+    public function author(): BelongsTo
     {
-        return $this->belongsTo(User::class);
+        return $this->belongsTo(User::class, 'user_id');
     }
 }

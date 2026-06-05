@@ -2,39 +2,45 @@
 
 namespace App\Domain\Services\Models;
 
-use App\Domain\Core\Concerns\HasSeoMeta;
-use App\Domain\Core\Enums\PublishStatus;
-use App\Domain\Core\Models\DomainModel;
-use Illuminate\Database\Eloquent\Builder;
+use Illuminate\Database\Eloquent\Model;
 use Spatie\MediaLibrary\HasMedia;
 use Spatie\MediaLibrary\InteractsWithMedia;
+use Spatie\Sluggable\HasSlug;
+use Spatie\Sluggable\SlugOptions;
 
-class Service extends DomainModel implements HasMedia
+class Service extends Model implements HasMedia
 {
-    use HasSeoMeta;
+    use HasSlug;
     use InteractsWithMedia;
 
     protected $fillable = [
-        'title',
-        'slug',
-        'short_description',
-        'full_description',
-        'price_from',
-        'status',
-        'sort_order',
+        'title', 'slug', 'description', 'short_desc',
+        'price', 'price_from', 'price_note', 'icon',
+        'sort_order', 'is_active', 'is_featured',
+        'meta_title', 'meta_description',
     ];
 
-    protected function casts(): array
+    protected $casts = [
+        'is_active'   => 'boolean',
+        'is_featured' => 'boolean',
+        'price'       => 'decimal:2',
+    ];
+
+    public function getSlugOptions(): SlugOptions
     {
-        return [
-            'price_from' => 'decimal:2',
-            'status' => PublishStatus::class,
-            'sort_order' => 'integer',
-        ];
+        return SlugOptions::create()
+            ->generateSlugsFrom('title')
+            ->saveSlugsTo('slug')
+            ->doNotGenerateSlugsOnUpdate();
     }
 
-    public function scopePublished(Builder $query): Builder
+    public function scopeActive($query)
     {
-        return $query->where('status', PublishStatus::Published);
+        return $query->where('is_active', true)->orderBy('sort_order');
+    }
+
+    public function registerMediaCollections(): void
+    {
+        $this->addMediaCollection('cover')->singleFile();
     }
 }

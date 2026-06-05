@@ -2,38 +2,30 @@
 
 namespace App\Domain\Partners\Models;
 
-use App\Domain\Core\Enums\PublishStatus;
-use App\Domain\Core\Models\DomainModel;
-use Illuminate\Database\Eloquent\Builder;
+use Illuminate\Database\Eloquent\Model;
 use Spatie\MediaLibrary\HasMedia;
 use Spatie\MediaLibrary\InteractsWithMedia;
 
-class Partner extends DomainModel implements HasMedia
+class Partner extends Model implements HasMedia
 {
     use InteractsWithMedia;
 
     protected $fillable = [
-        'name',
-        'slug',
-        'short_description',
-        'specialization',
-        'url',
-        'contacts',
-        'status',
-        'sort_order',
+        'name', 'photo', 'description', 'specialization',
+        'url', 'sort_order', 'is_active',
     ];
 
-    protected function casts(): array
+    protected $casts = [
+        'is_active' => 'boolean',
+    ];
+
+    public function scopeActive($query)
     {
-        return [
-            'contacts' => 'array',
-            'status' => PublishStatus::class,
-            'sort_order' => 'integer',
-        ];
+        return $query->where('is_active', true)->orderBy('sort_order');
     }
 
-    public function scopePublished(Builder $query): Builder
+    public function registerMediaCollections(): void
     {
-        return $query->where('status', PublishStatus::Published);
+        $this->addMediaCollection('photo')->singleFile();
     }
 }

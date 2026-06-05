@@ -2,54 +2,41 @@
 
 namespace App\Domain\Leads\Models;
 
-use App\Domain\Core\Models\DomainModel;
-use App\Domain\Leads\Enums\LeadStatus;
-use App\Domain\Users\Models\User;
-use Illuminate\Database\Eloquent\Relations\BelongsTo;
+use Illuminate\Database\Eloquent\Model;
 use Illuminate\Database\Eloquent\Relations\HasMany;
+use Illuminate\Database\Eloquent\Relations\BelongsTo;
+use App\Models\User;
 
-class Lead extends DomainModel
+class Lead extends Model
 {
     protected $fillable = [
-        'name',
-        'phone',
-        'email',
-        'city',
-        'message',
-        'source',
-        'utm_source',
-        'utm_medium',
-        'utm_campaign',
-        'utm_content',
-        'utm_term',
-        'page_url',
-        'referer',
-        'status',
-        'assigned_to',
-        'notes',
-        'payload',
+        'name', 'phone', 'email', 'city', 'message', 'source',
+        'utm_source', 'utm_medium', 'utm_campaign', 'utm_content', 'utm_term',
+        'status', 'assigned_to', 'tags', 'notes',
+        'course_id', 'service_id',
     ];
 
-    protected function casts(): array
-    {
-        return [
-            'status' => LeadStatus::class,
-            'payload' => 'array',
-        ];
-    }
+    protected $casts = [
+        'tags' => 'array',
+    ];
 
-    public function assignedUser(): BelongsTo
+    public function assignee(): BelongsTo
     {
         return $this->belongsTo(User::class, 'assigned_to');
     }
 
-    public function comments(): HasMany
+    public function notes(): HasMany
     {
-        return $this->hasMany(LeadNote::class);
+        return $this->hasMany(LeadNote::class)->orderByDesc('created_at');
     }
 
-    public function events(): HasMany
+    public function scopeNew($query)
     {
-        return $this->hasMany(LeadEvent::class);
+        return $query->where('status', 'new');
+    }
+
+    public function scopeByStatus($query, string $status)
+    {
+        return $query->where('status', $status);
     }
 }

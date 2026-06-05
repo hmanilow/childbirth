@@ -2,41 +2,32 @@
 
 namespace App\Domain\Pages\Models;
 
-use App\Domain\Core\Concerns\HasSeoMeta;
-use App\Domain\Core\Enums\PublishStatus;
-use App\Domain\Core\Models\DomainModel;
-use App\Domain\PageBlocks\Models\PageBlock;
-use Illuminate\Database\Eloquent\Builder;
+use Illuminate\Database\Eloquent\Model;
 use Illuminate\Database\Eloquent\Relations\HasMany;
-use Spatie\MediaLibrary\HasMedia;
-use Spatie\MediaLibrary\InteractsWithMedia;
+use Spatie\Sluggable\HasSlug;
+use Spatie\Sluggable\SlugOptions;
 
-class Page extends DomainModel implements HasMedia
+class Page extends Model
 {
-    use HasSeoMeta;
-    use InteractsWithMedia;
+    use HasSlug;
 
     protected $fillable = [
-        'title',
-        'slug',
-        'type',
-        'excerpt',
-        'content',
-        'status',
-        'published_at',
-        'sort_order',
-        'template',
-        'settings',
+        'title', 'slug', 'status',
+        'meta_title', 'meta_description', 'meta_keywords',
+        'og_title', 'og_description', 'og_image',
+        'canonical_url', 'no_index',
     ];
 
-    protected function casts(): array
+    protected $casts = [
+        'no_index' => 'boolean',
+    ];
+
+    public function getSlugOptions(): SlugOptions
     {
-        return [
-            'status' => PublishStatus::class,
-            'published_at' => 'datetime',
-            'settings' => 'array',
-            'sort_order' => 'integer',
-        ];
+        return SlugOptions::create()
+            ->generateSlugsFrom('title')
+            ->saveSlugsTo('slug')
+            ->doNotGenerateSlugsOnUpdate();
     }
 
     public function blocks(): HasMany
@@ -44,8 +35,13 @@ class Page extends DomainModel implements HasMedia
         return $this->hasMany(PageBlock::class)->orderBy('sort_order');
     }
 
-    public function scopePublished(Builder $query): Builder
+    public function publishedBlocks(): HasMany
     {
-        return $query->where('status', PublishStatus::Published)->whereNotNull('published_at');
+        return $this->hasMany(PageBlock::class)->where('is_published', true)->orderBy('sort_order');
+    }
+
+    public function isPublished(): bool
+    {
+        return $this->status === 'published';
     }
 }

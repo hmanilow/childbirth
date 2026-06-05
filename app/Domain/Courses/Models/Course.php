@@ -2,59 +2,61 @@
 
 namespace App\Domain\Courses\Models;
 
-use App\Domain\Core\Concerns\HasSeoMeta;
-use App\Domain\Core\Enums\PublishStatus;
-use App\Domain\Core\Models\DomainModel;
-use App\Domain\Courses\Enums\CourseAccessType;
-use App\Domain\Students\Models\CourseAccessGrant;
-use Illuminate\Database\Eloquent\Builder;
+use Illuminate\Database\Eloquent\Model;
 use Illuminate\Database\Eloquent\Relations\HasMany;
+use Illuminate\Database\Eloquent\SoftDeletes;
 use Spatie\MediaLibrary\HasMedia;
 use Spatie\MediaLibrary\InteractsWithMedia;
+use Spatie\Sluggable\HasSlug;
+use Spatie\Sluggable\SlugOptions;
 
-class Course extends DomainModel implements HasMedia
+class Course extends Model implements HasMedia
 {
-    use HasSeoMeta;
+    use HasSlug;
     use InteractsWithMedia;
+    use SoftDeletes;
 
     protected $fillable = [
-        'title',
-        'slug',
-        'subtitle',
-        'short_description',
-        'full_description',
-        'price',
-        'old_price',
-        'is_active',
-        'is_featured',
-        'access_type',
-        'status',
-        'published_at',
-        'sort_order',
+        'title', 'slug', 'short_desc', 'description',
+        'cover', 'video_preview_url',
+        'price', 'old_price', 'currency',
+        'access_type', 'access_days',
+        'level', 'duration_hours', 'lessons_count',
+        'what_you_learn', 'requirements', 'includes',
+        'is_active', 'is_published', 'is_featured', 'status', 'published_at', 'sort_order',
+        'badge',
+        'meta_title', 'meta_description', 'meta_keywords',
+        'og_title', 'og_description', 'og_image',
     ];
 
-    protected function casts(): array
+    protected $casts = [
+        'what_you_learn' => 'array',
+        'requirements'   => 'array',
+        'includes'       => 'array',
+        'is_published'   => 'boolean',
+        'is_active'      => 'boolean',
+        'is_featured'    => 'boolean',
+        'published_at'   => 'datetime',
+        'price'          => 'decimal:2',
+        'old_price'      => 'decimal:2',
+    ];
+
+    public function getSlugOptions(): SlugOptions
     {
-        return [
-            'price' => 'decimal:2',
-            'old_price' => 'decimal:2',
-            'is_active' => 'boolean',
-            'is_featured' => 'boolean',
-            'access_type' => CourseAccessType::class,
-            'status' => PublishStatus::class,
-            'published_at' => 'datetime',
-            'sort_order' => 'integer',
-        ];
+        return SlugOptions::create()
+            ->generateSlugsFrom('title')
+            ->saveSlugsTo('slug')
+            ->doNotGenerateSlugsOnUpdate();
     }
 
     public function modules(): HasMany
     {
-        return $this->hasMany(CourseModule::class)->orderBy('sort_order');
+        return $this->hasMany(Module::class)->orderBy('sort_order');
     }
 
     public function lessons(): HasMany
     {
-        return $this->hasMany(\App\Domain\Lessons\Models\Lesson::class)->orderBy('sort_order');
+        return $this->hasMany(Lesson::class)->orderBy('sort_order');
     }
 
     public function accessGrants(): HasMany
@@ -62,13 +64,32 @@ class Course extends DomainModel implements HasMedia
         return $this->hasMany(CourseAccessGrant::class);
     }
 
-    public function scopePublished(Builder $query): Builder
+    public function scopePublished($query)
     {
-        return $query->where('status', PublishStatus::Published)
-            ->where('is_active', true)
-            ->where(function (Builder $query): void {
-                $query->whereNull('published_at')
-                    ->orWhere('published_at', '<=', now());
-            });
+        return $query->where('is_published', true);
+    }
+
+    public function scopeFeatured($query)
+    {
+        return $query->where('is_featured', true);
+    }
+
+    public function hasDiscount(): bool
+    {
+        return $this->old_price && $this->old_price > $this->price;
+    }
+
+    public function discountPercent(): int
+    {
+        if (! $this->hasDiscount()) {
+            return 0;
+        }
+
+        return (int) round((1 - $this->price / $this->old_price) * 100);
+    }
+
+    public function registerMediaCollections(): void
+    {
+        $this->addMediaCollection('cover')->singleFile();
     }
 }

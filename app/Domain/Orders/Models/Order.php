@@ -2,37 +2,39 @@
 
 namespace App\Domain\Orders\Models;
 
-use App\Domain\Core\Models\DomainModel;
-use App\Domain\Orders\Enums\OrderStatus;
-use App\Domain\Payments\Models\Payment;
-use App\Domain\Users\Models\User;
+use Illuminate\Database\Eloquent\Model;
 use Illuminate\Database\Eloquent\Relations\BelongsTo;
 use Illuminate\Database\Eloquent\Relations\HasMany;
+use Illuminate\Database\Eloquent\SoftDeletes;
+use App\Models\User;
+use App\Domain\Courses\Models\Course;
+use App\Domain\Payments\Models\Payment;
+use Illuminate\Support\Str;
 
-class Order extends DomainModel
+class Order extends Model
 {
+    use SoftDeletes;
+
     protected $fillable = [
-        'user_id',
-        'lead_id',
-        'number',
-        'status',
-        'amount',
-        'currency',
-        'customer_name',
-        'customer_phone',
-        'customer_email',
+        'uuid', 'user_id', 'course_id',
+        'status', 'amount', 'currency',
+        'promo_code', 'discount', 'notes',
         'paid_at',
-        'metadata',
     ];
 
-    protected function casts(): array
+    protected $casts = [
+        'amount'   => 'decimal:2',
+        'discount' => 'decimal:2',
+        'paid_at'  => 'datetime',
+    ];
+
+    protected static function booted(): void
     {
-        return [
-            'status' => OrderStatus::class,
-            'amount' => 'decimal:2',
-            'paid_at' => 'datetime',
-            'metadata' => 'array',
-        ];
+        static::creating(function (Order $order) {
+            if (empty($order->uuid)) {
+                $order->uuid = (string) Str::uuid();
+            }
+        });
     }
 
     public function user(): BelongsTo
@@ -40,13 +42,33 @@ class Order extends DomainModel
         return $this->belongsTo(User::class);
     }
 
-    public function items(): HasMany
+    public function course(): BelongsTo
     {
-        return $this->hasMany(OrderItem::class);
+        return $this->belongsTo(Course::class);
     }
 
     public function payments(): HasMany
     {
         return $this->hasMany(Payment::class);
+    }
+
+    public function latestPayment(): HasMany
+    {
+        return $this->hasMany(Payment::class)->latestOfMany();
+    }
+
+    public function isPaid(): bool
+    {
+        return $this->status === 'paid';
+    }
+
+    public function scopePaid($query)
+    {
+        return $query->where('status', 'paid');
+    }
+
+    public function totalAfterDiscount(): float
+    {
+        return max(0, $this->amount - $this->discount);
     }
 }

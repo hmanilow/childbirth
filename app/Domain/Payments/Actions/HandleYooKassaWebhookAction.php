@@ -5,66 +5,90 @@ namespace App\Domain\Payments\Actions;
 use App\Domain\Payments\Models\Payment;
 use App\Domain\Payments\Models\PaymentEvent;
 use Illuminate\Support\Facades\DB;
+use Illuminate\Support\Facades\Log;
 
 class HandleYooKassaWebhookAction
 {
     public function __construct(
-        private readonly ConfirmOrderPaidAction $confirmOrderPaid,
-    ) {
+        private readonly ConfirmOrderPaidAction $confirmOrderPaid
+    ) {}
+
+    public function execute(array $payload): void
+    {
+        $eventType         = $payload['event'] ?? null;
+        $providerPaymentId = $payload['object']['id'] ?? null;
+
+        if (! $providerPaymentId || ! $eventType) {
+            Log::warning('YooKassa webhook: missing event or payment ID', $payload);
+            return;
+        }
+
+        // Find payment; null is ok — we'll log the event anyway
+        $payment = Payment::where('provider_payment_id', $providerPaymentId)->first();
+
+        // Idempotency: skip if already processed
+        $existing = PaymentEvent::where('provider_payment_id', $providerPaymentId)
+            ->where('event_type', $eventType)
+            ->where('processing_status', 'processed')
+            ->first();
+
+        if ($existing) {
+            return;
+        }
+
+        $event = PaymentEvent::create([
+            'payment_id'          => $payment?->id,
+            'provider'            => 'yookassa',
+            'event_type'          => $eventType,
+            'provider_payment_id' => $providerPaymentId,
+            'payload'             => $payload,
+            'processing_status'   => 'pending',
+            'received_at'         => now(),
+        ]);
+
+        try {
+            DB::transaction(function () use ($event, $eventType, $payment, $payload) {
+                match ($eventType) {
+                    'payment.succeeded' => $this->handleSucceeded($payment, $payload),
+                    'payment.canceled'  => $this->handleCanceled($payment, $payload),
+                    default             => null,
+                };
+                $event->markProcessed();
+            });
+        } catch (\Throwable $e) {
+            $event->markFailed($e->getMessage());
+            throw $e;
+        }
     }
 
-    public function execute(array $payload): PaymentEvent
+    private function handleSucceeded(?Payment $payment, array $payload): void
     {
-        return DB::transaction(function () use ($payload): PaymentEvent {
-            $object = $payload['object'] ?? [];
-            $providerPaymentId = $object['id'] ?? null;
-            $payloadHash = hash('sha256', json_encode($payload, JSON_UNESCAPED_UNICODE | JSON_UNESCAPED_SLASHES));
+        if (! $payment) {
+            Log::error('YooKassa payment.succeeded: payment not found', $payload);
+            return;
+        }
 
-            $payment = $providerPaymentId
-                ? Payment::query()->where('provider', 'yookassa')->where('provider_payment_id', $providerPaymentId)->first()
-                : null;
+        $payment->update([
+            'provider_status'   => 'succeeded',
+            'internal_status'   => 'succeeded',
+            'paid_at'           => now(),
+            'provider_response' => $payload,
+        ]);
 
-            $event = PaymentEvent::firstOrCreate(
-                [
-                    'provider' => 'yookassa',
-                    'payload_hash' => $payloadHash,
-                ],
-                [
-                    'payment_id' => $payment?->id,
-                    'provider_event_id' => $payload['id'] ?? $payload['event'] ?? $providerPaymentId,
-                    'event_type' => $payload['event'] ?? 'unknown',
-                    'payload' => $payload,
-                ],
-            );
+        $this->confirmOrderPaid->execute($payment->order);
+    }
 
-            if ($event->processed_at) {
-                return $event;
-            }
+    private function handleCanceled(?Payment $payment, array $payload): void
+    {
+        if (! $payment) {
+            return;
+        }
 
-            if (! $payment) {
-                $event->forceFill([
-                    'processing_error' => 'Payment not found for provider payment id: '.$providerPaymentId,
-                    'processed_at' => now(),
-                ])->save();
+        $payment->update([
+            'provider_status' => 'canceled',
+            'internal_status' => 'failed',
+        ]);
 
-                return $event;
-            }
-
-            $payment->forceFill([
-                'provider_status' => $object['status'] ?? $payment->provider_status,
-                'raw_payload' => $object,
-            ])->save();
-
-            if (($object['status'] ?? null) === 'succeeded' && ($object['paid'] ?? false) === true) {
-                $this->confirmOrderPaid->execute($payment->order()->with('items.purchasable', 'user')->firstOrFail(), $payment);
-            }
-
-            $event->forceFill([
-                'payment_id' => $payment->id,
-                'processed_at' => now(),
-            ])->save();
-
-            return $event->refresh();
-        });
+        $payment->order?->update(['status' => 'canceled']);
     }
 }

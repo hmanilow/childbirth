@@ -2,38 +2,26 @@
 
 namespace App\Domain\Payments\Models;
 
-use App\Domain\Core\Models\DomainModel;
-use App\Domain\Orders\Models\Order;
-use App\Domain\Payments\Enums\PaymentInternalStatus;
+use Illuminate\Database\Eloquent\Model;
 use Illuminate\Database\Eloquent\Relations\BelongsTo;
 use Illuminate\Database\Eloquent\Relations\HasMany;
+use App\Domain\Orders\Models\Order;
 
-class Payment extends DomainModel
+class Payment extends Model
 {
     protected $fillable = [
-        'order_id',
-        'provider',
-        'provider_payment_id',
-        'provider_status',
-        'internal_status',
-        'amount',
-        'currency',
-        'confirmation_url',
-        'paid_at',
-        'raw_payload',
-        'metadata',
+        'order_id', 'provider',
+        'provider_payment_id', 'provider_status', 'internal_status',
+        'amount', 'currency',
+        'confirmation_url', 'paid_at',
+        'provider_response',
     ];
 
-    protected function casts(): array
-    {
-        return [
-            'internal_status' => PaymentInternalStatus::class,
-            'amount' => 'decimal:2',
-            'paid_at' => 'datetime',
-            'raw_payload' => 'array',
-            'metadata' => 'array',
-        ];
-    }
+    protected $casts = [
+        'amount'            => 'decimal:2',
+        'paid_at'           => 'datetime',
+        'provider_response' => 'array',
+    ];
 
     public function order(): BelongsTo
     {
@@ -43,5 +31,20 @@ class Payment extends DomainModel
     public function events(): HasMany
     {
         return $this->hasMany(PaymentEvent::class);
+    }
+
+    public function isSucceeded(): bool
+    {
+        return $this->internal_status === 'succeeded';
+    }
+
+    public function scopePending($query)
+    {
+        return $query->where('internal_status', 'pending');
+    }
+
+    public function scopeSucceeded($query)
+    {
+        return $query->where('internal_status', 'succeeded');
     }
 }

@@ -2,55 +2,43 @@
 
 namespace App\Domain\Payments\Actions;
 
-use App\Domain\Courses\Models\Course;
-use App\Domain\Orders\Enums\OrderStatus;
+use App\Domain\Courses\Actions\GrantCourseAccessAction;
 use App\Domain\Orders\Models\Order;
-use App\Domain\Payments\Enums\PaymentInternalStatus;
-use App\Domain\Payments\Models\Payment;
-use App\Domain\Students\Actions\GrantCourseAccessAction;
-use App\Domain\Students\Enums\AccessGrantSource;
-use Illuminate\Support\Facades\DB;
+use Illuminate\Support\Facades\Log;
 
 class ConfirmOrderPaidAction
 {
     public function __construct(
-        private readonly GrantCourseAccessAction $grantCourseAccess,
-    ) {
-    }
+        private readonly GrantCourseAccessAction $grantAccess
+    ) {}
 
-    public function execute(Order $order, Payment $payment): Order
+    public function execute(Order $order): void
     {
-        return DB::transaction(function () use ($order, $payment): Order {
-            if ($order->status === OrderStatus::Paid) {
-                return $order;
-            }
+        if ($order->status === 'paid') {
+            return; // Already processed
+        }
 
-            $payment->forceFill([
-                'internal_status' => PaymentInternalStatus::Succeeded,
-                'paid_at' => $payment->paid_at ?? now(),
-            ])->save();
+        $order->update([
+            'status'  => 'paid',
+            'paid_at' => now(),
+        ]);
 
-            $order->forceFill([
-                'status' => OrderStatus::Paid,
-                'paid_at' => $order->paid_at ?? now(),
-            ])->save();
+        if (! $order->user) {
+            Log::error('ConfirmOrderPaid: user not found', ['order_id' => $order->id]);
+            return;
+        }
 
-            if ($order->user) {
-                foreach ($order->items as $item) {
-                    if ($item->purchasable instanceof Course) {
-                        $this->grantCourseAccess->execute(
-                            user: $order->user,
-                            course: $item->purchasable,
-                            source: AccessGrantSource::Payment,
-                            grantedBy: $payment,
-                            notes: 'Автоматическая выдача доступа после оплаты заказа '.$order->number,
-                            metadata: ['order_id' => $order->id, 'payment_id' => $payment->id],
-                        );
-                    }
-                }
-            }
+        if (! $order->course) {
+            Log::error('ConfirmOrderPaid: course not found', ['order_id' => $order->id]);
+            return;
+        }
 
-            return $order->refresh();
-        });
+        $this->grantAccess->execute(
+            user: $order->user,
+            course: $order->course,
+            source: 'purchase',
+            grantedBy: (string) $order->id,
+            grantedByType: 'order'
+        );
     }
 }

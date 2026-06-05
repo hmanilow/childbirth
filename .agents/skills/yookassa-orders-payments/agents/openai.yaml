@@ -1,4 +1,0 @@
-interface:
-  display_name: "YooKassa Orders Payments"
-  short_description: "YooKassa checkout and payment flow"
-  default_prompt: "Use $yookassa-orders-payments to design orders, payments, webhooks, and access grants."

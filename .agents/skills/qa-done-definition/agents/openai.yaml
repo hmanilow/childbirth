@@ -1,4 +1,0 @@
-interface:
-  display_name: "QA Done Definition"
-  short_description: "QA done checklist and deploy readiness"
-  default_prompt: "Use $qa-done-definition to run a final done checklist, risk review, and deploy readiness check."

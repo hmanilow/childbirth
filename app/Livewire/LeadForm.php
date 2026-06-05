@@ -3,53 +3,62 @@
 namespace App\Livewire;
 
 use App\Domain\Leads\Actions\CreateLeadAction;
-use App\Domain\Leads\DTO\LeadData;
-use Livewire\Attributes\Validate;
 use Livewire\Component;
 
 class LeadForm extends Component
 {
-    #[Validate('nullable|string|max:255')]
-    public ?string $name = null;
+    public string $name    = '';
+    public string $phone   = '';
+    public string $email   = '';
+    public string $message = '';
+    public string $source;
+    public bool   $sent    = false;
 
-    #[Validate('required_without:email|nullable|string|max:50')]
-    public ?string $phone = null;
-
-    #[Validate('required_without:phone|nullable|email|max:255')]
-    public ?string $email = null;
-
-    #[Validate('nullable|string|max:255')]
-    public ?string $city = null;
-
-    #[Validate('nullable|string|max:5000')]
-    public ?string $message = null;
-
-    public string $source = 'public_form';
-
-    public ?string $website = null;
-
-    public function submit(CreateLeadAction $createLead): void
+    public function mount(string $source = 'website'): void
     {
-        if ($this->website) {
-            return;
-        }
+        $this->source = $source;
+    }
 
-        $validated = $this->validate();
+    protected function rules(): array
+    {
+        return [
+            'name'    => ['required', 'string', 'max:255'],
+            'phone'   => ['required', 'string', 'max:20'],
+            'email'   => ['nullable', 'email', 'max:255'],
+            'message' => ['nullable', 'string', 'max:2000'],
+        ];
+    }
 
-        $createLead->execute(new LeadData(
-            name: $validated['name'] ?? null,
-            phone: $validated['phone'] ?? null,
-            email: $validated['email'] ?? null,
-            city: $validated['city'] ?? null,
-            message: $validated['message'] ?? null,
-            source: $this->source,
-            pageUrl: request()->fullUrl(),
-            referer: request()->headers->get('referer'),
-            payload: $validated,
-        ));
+    protected function messages(): array
+    {
+        return [
+            'name.required'  => 'Укажите ваше имя.',
+            'phone.required' => 'Укажите номер телефона.',
+            'email.email'    => 'Некорректный email.',
+        ];
+    }
 
-        $this->reset(['name', 'phone', 'email', 'city', 'message']);
-        session()->flash('status', 'Спасибо! Мы получили заявку и скоро свяжемся с вами.');
+    public function submit(CreateLeadAction $action): void
+    {
+        $this->validate();
+
+        $utms = session('utms', []);
+
+        $action->execute([
+            'name'         => $this->name,
+            'phone'        => $this->phone,
+            'email'        => $this->email ?: null,
+            'message'      => $this->message ?: null,
+            'source'       => $this->source,
+            'utm_source'   => $utms['utm_source'] ?? null,
+            'utm_medium'   => $utms['utm_medium'] ?? null,
+            'utm_campaign' => $utms['utm_campaign'] ?? null,
+            'utm_content'  => $utms['utm_content'] ?? null,
+            'utm_term'     => $utms['utm_term'] ?? null,
+        ]);
+
+        $this->sent = true;
+        $this->reset(['name', 'phone', 'email', 'message']);
     }
 
     public function render()

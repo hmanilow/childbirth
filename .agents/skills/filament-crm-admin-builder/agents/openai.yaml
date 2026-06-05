@@ -1,4 +1,0 @@
-interface:
-  display_name: "Filament CRM Admin Builder"
-  short_description: "Filament CRM admin builder guide"
-  default_prompt: "Use $filament-crm-admin-builder to design a Filament CRM admin workflow."

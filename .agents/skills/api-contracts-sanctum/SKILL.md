@@ -24,7 +24,6 @@ description: Используй этот skill, когда задача каса
 # Предполагаемые группы endpoint'ов
 
 ## Public
-
 - GET /api/v1/pages/{slug}
 - GET /api/v1/news
 - GET /api/v1/news/{slug}
@@ -34,25 +33,21 @@ description: Используй этот skill, когда задача каса
 - GET /api/v1/courses/{slug}
 
 ## Auth
-
 - POST /api/v1/auth/login
 - POST /api/v1/auth/logout
 - GET /api/v1/auth/me
 
 ## Leads
-
 - POST /api/v1/leads
 - POST /api/v1/consultations
 
 ## Student
-
 - GET /api/v1/me/courses
 - GET /api/v1/me/courses/{course}
 - GET /api/v1/me/lessons/{lesson}
 - POST /api/v1/me/lessons/{lesson}/complete
 
 ## Orders
-
 - POST /api/v1/orders
 - GET /api/v1/orders/{order}
 
