@@ -9,9 +9,9 @@
         <div class="flex justify-center lg:justify-start">
             <div class="rounded-lg border border-accent/20 bg-white p-8 text-center shadow-card-hover">
                 <img
-                    src="{{ asset('images/site/maternity-logo-11.svg') }}"
+                    src="{{ asset('images/site/maternity-logo-web.svg') }}"
                     alt="Школа материнства рожаем вместе"
-                    class="mx-auto h-28 w-28 rounded-full border-4 border-white bg-white object-cover object-center p-1 shadow-glow"
+                    class="mx-auto h-36 w-auto object-contain drop-shadow-xl sm:h-40"
                 >
                 <p class="mt-5 text-xs font-semibold uppercase tracking-widest text-accent">рожаем вместе</p>
                 <p class="mt-1 font-heading text-2xl font-bold text-text-heading">Школа материнства</p>

@@ -16,15 +16,15 @@
     class="fixed left-0 right-0 top-0 z-50 border-b border-border-soft/80 backdrop-blur-md transition-all duration-300"
 >
     <div class="mx-auto max-w-7xl px-4 sm:px-6 lg:px-8">
-        <div class="flex h-24 items-center justify-between gap-5">
+        <div class="flex h-28 items-center justify-between gap-5">
             <a href="{{ route('home') }}" class="flex min-w-0 flex-shrink-0 items-center gap-4">
                 @if($logoPath !== '')
-                    <img src="{{ Storage::url($logoPath) }}" alt="{{ $siteName }}" class="h-16 w-auto rounded-full bg-white shadow-glow">
+                    <img src="{{ Storage::url($logoPath) }}" alt="{{ $siteName }}" class="h-20 w-auto object-contain drop-shadow-lg sm:h-24">
                 @else
                     <img
-                        src="{{ asset('images/site/maternity-logo-11.svg') }}"
+                        src="{{ asset('images/site/maternity-logo-web.svg') }}"
                         alt="{{ $siteName }}"
-                        class="h-16 w-16 rounded-full border-4 border-white bg-white object-cover object-center p-1 shadow-glow sm:h-[72px] sm:w-[72px]"
+                        class="h-20 w-auto object-contain drop-shadow-lg sm:h-24"
                     >
                 @endif
                 <div class="hidden min-w-0 flex-col sm:flex">

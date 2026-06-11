@@ -16,9 +16,9 @@
         <div>
             <a href="{{ route('home') }}" class="mb-5 inline-flex items-center gap-4">
                 <img
-                    src="{{ asset('images/site/maternity-logo-11.svg') }}"
+                    src="{{ asset('images/site/maternity-logo-web.svg') }}"
                     alt="{{ $siteName }}"
-                    class="h-14 w-14 rounded-full border-2 border-white bg-white object-cover object-center p-1 shadow-card"
+                    class="h-20 w-auto object-contain drop-shadow-md"
                 >
                 <span>
                     <span class="block font-heading text-xl font-bold leading-tight text-text-heading">Школа материнства</span>

@@ -26,14 +26,14 @@
 @endsection
 
 @section('content')
-<section class="relative overflow-hidden bg-[linear-gradient(135deg,#FFFFFF_0%,#FFF3F6_48%,#EAFBFD_100%)] pt-28">
+<section class="relative overflow-hidden bg-[linear-gradient(135deg,#FFFFFF_0%,#FFF3F6_48%,#EAFBFD_100%)] pt-32">
     <div class="mx-auto grid min-h-[560px] max-w-7xl items-center gap-10 px-4 pb-14 sm:px-6 lg:grid-cols-[1.05fr_0.95fr] lg:px-8">
         <div class="max-w-3xl animate-fade-up">
             <div class="mb-7 inline-flex items-center gap-4">
                 <img
-                    src="{{ asset('images/site/maternity-logo-11.svg') }}"
+                    src="{{ asset('images/site/maternity-logo-web.svg') }}"
                     alt="{{ $siteName }}"
-                    class="h-20 w-20 rounded-full border-4 border-white bg-white object-cover object-center p-1 shadow-glow sm:h-24 sm:w-24"
+                    class="h-32 w-auto object-contain drop-shadow-xl sm:h-[156px]"
                 >
                 <div>
                     <p class="text-xs font-semibold uppercase tracking-widest text-accent">Школа материнства</p>

@@ -7,7 +7,7 @@
     'stats' => [],
 ])
 
-<section data-hero class="relative flex min-h-[92svh] items-center overflow-hidden bg-gradient-hero pt-24">
+<section data-hero class="relative flex min-h-[92svh] items-center overflow-hidden bg-gradient-hero pt-32">
     @if($photo)
         <img
             src="{{ $photo }}"
@@ -19,7 +19,7 @@
 
     <div class="absolute inset-0 bg-[linear-gradient(90deg,rgba(255,255,255,0.98)_0%,rgba(248,249,250,0.92)_44%,rgba(126,217,230,0.28)_100%)]"></div>
     <img
-        src="{{ asset('images/site/maternity-logo-11.svg') }}"
+        src="{{ asset('images/site/maternity-logo-web.svg') }}"
         alt=""
         aria-hidden="true"
         class="pointer-events-none absolute right-[-7rem] top-1/2 hidden w-[42rem] -translate-y-1/2 rotate-[-3deg] opacity-[0.18] mix-blend-multiply lg:block"
