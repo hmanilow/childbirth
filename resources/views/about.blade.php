@@ -4,7 +4,7 @@
 @section('description', 'Кратко о специалисте, который ведёт занятия школы материнства и помогает семьям подготовиться к родам и первым месяцам.')
 
 @section('content')
-<section class="bg-[linear-gradient(135deg,#FFFFFF_0%,#FFF3F6_52%,#EAFBFD_100%)] pt-32 pb-16">
+<section class="bg-[linear-gradient(135deg,#FFFFFF_0%,#FFF3F6_52%,#EAFBFD_100%)] pt-36 pb-16">
     <div class="mx-auto grid max-w-6xl items-center gap-10 px-4 sm:px-6 lg:grid-cols-[0.9fr_1.1fr] lg:px-8">
         <div class="flex justify-center lg:justify-start">
             <div class="rounded-lg border border-accent/20 bg-white p-8 text-center shadow-card-hover">

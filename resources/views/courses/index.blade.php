@@ -4,7 +4,7 @@
 @section('description', 'Каталог онлайн и офлайн курсов для будущих родителей: подготовка к родам, уход за малышом, семья и первые месяцы.')
 
 @section('content')
-<section class="bg-[linear-gradient(135deg,#FFFFFF_0%,#FFF3F6_52%,#EAFBFD_100%)] pt-32 pb-16">
+<section class="bg-[linear-gradient(135deg,#FFFFFF_0%,#FFF3F6_52%,#EAFBFD_100%)] pt-36 pb-16">
     <div class="mx-auto max-w-7xl px-4 sm:px-6 lg:px-8">
         <div class="max-w-3xl">
             <span class="section-eyebrow">Каталог курсов</span>

@@ -4,7 +4,7 @@
 @section('description', 'Политика обработки персональных данных школы материнства.')
 
 @section('content')
-<section class="bg-bg-section pt-32 pb-16">
+<section class="bg-bg-section pt-36 pb-16">
     <div class="mx-auto max-w-4xl px-4 sm:px-6 lg:px-8">
         <span class="section-eyebrow">Документы</span>
         <h1 class="mt-2 font-heading text-4xl font-bold text-text-heading lg:text-5xl">Политика конфиденциальности</h1>

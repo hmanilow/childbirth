@@ -3,7 +3,7 @@
 @section('title', $course->title . ' — Обучение')
 
 @section('content')
-<main class="pt-32 pb-16">
+<main class="pt-36 pb-16">
     <div class="container mx-auto px-4 sm:px-6 max-w-5xl">
         <nav class="flex items-center gap-2 text-sm text-text-muted mb-6">
             <a href="{{ route('account.dashboard') }}" class="hover:text-accent-main">Кабинет</a>

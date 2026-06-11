@@ -5,7 +5,7 @@
 
 @section('content')
 <main>
-    <section class="bg-bg-section pt-32 pb-16">
+    <section class="bg-bg-section pt-36 pb-16">
         <div class="container mx-auto px-4 sm:px-6 max-w-4xl">
             <nav class="flex items-center gap-2 text-sm text-text-muted mb-8">
                 <a href="{{ route('home') }}" class="hover:text-accent-main">Главная</a>
