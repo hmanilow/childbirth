@@ -1,7 +1,7 @@
 @extends('layouts.app')
 
-@section('title', ($post->meta_title ?: $post->title) . ' — Школа материнства')
-@section('meta_description', $post->meta_description ?: $post->excerpt)
+@section('title', ($post->meta_title ?: $post->title) . ' — Школа материнства рожаем вместе')
+@section('description', $post->meta_description ?: $post->excerpt)
 
 @section('content')
 <main>

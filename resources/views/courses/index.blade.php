@@ -1,26 +1,24 @@
 @extends('layouts.app')
 
-@section('title', 'Онлайн-курсы — Школа материнства')
-@section('description', 'Авторские онлайн-курсы по подготовке к родам, грудному вскармливанию и материнству. Доступ навсегда.')
+@section('title', 'Курсы — Школа материнства рожаем вместе')
+@section('description', 'Каталог онлайн и офлайн курсов для будущих родителей: подготовка к родам, уход за малышом, семья и первые месяцы.')
 
 @section('content')
-<main>
-    {{-- Hero --}}
-    <section class="bg-bg-section pt-24 pb-16">
-        <div class="container mx-auto px-4 sm:px-6 text-center">
-            <span class="section-eyebrow">Онлайн-обучение</span>
-            <h1 class="section-heading mt-2 mb-4">Курсы для будущих мам</h1>
-            <p class="text-text-muted text-lg max-w-2xl mx-auto">
-                Авторские программы с пожизненным доступом. Учитесь в своём темпе, возвращайтесь к урокам когда угодно.
+<section class="bg-[linear-gradient(135deg,#FFFFFF_0%,#FFF3F6_52%,#EAFBFD_100%)] pt-32 pb-16">
+    <div class="mx-auto max-w-7xl px-4 sm:px-6 lg:px-8">
+        <div class="max-w-3xl">
+            <span class="section-eyebrow">Каталог курсов</span>
+            <h1 class="mt-2 font-heading text-hero font-bold text-text-heading">Курсы для будущих мам и пап</h1>
+            <p class="mt-5 text-lg leading-relaxed text-text-muted">
+                Онлайн-программы, очные интенсивы и практичные занятия для подготовки к родам, уходу за ребёнком и спокойному семейному старту.
             </p>
         </div>
-    </section>
+    </div>
+</section>
 
-    {{-- Filter + Grid --}}
-    <section class="py-16">
-        <div class="container mx-auto px-4 sm:px-6">
-            <livewire:course-filter />
-        </div>
-    </section>
-</main>
+<section class="py-16">
+    <div class="mx-auto max-w-7xl px-4 sm:px-6 lg:px-8">
+        <livewire:course-filter />
+    </div>
+</section>
 @endsection

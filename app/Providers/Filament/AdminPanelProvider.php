@@ -31,7 +31,7 @@ class AdminPanelProvider extends PanelProvider
                 'gray'    => Color::hex('#9B87B0'),
             ])
             ->darkMode(true)
-            ->brandName('Школа материнства')
+            ->brandName('Школа материнства рожаем вместе')
             ->favicon(asset('images/favicon.png'))
             ->discoverResources(in: app_path('Filament/Resources'), for: 'App\\Filament\\Resources')
             ->discoverPages(in: app_path('Filament/Pages'), for: 'App\\Filament\\Pages')

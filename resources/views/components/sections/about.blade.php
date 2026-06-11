@@ -1,6 +1,6 @@
 @props([
     'name'        => 'Имя Фамилия',
-    'title'       => 'Доула · Консультант по материнству',
+    'title'       => 'Специалист по подготовке к родам',
     'bio'         => '',
     'photo'       => null,
     'secondaryPhoto' => null,
@@ -60,8 +60,8 @@
                     </div>
                 @else
                     <div class="space-y-4 text-text-muted leading-relaxed mb-8">
-                        <p>Я помогаю женщинам встретить роды с уверенностью и спокойствием. Как доула, я нахожусь рядом в самый важный момент вашей жизни — с начала схваток до первого взгляда на малыша.</p>
-                        <p>Более 5 лет я сопровождаю семьи в родах, провожу подготовительные курсы и консультации по материнству. Каждая история уникальна, и я рядом с каждой из них.</p>
+                        <p>Я веду занятия школы материнства и помогаю будущим родителям подготовиться к родам, уходу за малышом и первым неделям дома.</p>
+                        <p>В работе мне важно давать понятные шаги, спокойную поддержку и практичные материалы без лишнего давления.</p>
                     </div>
                 @endif
 
@@ -69,8 +69,8 @@
                     <div class="flex items-center gap-4 bg-bg-card border border-border-soft rounded-card p-4 mb-8">
                         <img src="{{ $secondaryPhoto }}" alt="Сертификат {{ $name }}" class="w-28 h-20 rounded-lg object-cover flex-shrink-0">
                         <div>
-                            <div class="font-heading font-semibold text-text-primary">Сертификат Doula</div>
-                            <div class="text-sm text-text-muted mt-1">Профессиональная доула, подготовка к родам и поддержка семьи.</div>
+                            <div class="font-heading font-semibold text-text-primary">Профессиональная подготовка</div>
+                            <div class="text-sm text-text-muted mt-1">Курсы по родам, уходу за малышом и поддержке семьи.</div>
                         </div>
                     </div>
                 @endif

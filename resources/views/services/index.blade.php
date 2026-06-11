@@ -1,16 +1,16 @@
 @extends('layouts.app')
 
-@section('title', 'Услуги — Школа материнства')
-@section('meta_description', 'Услуги доулы и перинатального психолога в Балашихе и Москве: сопровождение родов, подготовка к родам, работа с партнёром.')
+@section('title', 'Услуги — Школа материнства рожаем вместе')
+@section('description', 'Дополнительные форматы поддержки и подготовки для будущих родителей.')
 
 @section('content')
 <main>
     <section class="bg-bg-section pt-24 pb-16">
         <div class="container mx-auto px-4 sm:px-6 text-center">
-            <span class="section-eyebrow">Что я предлагаю</span>
+            <span class="section-eyebrow">Форматы</span>
             <h1 class="section-heading mt-2 mb-4">Услуги</h1>
             <p class="text-text-muted text-lg max-w-2xl mx-auto">
-                Индивидуальный подход к каждой семье. Работаю в Балашихе, Москве и онлайн.
+                Дополнительные форматы подготовки и поддержки семьи.
             </p>
         </div>
     </section>
@@ -32,7 +32,7 @@
     <section class="py-16 bg-bg-card">
         <div class="container mx-auto px-4 sm:px-6 text-center max-w-2xl">
             <h2 class="section-heading mb-4">Остались вопросы?</h2>
-            <p class="text-text-muted mb-8">Напишите мне, и я расскажу подробнее о каждой услуге.</p>
+            <p class="text-text-muted mb-8">Напишите нам, и мы подскажем подходящий формат.</p>
             <a href="{{ route('contacts') }}" class="btn-accent px-10">Написать</a>
         </div>
     </section>

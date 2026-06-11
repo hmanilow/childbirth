@@ -28,6 +28,11 @@ class CourseResource extends Resource
                     Forms\Components\TextInput::make('title')->label('Название')->required()->live(onBlur: true)
                         ->afterStateUpdated(fn ($state, Forms\Set $set) => $set('slug', \Str::slug($state))),
                     Forms\Components\TextInput::make('slug')->label('Slug')->required(),
+                    Forms\Components\Select::make('format')->label('Формат')->options([
+                        Course::FORMAT_ONLINE => 'Онлайн',
+                        Course::FORMAT_OFFLINE => 'Офлайн',
+                    ])->default(Course::FORMAT_ONLINE)->required(),
+                    Forms\Components\TextInput::make('category')->label('Категория')->placeholder('Подготовка к родам'),
                     Forms\Components\Textarea::make('short_desc')->label('Краткое описание')->rows(2),
                     Forms\Components\RichEditor::make('description')->label('Описание')->columnSpanFull(),
                     Forms\Components\TextInput::make('cover')->label('Обложка (URL)'),
@@ -78,6 +83,13 @@ class CourseResource extends Resource
         return $table
             ->columns([
                 Tables\Columns\TextColumn::make('title')->label('Название')->searchable()->sortable(),
+                Tables\Columns\TextColumn::make('format')
+                    ->label('Формат')
+                    ->formatStateUsing(fn (?string $state): string => $state === Course::FORMAT_OFFLINE ? 'Офлайн' : 'Онлайн')
+                    ->badge()
+                    ->color(fn (?string $state): string => $state === Course::FORMAT_OFFLINE ? 'warning' : 'info')
+                    ->sortable(),
+                Tables\Columns\TextColumn::make('category')->label('Категория')->searchable()->toggleable(),
                 Tables\Columns\TextColumn::make('price')->label('Цена')->money('RUB')->sortable(),
                 Tables\Columns\IconColumn::make('is_published')->label('Опубл.')->boolean(),
                 Tables\Columns\IconColumn::make('is_featured')->label('Хит')->boolean()->toggleable(),

@@ -1,6 +1,6 @@
 @extends('layouts.app')
 
-@section('title', 'Вход — Школа материнства')
+@section('title', 'Вход — Школа материнства рожаем вместе')
 
 @section('content')
 <main class="min-h-screen flex items-center justify-center py-24 px-4">

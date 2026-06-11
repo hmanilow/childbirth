@@ -11,10 +11,10 @@ class SettingsSeeder extends Seeder
     {
         $settings = [
             // Branding
-            ['key' => 'site_name',        'value' => 'Школа материнства',                 'type' => 'string', 'group' => 'general'],
-            ['key' => 'site_tagline',     'value' => 'Доула и школа материнства',          'type' => 'string', 'group' => 'general'],
+            ['key' => 'site_name',        'value' => 'Школа материнства рожаем вместе',    'type' => 'string', 'group' => 'general'],
+            ['key' => 'site_tagline',     'value' => 'Курсы для будущих мам и пап',        'type' => 'string', 'group' => 'general'],
             ['key' => 'specialist_name',  'value' => 'Елена Тимофеева',                    'type' => 'string', 'group' => 'general'],
-            ['key' => 'specialist_title', 'value' => 'Доула · Консультант по материнству', 'type' => 'string', 'group' => 'general'],
+            ['key' => 'specialist_title', 'value' => 'Специалист по подготовке к родам',   'type' => 'string', 'group' => 'general'],
             ['key' => 'specialist_photo', 'value' => '',                                   'type' => 'string', 'group' => 'general'],
             ['key' => 'specialist_about_photo', 'value' => '',                             'type' => 'string', 'group' => 'general'],
             ['key' => 'specialist_certificate_photo', 'value' => '',                       'type' => 'string', 'group' => 'general'],
@@ -23,7 +23,7 @@ class SettingsSeeder extends Seeder
             // Contacts
             ['key' => 'phone',            'value' => '',  'type' => 'string', 'group' => 'contacts'],
             ['key' => 'email',            'value' => '',  'type' => 'string', 'group' => 'contacts'],
-            ['key' => 'address',          'value' => 'Балашиха, Московская область', 'type' => 'string', 'group' => 'contacts'],
+            ['key' => 'address',          'value' => '', 'type' => 'string', 'group' => 'contacts'],
 
             // Social
             ['key' => 'telegram_url',     'value' => '', 'type' => 'string', 'group' => 'social'],
@@ -34,8 +34,8 @@ class SettingsSeeder extends Seeder
             ['key' => 'whatsapp_url',     'value' => '', 'type' => 'string', 'group' => 'social'],
 
             // SEO
-            ['key' => 'meta_title',       'value' => 'Школа материнства — Доула в Балашихе и Москве', 'type' => 'string', 'group' => 'seo'],
-            ['key' => 'meta_description', 'value' => 'Сопровождение родов, консультации и школа материнства в Балашихе.', 'type' => 'string', 'group' => 'seo'],
+            ['key' => 'meta_title',       'value' => 'Школа материнства рожаем вместе — курсы для будущих родителей', 'type' => 'string', 'group' => 'seo'],
+            ['key' => 'meta_description', 'value' => 'Онлайн и офлайн курсы по подготовке к родам, уходу за малышом и спокойному старту родительства.', 'type' => 'string', 'group' => 'seo'],
             ['key' => 'og_image',         'value' => '', 'type' => 'string', 'group' => 'seo'],
 
             // Analytics

@@ -61,16 +61,6 @@ Route::get('/news/{slug}', [NewsController::class, 'show'])->name('news.show');
 
 /*
 |--------------------------------------------------------------------------
-| City landing pages (SEO)
-|--------------------------------------------------------------------------
-*/
-Route::get('/doula-balashikha', fn () => view('city.doula', ['city' => 'Балашиха', 'cityEn' => 'balashikha']))->name('city.balashikha');
-Route::get('/doula-moskva', fn () => view('city.doula', ['city' => 'Москва', 'cityEn' => 'moskva']))->name('city.moskva');
-Route::get('/doula-zheleznodorozhny', fn () => view('city.doula', ['city' => 'Железнодорожный', 'cityEn' => 'zheleznodorozhny']))->name('city.zheleznodorozhny');
-Route::get('/doula-reutov', fn () => view('city.doula', ['city' => 'Реутов', 'cityEn' => 'reutov']))->name('city.reutov');
-
-/*
-|--------------------------------------------------------------------------
 | Auth
 |--------------------------------------------------------------------------
 */

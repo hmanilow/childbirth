@@ -6,14 +6,14 @@
     <meta http-equiv="X-UA-Compatible" content="IE=edge">
 
     {{-- SEO Meta --}}
-    <title>@yield('title', $globalSettings['site_name'] ?? 'Школа материнства')</title>
-    <meta name="description" content="@yield('description', $globalSettings['site_description'] ?? 'Доула, школа материнства и подготовка к родам в Балашихе и Москве')">
+    <title>@yield('title', $globalSettings['site_name'] ?? 'Школа материнства рожаем вместе')</title>
+    <meta name="description" content="@yield('description', $globalSettings['meta_description'] ?? 'Онлайн и офлайн курсы для будущих родителей: подготовка к родам, уход за малышом и спокойный старт семьи.')">
     @yield('meta')
 
     {{-- Open Graph --}}
     <meta property="og:type" content="website">
-    <meta property="og:title" content="@yield('og_title', $globalSettings['site_name'] ?? 'Школа материнства')">
-    <meta property="og:description" content="@yield('og_description', $globalSettings['site_description'] ?? '')">
+    <meta property="og:title" content="@yield('og_title', $globalSettings['site_name'] ?? 'Школа материнства рожаем вместе')">
+    <meta property="og:description" content="@yield('og_description', $globalSettings['meta_description'] ?? '')">
     <meta property="og:image" content="@yield('og_image', asset('images/og-default.jpg'))">
     <meta property="og:url" content="{{ url()->current() }}">
     <meta property="og:locale" content="ru_RU">

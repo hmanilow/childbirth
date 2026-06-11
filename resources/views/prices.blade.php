@@ -1,7 +1,7 @@
 @extends('layouts.app')
 
-@section('title', 'Цены — Школа материнства')
-@section('meta_description', 'Стоимость услуг доулы и онлайн-курсов по подготовке к родам. Балашиха, Москва и онлайн.')
+@section('title', 'Цены — Школа материнства рожаем вместе')
+@section('description', 'Стоимость курсов и дополнительных форматов подготовки к родам и уходу за малышом.')
 
 @section('content')
 <main>
@@ -50,7 +50,7 @@
     @if($courses->isNotEmpty())
     <section class="py-16 bg-bg-card">
         <div class="container mx-auto px-4 sm:px-6 max-w-5xl">
-            <h2 class="section-heading mb-8">Онлайн-курсы</h2>
+            <h2 class="section-heading mb-8">Курсы</h2>
             <div class="grid sm:grid-cols-2 lg:grid-cols-3 gap-6">
                 @foreach($courses as $course)
                     <x-course-card :course="$course" />

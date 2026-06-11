@@ -16,10 +16,14 @@ class Course extends Model implements HasMedia
     use InteractsWithMedia;
     use SoftDeletes;
 
+    public const FORMAT_ONLINE = 'online';
+    public const FORMAT_OFFLINE = 'offline';
+
     protected $fillable = [
         'title', 'slug', 'short_desc', 'description',
         'cover', 'video_preview_url',
         'price', 'old_price', 'currency',
+        'format', 'category',
         'access_type', 'access_days',
         'level', 'duration_hours', 'lessons_count',
         'what_you_learn', 'requirements', 'includes',
@@ -72,6 +76,24 @@ class Course extends Model implements HasMedia
     public function scopeFeatured($query)
     {
         return $query->where('is_featured', true);
+    }
+
+    public function scopeOnline($query)
+    {
+        return $query->where('format', self::FORMAT_ONLINE);
+    }
+
+    public function scopeOffline($query)
+    {
+        return $query->where('format', self::FORMAT_OFFLINE);
+    }
+
+    public function formatLabel(): string
+    {
+        return match ($this->format) {
+            self::FORMAT_OFFLINE => 'Офлайн',
+            default => 'Онлайн',
+        };
     }
 
     public function hasDiscount(): bool

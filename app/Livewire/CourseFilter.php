@@ -11,7 +11,8 @@ class CourseFilter extends Component
     use WithPagination;
 
     public string $search = '';
-    public string $level  = '';
+    public string $format = 'all';
+    public string $category = '';
     public string $sort   = 'featured';
 
     public function updatedSearch(): void
@@ -19,7 +20,12 @@ class CourseFilter extends Component
         $this->resetPage();
     }
 
-    public function updatedLevel(): void
+    public function updatedFormat(): void
+    {
+        $this->resetPage();
+    }
+
+    public function updatedCategory(): void
     {
         $this->resetPage();
     }
@@ -35,8 +41,12 @@ class CourseFilter extends Component
             });
         }
 
-        if ($this->level) {
-            $query->where('level', $this->level);
+        if (in_array($this->format, [Course::FORMAT_ONLINE, Course::FORMAT_OFFLINE], true)) {
+            $query->where('format', $this->format);
+        }
+
+        if ($this->category !== '') {
+            $query->where('category', $this->category);
         }
 
         $query = match ($this->sort) {
@@ -47,7 +57,13 @@ class CourseFilter extends Component
         };
 
         $courses = $query->paginate(9);
+        $categories = Course::published()
+            ->whereNotNull('category')
+            ->orderBy('category')
+            ->pluck('category')
+            ->unique()
+            ->values();
 
-        return view('livewire.course-filter', compact('courses'));
+        return view('livewire.course-filter', compact('courses', 'categories'));
     }
 }

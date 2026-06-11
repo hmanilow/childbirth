@@ -1,52 +1,61 @@
 @extends('layouts.app')
 
-@section('title', 'Обо мне — Доула и консультант по материнству')
-@section('meta_description', 'Узнайте больше о Елене Тимофеевой — доуле, консультанте по материнству и организаторе школы материнства в Балашихе.')
+@section('title', 'Обо мне — Школа материнства рожаем вместе')
+@section('description', 'Кратко о специалисте, который ведёт занятия школы материнства и помогает семьям подготовиться к родам и первым месяцам.')
 
 @section('content')
-<main>
-    {{-- Hero --}}
-    <section class="bg-bg-section pt-24 pb-16">
-        <div class="container mx-auto px-4 sm:px-6 text-center">
+<section class="bg-[linear-gradient(135deg,#FFFFFF_0%,#FFF3F6_52%,#EAFBFD_100%)] pt-32 pb-16">
+    <div class="mx-auto grid max-w-6xl items-center gap-10 px-4 sm:px-6 lg:grid-cols-[0.9fr_1.1fr] lg:px-8">
+        <div class="flex justify-center lg:justify-start">
+            <div class="rounded-lg border border-accent/20 bg-white p-8 text-center shadow-card-hover">
+                <img
+                    src="{{ asset('images/site/maternity-logo-11.svg') }}"
+                    alt="Школа материнства рожаем вместе"
+                    class="mx-auto h-28 w-28 rounded-full border-4 border-white bg-white object-cover object-center p-1 shadow-glow"
+                >
+                <p class="mt-5 text-xs font-semibold uppercase tracking-widest text-accent">рожаем вместе</p>
+                <p class="mt-1 font-heading text-2xl font-bold text-text-heading">Школа материнства</p>
+            </div>
+        </div>
+
+        <div>
             <span class="section-eyebrow">Обо мне</span>
-            <h1 class="section-heading mt-2 mb-4">Доула и консультант по материнству</h1>
-        </div>
-    </section>
-
-    {{-- About section reuse --}}
-    <x-sections.about />
-
-    {{-- Values / Philosophy --}}
-    <section class="py-20 bg-bg-card">
-        <div class="container mx-auto px-4 sm:px-6 max-w-4xl">
-            <div class="text-center mb-12">
-                <span class="section-eyebrow">Мои принципы</span>
-                <h2 class="section-heading mt-2">Как я работаю</h2>
+            <h1 class="mt-2 font-heading text-4xl font-bold leading-tight text-text-heading lg:text-5xl">
+                Елена, специалист по подготовке к родам
+            </h1>
+            <div class="mt-6 space-y-4 text-lg leading-relaxed text-text-muted">
+                <p>
+                    Я веду занятия школы материнства и помогаю будущим родителям разобраться в родах, уходе за малышом и первых неделях после рождения.
+                </p>
+                <p>
+                    В работе мне важно, чтобы семья получала понятные шаги, спокойную поддержку и могла выбрать тот формат подготовки, который подходит именно ей.
+                </p>
             </div>
-            <div class="grid sm:grid-cols-2 gap-6">
-                @foreach([
-                    ['icon' => '🤝', 'title' => 'Без осуждения', 'text' => 'Принимаю любой выбор — плановое кесарево, эпидуральное, домашние роды. Поддерживаю, а не оцениваю.'],
-                    ['icon' => '💡', 'title' => 'Доказательный подход', 'text' => 'Только актуальные исследования. Никакого мракобесия и псевдонауки.'],
-                    ['icon' => '🌱', 'title' => 'Индивидуально', 'text' => 'Каждая беременность уникальна. Работаю под конкретную ситуацию, не по шаблону.'],
-                    ['icon' => '🔒', 'title' => 'Конфиденциально', 'text' => 'Всё, что происходит на наших встречах и в родах — остаётся между нами.'],
-                ] as $item)
-                    <div class="p-6 rounded-2xl border border-white/10 bg-bg-base">
-                        <div class="text-3xl mb-3">{{ $item['icon'] }}</div>
-                        <h3 class="font-heading font-semibold text-text-primary mb-2">{{ $item['title'] }}</h3>
-                        <p class="text-text-muted text-sm leading-relaxed">{{ $item['text'] }}</p>
-                    </div>
-                @endforeach
+            <div class="mt-8 flex flex-wrap gap-3">
+                <a href="{{ route('courses.index') }}" class="btn-accent btn-lg">Смотреть курсы</a>
+                <a href="{{ route('contacts') }}#form" class="btn-outline btn-lg">Задать вопрос</a>
             </div>
         </div>
-    </section>
+    </div>
+</section>
 
-    {{-- CTA --}}
-    <section class="py-16">
-        <div class="container mx-auto px-4 sm:px-6 text-center max-w-2xl">
-            <h2 class="section-heading mb-4">Хотите познакомиться?</h2>
-            <p class="text-text-muted mb-8">Первая консультация — бесплатно. Без обязательств.</p>
-            <a href="{{ route('contacts') }}" class="btn-accent px-12 py-4 text-lg">Написать мне</a>
+<section class="py-16">
+    <div class="mx-auto grid max-w-6xl gap-5 px-4 sm:px-6 md:grid-cols-3 lg:px-8">
+        <div class="rounded-lg border border-border-soft bg-white p-6">
+            <p class="text-xs font-semibold uppercase tracking-widest text-accent">Подход</p>
+            <h2 class="mt-3 font-heading text-2xl font-bold text-text-heading">Без давления</h2>
+            <p class="mt-3 text-sm leading-relaxed text-text-muted">Обсуждаем варианты и решения спокойно, без навязывания единственного сценария.</p>
         </div>
-    </section>
-</main>
+        <div class="rounded-lg border border-border-soft bg-white p-6">
+            <p class="text-xs font-semibold uppercase tracking-widest text-accent">Практика</p>
+            <h2 class="mt-3 font-heading text-2xl font-bold text-text-heading">По делу</h2>
+            <p class="mt-3 text-sm leading-relaxed text-text-muted">На занятиях остаются только те знания, которые можно применить в реальной жизни.</p>
+        </div>
+        <div class="rounded-lg border border-border-soft bg-white p-6">
+            <p class="text-xs font-semibold uppercase tracking-widest text-accent">Формат</p>
+            <h2 class="mt-3 font-heading text-2xl font-bold text-text-heading">Гибко</h2>
+            <p class="mt-3 text-sm leading-relaxed text-text-muted">Можно выбрать онлайн-курс, очное занятие или индивидуальную подготовку.</p>
+        </div>
+    </div>
+</section>
 @endsection

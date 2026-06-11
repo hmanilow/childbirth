@@ -1,7 +1,7 @@
 @extends('layouts.app')
 
-@section('title', 'Контакты — Школа материнства')
-@section('meta_description', 'Связаться с доулой и перинатальным психологом в Балашихе и Москве.')
+@section('title', 'Контакты — Школа материнства рожаем вместе')
+@section('description', 'Связаться со школой материнства: задать вопрос, подобрать курс или оставить заявку на обучение.')
 
 @section('content')
 <main>
@@ -9,7 +9,7 @@
         <div class="container mx-auto px-4 sm:px-6 text-center">
             <span class="section-eyebrow">Обратная связь</span>
             <h1 class="section-heading mt-2 mb-4">Контакты</h1>
-            <p class="text-text-muted text-lg max-w-xl mx-auto">Напишите или позвоните — отвечу в течение дня.</p>
+            <p class="text-text-muted text-lg max-w-xl mx-auto">Напишите или позвоните — поможем выбрать подходящий курс.</p>
         </div>
     </section>
 
@@ -18,7 +18,7 @@
             <div class="grid lg:grid-cols-2 gap-12 max-w-5xl mx-auto">
                 {{-- Form --}}
                 <div>
-                    <h2 class="font-heading text-2xl font-semibold text-text-primary mb-6">Написать мне</h2>
+                    <h2 class="font-heading text-2xl font-semibold text-text-primary mb-6">Написать нам</h2>
                     <livewire:contact-form />
                 </div>
 
@@ -72,9 +72,9 @@
 
                     <div class="p-5 rounded-xl border border-white/10 bg-bg-card">
                         <p class="text-text-muted text-sm leading-relaxed">
-                            <span class="text-text-primary font-medium">Работаю</span> в Балашихе, Москве и онлайн.<br>
-                            Принимаю на дому или выезжаю к вам.<br>
-                            <span class="text-accent-main">Консультация бесплатно</span> — первые 15 минут.
+                            <span class="text-text-primary font-medium">Можно написать заранее</span>, даже если вы пока не выбрали курс.<br>
+                            Расскажем, чем отличаются онлайн и офлайн форматы.<br>
+                            <span class="text-accent-main">Подбор курса</span> — без обязательств.
                         </p>
                     </div>
                 </div>

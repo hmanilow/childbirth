@@ -1,8 +1,8 @@
 {
-    "name": "doula/school-platform",
+    "name": "maternity-school/rozhayem-vmeste",
     "type": "project",
-    "description": "Школа материнства — платформа доулы",
-    "keywords": ["laravel", "doula", "maternity"],
+    "description": "Школа материнства рожаем вместе — платформа курсов",
+    "keywords": ["laravel", "maternity", "courses"],
     "license": "MIT",
     "require": {
         "php": "^8.2",

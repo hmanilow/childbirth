@@ -1,7 +1,7 @@
 @extends('layouts.app')
 
-@section('title', ($service->meta_title ?: $service->title) . ' — Школа материнства')
-@section('meta_description', $service->meta_description ?: $service->short_desc)
+@section('title', ($service->meta_title ?: $service->title) . ' — Школа материнства рожаем вместе')
+@section('description', $service->meta_description ?: $service->short_desc)
 
 @section('content')
 <main>

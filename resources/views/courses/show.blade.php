@@ -1,6 +1,6 @@
 @extends('layouts.app')
 
-@section('title', ($course->meta_title ?: $course->title) . ' — Школа материнства')
+@section('title', ($course->meta_title ?: $course->title) . ' — Школа материнства рожаем вместе')
 @section('description', $course->meta_description ?: $course->short_desc)
 
 @section('structured_data')
@@ -12,7 +12,7 @@
   "description": "{{ $course->short_desc }}",
   "provider": {
     "@type": "Organization",
-    "name": "{{ config('app.name') }}"
+    "name": "{{ $globalSettings['site_name'] ?? 'Школа материнства рожаем вместе' }}"
   },
   "offers": {
     "@type": "Offer",
@@ -29,6 +29,10 @@
     $courseCheckoutUrl = $paymentsEnabled
         ? route('checkout.show', $course->slug)
         : route('contacts') . '?course=' . rawurlencode($course->slug) . '#form';
+    $isFree = ((float) $course->price) <= 0;
+    $isOffline = ($course->format ?? '') === \App\Domain\Courses\Models\Course::FORMAT_OFFLINE;
+    $formatLabel = method_exists($course, 'formatLabel') ? $course->formatLabel() : 'Онлайн';
+    $ctaLabel = $isFree ? 'Записаться бесплатно' : 'Записаться за ' . number_format((float) $course->price, 0, '.', ' ') . ' ₽';
 @endphp
 
 <main>
@@ -38,9 +42,15 @@
             <div class="grid lg:grid-cols-2 gap-12 items-start">
                 {{-- Left --}}
                 <div class="py-12">
-                    @if($course->badge)
-                        <span class="badge-accent mb-4 inline-block">{{ $course->badge }}</span>
-                    @endif
+                    <div class="mb-4 flex flex-wrap gap-2">
+                        <span class="{{ $isOffline ? 'badge-gold' : 'badge-accent' }}">{{ $formatLabel }}</span>
+                        @if($course->category)
+                            <span class="badge-soft">{{ $course->category }}</span>
+                        @endif
+                        @if($course->badge)
+                            <span class="badge-soft">{{ $course->badge }}</span>
+                        @endif
+                    </div>
 
                     <h1 class="font-heading text-4xl lg:text-5xl font-bold text-text-primary leading-tight mb-4">
                         {{ $course->title }}
@@ -64,10 +74,10 @@
                                 {{ $course->duration_hours }} часов
                             </div>
                         @endif
-                        @if($course->level)
+                        @if($course->category)
                             <div class="flex items-center gap-2">
                                 <svg class="w-4 h-4 text-accent-main" fill="none" viewBox="0 0 24 24" stroke="currentColor"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M13 10V3L4 14h7v7l9-11h-7z"/></svg>
-                                {{ match($course->level) { 'beginner' => 'Начинающий', 'intermediate' => 'Средний', 'advanced' => 'Продвинутый', default => $course->level } }}
+                                {{ $course->category }}
                             </div>
                         @endif
                     </div>
@@ -80,10 +90,10 @@
                     @else
                         <div class="flex flex-wrap items-center gap-4">
                             <a href="{{ $courseCheckoutUrl }}" class="btn-accent text-lg px-10 py-4">
-                                Купить за {{ number_format($course->price, 0, '.', ' ') }} ₽
+                                {{ $ctaLabel }}
                             </a>
                             @if($course->hasDiscount())
-                                <span class="text-text-muted line-through text-lg">{{ number_format($course->old_price, 0, '.', ' ') }} ₽</span>
+                                <span class="text-text-muted line-through text-lg">{{ number_format((float) $course->old_price, 0, '.', ' ') }} ₽</span>
                             @endif
                         </div>
                     @endif
@@ -180,9 +190,9 @@
     <section class="py-16 bg-bg-card">
         <div class="container mx-auto px-4 sm:px-6 text-center max-w-2xl">
             <h2 class="section-heading mb-4">Готовы начать?</h2>
-            <p class="text-text-muted mb-8">Присоединяйтесь и получите пожизненный доступ к курсу.</p>
+            <p class="text-text-muted mb-8">Оставьте заявку, и мы подскажем ближайшие шаги по выбранному курсу.</p>
             <a href="{{ $courseCheckoutUrl }}" class="btn-accent text-lg px-12 py-4">
-                Записаться за {{ number_format($course->price, 0, '.', ' ') }} ₽
+                {{ $ctaLabel }}
             </a>
         </div>
     </section>
