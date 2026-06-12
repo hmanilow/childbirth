@@ -37,7 +37,7 @@
 
 <main>
     {{-- Hero --}}
-    <section class="bg-bg-section pt-36 pb-0">
+    <section class="bg-bg-section pt-44 pb-0">
         <div class="container mx-auto px-4 sm:px-6">
             <div class="grid lg:grid-cols-2 gap-12 items-start">
                 {{-- Left --}}

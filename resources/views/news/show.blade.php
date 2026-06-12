@@ -5,7 +5,7 @@
 
 @section('content')
 <main>
-    <article class="pt-36 pb-16">
+    <article class="pt-44 pb-16">
         <div class="container mx-auto px-4 sm:px-6 max-w-3xl">
             {{-- Breadcrumb --}}
             <nav class="flex items-center gap-2 text-sm text-text-muted mb-8">

@@ -7,7 +7,7 @@
     'stats' => [],
 ])
 
-<section data-hero class="relative flex min-h-[92svh] items-center overflow-hidden bg-gradient-hero pt-36">
+<section data-hero class="relative flex min-h-[92svh] items-center overflow-hidden bg-gradient-hero pt-44">
     @if($photo)
         <img
             src="{{ $photo }}"

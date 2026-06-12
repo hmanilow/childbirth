@@ -3,7 +3,7 @@
 @section('title', 'Личный кабинет')
 
 @section('content')
-<main class="pt-36 pb-16">
+<main class="pt-44 pb-16">
     <div class="container mx-auto px-4 sm:px-6 max-w-5xl">
         <div class="flex items-center justify-between mb-8">
             <div>

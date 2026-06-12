@@ -5,7 +5,7 @@
 
 @section('content')
 <main>
-    <section class="bg-bg-section pt-36 pb-16">
+    <section class="bg-bg-section pt-44 pb-16">
         <div class="container mx-auto px-4 sm:px-6 text-center">
             <span class="section-eyebrow">Форматы</span>
             <h1 class="section-heading mt-2 mb-4">Услуги</h1>

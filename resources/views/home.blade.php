@@ -26,14 +26,9 @@
 @endsection
 
 @section('content')
-<section class="relative overflow-hidden bg-[linear-gradient(135deg,#FFFFFF_0%,#FFF3F6_48%,#EAFBFD_100%)] pt-36">
+<section class="relative overflow-hidden bg-[linear-gradient(135deg,#FFFFFF_0%,#FFF3F6_48%,#EAFBFD_100%)] pt-44">
     <div class="mx-auto grid min-h-[560px] max-w-7xl items-center gap-10 px-4 pb-14 sm:px-6 lg:grid-cols-[1.05fr_0.95fr] lg:px-8">
         <div class="max-w-3xl animate-fade-up">
-            <div class="mb-6">
-                <p class="text-xs font-semibold uppercase tracking-widest text-accent">Школа материнства</p>
-                <p class="font-heading text-2xl font-bold leading-tight text-text-heading sm:text-3xl">рожаем вместе</p>
-            </div>
-
             <h1 class="font-heading text-hero font-bold text-text-heading">
                 Курсы для будущих мам и пап
             </h1>

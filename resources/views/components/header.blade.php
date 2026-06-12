@@ -16,20 +16,20 @@
     class="fixed left-0 right-0 top-0 z-50 border-b border-border-soft/80 backdrop-blur-md transition-all duration-300"
 >
     <div class="mx-auto max-w-7xl px-4 sm:px-6 lg:px-8">
-        <div class="flex h-32 items-center justify-between gap-5">
-            <a href="{{ route('home') }}" class="flex min-w-0 flex-shrink-0 items-center gap-4">
+        <div class="flex h-36 items-center justify-between gap-5 lg:h-40">
+            <a href="{{ route('home') }}" class="flex min-w-0 flex-shrink-0 items-center gap-5 lg:gap-6">
                 @if($logoPath !== '')
-                    <img src="{{ Storage::url($logoPath) }}" alt="{{ $siteName }}" class="h-24 w-auto object-contain drop-shadow-lg sm:h-28">
+                    <img src="{{ Storage::url($logoPath) }}" alt="{{ $siteName }}" class="h-28 w-auto object-contain drop-shadow-lg sm:h-32 lg:h-36">
                 @else
                     <img
                         src="{{ asset('images/site/maternity-logo-web.svg') }}"
                         alt="{{ $siteName }}"
-                        class="h-24 w-auto object-contain drop-shadow-lg sm:h-28"
+                        class="h-28 w-auto object-contain drop-shadow-lg sm:h-32 lg:h-36"
                     >
                 @endif
                 <div class="hidden min-w-0 flex-col sm:flex">
-                    <span class="font-heading text-xl font-bold leading-tight text-text-heading lg:text-2xl">Школа материнства</span>
-                    <span class="text-sm font-semibold uppercase tracking-widest text-accent">рожаем вместе</span>
+                    <span class="font-heading text-2xl font-bold leading-tight text-text-heading lg:text-3xl xl:text-[2rem]">Школа материнства</span>
+                    <span class="text-base font-semibold uppercase tracking-widest text-accent lg:text-lg">рожаем вместе</span>
                 </div>
             </a>
 
