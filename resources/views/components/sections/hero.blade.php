@@ -17,7 +17,7 @@
         >
     @endif
 
-    <div class="absolute inset-0 bg-[linear-gradient(90deg,rgba(255,255,255,0.98)_0%,rgba(245,247,248,0.92)_44%,rgba(201,222,231,0.38)_100%)]"></div>
+    <div class="absolute inset-0 bg-[linear-gradient(90deg,rgba(255,255,255,0.98)_0%,rgba(238,241,241,0.93)_44%,rgba(191,212,218,0.42)_100%)]"></div>
     <img
         src="{{ asset('images/site/maternity-logo-web.svg') }}"
         alt=""

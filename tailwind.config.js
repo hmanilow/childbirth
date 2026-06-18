@@ -20,7 +20,7 @@ export default {
                 'bg-base':    '#FFFFFF',
                 'bg-card':    '#FFFFFF',
                 'bg-section': '#F5F7F8',
-                'bg-light':   '#F1F5F6',
+                'bg-light':   '#EEF1F1',
 
                 // Accent colors
                 'accent': {
@@ -40,7 +40,7 @@ export default {
                     light:   '#67BFBA',
                     dark:    '#27666F',
                 },
-                'sky-soft': '#C9DEE7',
+                'sky-soft': '#BFD4DA',
                 'brand-blue': {
                     DEFAULT: '#2F8F8A',
                     light:   '#67BFBA',
@@ -89,8 +89,8 @@ export default {
             backgroundImage: {
                 'gradient-accent': 'linear-gradient(135deg, #9F3F58 0%, #C96D78 100%)',
                 'gradient-dark':   'linear-gradient(180deg, #FFFFFF 0%, #F5F7F8 100%)',
-                'gradient-hero':   'linear-gradient(135deg, #FFFFFF 0%, #EAD5DA 48%, #C9DEE7 100%)',
-                'gradient-card':   'linear-gradient(135deg, #FFFFFF 0%, #F1F5F6 100%)',
+                'gradient-hero':   'linear-gradient(135deg, #FFFFFF 0%, #DED0D3 48%, #BFD4DA 100%)',
+                'gradient-card':   'linear-gradient(135deg, #FFFFFF 0%, #EEF1F1 100%)',
             },
 
             animation: {
