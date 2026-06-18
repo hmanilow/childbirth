@@ -10,6 +10,58 @@ window.Alpine = Alpine;
 Alpine.start();
 
 // ============================================================
+// Brand preloader
+// ============================================================
+document.addEventListener('DOMContentLoaded', () => {
+    const preloader = document.getElementById('site-preloader');
+    if (!preloader) return;
+
+    const root = document.documentElement;
+    const shouldShow = root.classList.contains('site-preloader-enabled');
+
+    if (!shouldShow) {
+        preloader.remove();
+        return;
+    }
+
+    const startedAt = Date.now();
+    const minDuration = 1200;
+    const maxDuration = 3200;
+    const reduceMotion = window.matchMedia('(prefers-reduced-motion: reduce)').matches;
+    let isHiding = false;
+
+    const hidePreloader = () => {
+        if (isHiding) return;
+        isHiding = true;
+
+        const remaining = Math.max(0, minDuration - (Date.now() - startedAt));
+
+        window.setTimeout(() => {
+            try {
+                window.sessionStorage.setItem('sitePreloaderSeen', '1');
+            } catch (error) {
+                // Session storage can be unavailable in strict privacy modes.
+            }
+
+            preloader.setAttribute('aria-hidden', 'true');
+            root.classList.add('site-preloader-hiding');
+
+            window.setTimeout(() => {
+                preloader.remove();
+                root.classList.remove('site-preloader-enabled', 'site-preloader-hiding');
+            }, reduceMotion ? 90 : 680);
+        }, remaining);
+    };
+
+    if (document.readyState === 'complete') {
+        hidePreloader();
+    } else {
+        window.addEventListener('load', hidePreloader, { once: true });
+        window.setTimeout(hidePreloader, maxDuration);
+    }
+});
+
+// ============================================================
 // Animate on scroll
 // ============================================================
 document.addEventListener('DOMContentLoaded', () => {

@@ -21,7 +21,7 @@
                     loading="lazy"
                 >
             @else
-                <div class="flex h-full w-full items-center justify-center bg-[linear-gradient(135deg,#FFFFFF_0%,#F8F9FA_50%,#EAFBFD_100%)]">
+                <div class="flex h-full w-full items-center justify-center bg-[linear-gradient(135deg,#FFFFFF_0%,#F6F8F9_50%,#DDF3F6_100%)]">
                     <div class="flex h-20 w-20 items-center justify-center rounded-lg border border-accent/25 bg-white text-accent shadow-card transition duration-300 group-hover:scale-105">
                         @if($iconType === 'family')
                             <svg class="h-10 w-10" fill="none" viewBox="0 0 24 24" stroke="currentColor" aria-hidden="true">

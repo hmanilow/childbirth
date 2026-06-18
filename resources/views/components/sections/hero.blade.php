@@ -37,7 +37,7 @@
                 <p class="mb-3 text-sm uppercase tracking-widest text-text-muted">{{ $name }}</p>
             @endif
 
-            <h1 class="mb-6 font-heading text-hero font-bold leading-tight text-text-heading">
+            <h1 class="mb-6 font-heading text-[2rem] font-bold leading-[1.08] text-text-heading sm:text-5xl lg:text-hero">
                 {!! nl2br(e($headline)) !!}
             </h1>
 

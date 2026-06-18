@@ -26,19 +26,19 @@
 @endsection
 
 @section('content')
-<section class="relative overflow-hidden bg-[linear-gradient(135deg,#FFFFFF_0%,#FFF3F6_48%,#EAFBFD_100%)] pt-44">
+<section class="relative overflow-hidden bg-[linear-gradient(135deg,#FFFFFF_0%,#FBE8EE_48%,#DDF3F6_100%)] pt-44">
     <div class="mx-auto grid min-h-[560px] max-w-7xl items-center gap-10 px-4 pb-14 sm:px-6 lg:grid-cols-[1.05fr_0.95fr] lg:px-8">
-        <div class="max-w-3xl animate-fade-up">
-            <h1 class="font-heading text-hero font-bold text-text-heading">
-                Курсы для будущих мам и пап
+        <div class="w-full min-w-0 max-w-3xl animate-fade-up">
+            <h1 class="font-heading text-[2rem] font-bold leading-[1.08] text-text-heading sm:text-5xl lg:text-hero">
+                Курсы для будущих <br class="sm:hidden">мам и пап
             </h1>
             <p class="mt-5 max-w-2xl text-lg leading-relaxed text-text-muted">
                 Подготовка к родам, партнёрству, уходу за малышом и первым месяцам семьи в онлайн и офлайн форматах.
             </p>
 
-            <div class="mt-8 flex flex-wrap gap-3">
-                <a href="#online" class="btn-accent btn-lg">Онлайн-курсы</a>
-                <a href="#offline" class="btn-outline btn-lg">Офлайн-курсы</a>
+            <div class="mt-8 flex flex-col gap-3 sm:flex-row sm:flex-wrap">
+                <a href="#online" class="btn-accent btn-lg w-full sm:w-auto">Онлайн-курсы</a>
+                <a href="#offline" class="btn-outline btn-lg w-full sm:w-auto">Офлайн-курсы</a>
             </div>
         </div>
 

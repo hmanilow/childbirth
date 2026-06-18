@@ -30,7 +30,18 @@
     <link href="https://fonts.googleapis.com/css2?family=Playfair+Display:ital,wght@0,400;0,600;0,700;1,400;1,600&family=Inter:wght@300;400;500;600&display=swap" rel="stylesheet">
 
     
-    <link rel="preload" as="style" href="../build/assets/app-FiagqqFf.css" /><link rel="modulepreload" as="script" href="../build/assets/app-Cz9lABzs.js" /><link rel="stylesheet" href="../build/assets/app-FiagqqFf.css" data-navigate-track="reload" /><script type="module" src="../build/assets/app-Cz9lABzs.js" data-navigate-track="reload"></script>    <!-- Livewire Styles --><style >[wire\:loading][wire\:loading], [wire\:loading\.delay][wire\:loading\.delay], [wire\:loading\.inline-block][wire\:loading\.inline-block], [wire\:loading\.inline][wire\:loading\.inline], [wire\:loading\.block][wire\:loading\.block], [wire\:loading\.flex][wire\:loading\.flex], [wire\:loading\.table][wire\:loading\.table], [wire\:loading\.grid][wire\:loading\.grid], [wire\:loading\.inline-flex][wire\:loading\.inline-flex] {display: none;}[wire\:loading\.delay\.none][wire\:loading\.delay\.none], [wire\:loading\.delay\.shortest][wire\:loading\.delay\.shortest], [wire\:loading\.delay\.shorter][wire\:loading\.delay\.shorter], [wire\:loading\.delay\.short][wire\:loading\.delay\.short], [wire\:loading\.delay\.default][wire\:loading\.delay\.default], [wire\:loading\.delay\.long][wire\:loading\.delay\.long], [wire\:loading\.delay\.longer][wire\:loading\.delay\.longer], [wire\:loading\.delay\.longest][wire\:loading\.delay\.longest] {display: none;}[wire\:offline][wire\:offline] {display: none;}[wire\:dirty]:not(textarea):not(input):not(select) {display: none;}:root {--livewire-progress-bar-color: #2299dd;}[x-cloak] {display: none !important;}[wire\:cloak] {display: none !important;}dialog#livewire-error::backdrop {background-color: rgba(0, 0, 0, .6);}</style>
+    <script>
+        (function () {
+            try {
+                if (window.sessionStorage.getItem('sitePreloaderSeen') !== '1') {
+                    document.documentElement.classList.add('site-preloader-enabled');
+                }
+            } catch (error) {
+                document.documentElement.classList.add('site-preloader-enabled');
+            }
+        })();
+    </script>
+    <link rel="preload" as="style" href="../build/assets/app-0ijpvuG0.css" /><link rel="modulepreload" as="script" href="../build/assets/app-8CfIhL6w.js" /><link rel="stylesheet" href="../build/assets/app-0ijpvuG0.css" data-navigate-track="reload" /><script type="module" src="../build/assets/app-8CfIhL6w.js" data-navigate-track="reload"></script>    <!-- Livewire Styles --><style >[wire\:loading][wire\:loading], [wire\:loading\.delay][wire\:loading\.delay], [wire\:loading\.inline-block][wire\:loading\.inline-block], [wire\:loading\.inline][wire\:loading\.inline], [wire\:loading\.block][wire\:loading\.block], [wire\:loading\.flex][wire\:loading\.flex], [wire\:loading\.table][wire\:loading\.table], [wire\:loading\.grid][wire\:loading\.grid], [wire\:loading\.inline-flex][wire\:loading\.inline-flex] {display: none;}[wire\:loading\.delay\.none][wire\:loading\.delay\.none], [wire\:loading\.delay\.shortest][wire\:loading\.delay\.shortest], [wire\:loading\.delay\.shorter][wire\:loading\.delay\.shorter], [wire\:loading\.delay\.short][wire\:loading\.delay\.short], [wire\:loading\.delay\.default][wire\:loading\.delay\.default], [wire\:loading\.delay\.long][wire\:loading\.delay\.long], [wire\:loading\.delay\.longer][wire\:loading\.delay\.longer], [wire\:loading\.delay\.longest][wire\:loading\.delay\.longest] {display: none;}[wire\:offline][wire\:offline] {display: none;}[wire\:dirty]:not(textarea):not(input):not(select) {display: none;}:root {--livewire-progress-bar-color: #2299dd;}[x-cloak] {display: none !important;}[wire\:cloak] {display: none !important;}dialog#livewire-error::backdrop {background-color: rgba(0, 0, 0, .6);}</style>
 
     
         
@@ -38,6 +49,21 @@
     
     </head>
 <body class="bg-bg-base text-text-primary font-body antialiased">
+    <div id="site-preloader" class="site-preloader" role="status" aria-live="polite" aria-label="Загрузка сайта">
+        <div class="site-preloader__inner">
+            <img
+                src="../images/site/maternity-logo-web.svg"
+                alt=""
+                aria-hidden="true"
+                class="site-preloader__logo"
+            >
+            <div class="site-preloader__text">
+                <p class="site-preloader__eyebrow">Школа материнства</p>
+                <p class="site-preloader__brand">Рожаем вместе</p>
+            </div>
+            <div class="site-preloader__line" aria-hidden="true"></div>
+        </div>
+    </div>
 
     
     <header
@@ -136,11 +162,11 @@
 
     
     <main>
-        <section class="bg-[linear-gradient(135deg,#FFFFFF_0%,#FFF3F6_52%,#EAFBFD_100%)] pt-44 pb-16">
+        <section class="bg-[linear-gradient(135deg,#FFFFFF_0%,#FBE8EE_52%,#DDF3F6_100%)] pt-44 pb-16">
     <div class="mx-auto max-w-7xl px-4 sm:px-6 lg:px-8">
         <div class="max-w-3xl">
             <span class="section-eyebrow">Каталог курсов</span>
-            <h1 class="mt-2 font-heading text-hero font-bold text-text-heading">Курсы для будущих мам и пап</h1>
+            <h1 class="mt-2 font-heading text-[2rem] font-bold leading-[1.08] text-text-heading sm:text-5xl lg:text-hero">Курсы для будущих <br class="sm:hidden">мам и пап</h1>
             <p class="mt-5 text-lg leading-relaxed text-text-muted">
                 Онлайн-программы, очные интенсивы и практичные занятия для подготовки к родам, уходу за ребёнком и спокойному семейному старту.
             </p>
@@ -150,7 +176,7 @@
 
 <section class="py-16">
     <div class="mx-auto max-w-7xl px-4 sm:px-6 lg:px-8">
-        <div wire:snapshot="{&quot;data&quot;:{&quot;search&quot;:&quot;&quot;,&quot;format&quot;:&quot;all&quot;,&quot;category&quot;:&quot;&quot;,&quot;sort&quot;:&quot;featured&quot;,&quot;paginators&quot;:[{&quot;page&quot;:1},{&quot;s&quot;:&quot;arr&quot;}]},&quot;memo&quot;:{&quot;id&quot;:&quot;yutfTnTl88mCHMjF57C8&quot;,&quot;name&quot;:&quot;course-filter&quot;,&quot;path&quot;:&quot;courses&quot;,&quot;method&quot;:&quot;GET&quot;,&quot;release&quot;:&quot;a-a-a&quot;,&quot;children&quot;:[],&quot;scripts&quot;:[],&quot;assets&quot;:[],&quot;errors&quot;:[],&quot;locale&quot;:&quot;ru&quot;},&quot;checksum&quot;:&quot;918c82405ea1c840e5bda47bb2e2ea25ddd18dd4d9667304abbf92221be73df6&quot;}" wire:effects="{&quot;url&quot;:{&quot;paginators.page&quot;:{&quot;as&quot;:&quot;page&quot;,&quot;use&quot;:&quot;push&quot;,&quot;alwaysShow&quot;:false,&quot;except&quot;:null}}}" wire:id="yutfTnTl88mCHMjF57C8">
+        <div wire:snapshot="{&quot;data&quot;:{&quot;search&quot;:&quot;&quot;,&quot;format&quot;:&quot;all&quot;,&quot;category&quot;:&quot;&quot;,&quot;sort&quot;:&quot;featured&quot;,&quot;paginators&quot;:[{&quot;page&quot;:1},{&quot;s&quot;:&quot;arr&quot;}]},&quot;memo&quot;:{&quot;id&quot;:&quot;RqP1Qb8ZAOLZy3RQa9El&quot;,&quot;name&quot;:&quot;course-filter&quot;,&quot;path&quot;:&quot;courses&quot;,&quot;method&quot;:&quot;GET&quot;,&quot;release&quot;:&quot;a-a-a&quot;,&quot;children&quot;:[],&quot;scripts&quot;:[],&quot;assets&quot;:[],&quot;errors&quot;:[],&quot;locale&quot;:&quot;ru&quot;},&quot;checksum&quot;:&quot;b56c65617ef1204a555dc110e7709bc6d512a4f421b578926d42e896e7bf2220&quot;}" wire:effects="{&quot;url&quot;:{&quot;paginators.page&quot;:{&quot;as&quot;:&quot;page&quot;,&quot;use&quot;:&quot;push&quot;,&quot;alwaysShow&quot;:false,&quot;except&quot;:null}}}" wire:id="RqP1Qb8ZAOLZy3RQa9El">
     
     <div class="mb-8 space-y-5">
         <div class="flex flex-col gap-4 lg:flex-row lg:items-center lg:justify-between">
@@ -242,7 +268,7 @@
                 <!--[if BLOCK]><![endif]-->                    <article class="group flex h-full min-h-[430px] flex-col overflow-hidden rounded-lg border border-border-soft bg-bg-card transition duration-300 hover:-translate-y-1 hover:border-accent/60 hover:shadow-card-hover">
     <a href="./ekspress-kurs-podgotovki-k-rodam/" class="block">
         <div class="relative aspect-[16/10] overflow-hidden bg-gradient-card">
-            <!--[if BLOCK]><![endif]-->                <div class="flex h-full w-full items-center justify-center bg-[linear-gradient(135deg,#FFFFFF_0%,#F8F9FA_50%,#EAFBFD_100%)]">
+            <!--[if BLOCK]><![endif]-->                <div class="flex h-full w-full items-center justify-center bg-[linear-gradient(135deg,#FFFFFF_0%,#F6F8F9_50%,#DDF3F6_100%)]">
                     <div class="flex h-20 w-20 items-center justify-center rounded-lg border border-accent/25 bg-white text-accent shadow-card transition duration-300 group-hover:scale-105">
                         <!--[if BLOCK]><![endif]-->                            <svg class="h-10 w-10" fill="none" viewBox="0 0 24 24" stroke="currentColor" aria-hidden="true">
                                 <path stroke-linecap="round" stroke-linejoin="round" stroke-width="1.5" d="M12 3c3 2.5 6 6.2 6 10a6 6 0 01-12 0c0-3.8 3-7.5 6-10z"/>
@@ -288,7 +314,7 @@
                                     <article class="group flex h-full min-h-[430px] flex-col overflow-hidden rounded-lg border border-border-soft bg-bg-card transition duration-300 hover:-translate-y-1 hover:border-accent/60 hover:shadow-card-hover">
     <a href="./osnovnoy-kurs-podgotovki-k-rodam/" class="block">
         <div class="relative aspect-[16/10] overflow-hidden bg-gradient-card">
-            <!--[if BLOCK]><![endif]-->                <div class="flex h-full w-full items-center justify-center bg-[linear-gradient(135deg,#FFFFFF_0%,#F8F9FA_50%,#EAFBFD_100%)]">
+            <!--[if BLOCK]><![endif]-->                <div class="flex h-full w-full items-center justify-center bg-[linear-gradient(135deg,#FFFFFF_0%,#F6F8F9_50%,#DDF3F6_100%)]">
                     <div class="flex h-20 w-20 items-center justify-center rounded-lg border border-accent/25 bg-white text-accent shadow-card transition duration-300 group-hover:scale-105">
                         <!--[if BLOCK]><![endif]-->                            <svg class="h-10 w-10" fill="none" viewBox="0 0 24 24" stroke="currentColor" aria-hidden="true">
                                 <path stroke-linecap="round" stroke-linejoin="round" stroke-width="1.5" d="M12 3c3 2.5 6 6.2 6 10a6 6 0 01-12 0c0-3.8 3-7.5 6-10z"/>
@@ -335,7 +361,7 @@
                                     <article class="group flex h-full min-h-[430px] flex-col overflow-hidden rounded-lg border border-border-soft bg-bg-card transition duration-300 hover:-translate-y-1 hover:border-accent/60 hover:shadow-card-hover">
     <a href="./kursy-po-partnerskim-rodam/" class="block">
         <div class="relative aspect-[16/10] overflow-hidden bg-gradient-card">
-            <!--[if BLOCK]><![endif]-->                <div class="flex h-full w-full items-center justify-center bg-[linear-gradient(135deg,#FFFFFF_0%,#F8F9FA_50%,#EAFBFD_100%)]">
+            <!--[if BLOCK]><![endif]-->                <div class="flex h-full w-full items-center justify-center bg-[linear-gradient(135deg,#FFFFFF_0%,#F6F8F9_50%,#DDF3F6_100%)]">
                     <div class="flex h-20 w-20 items-center justify-center rounded-lg border border-accent/25 bg-white text-accent shadow-card transition duration-300 group-hover:scale-105">
                         <!--[if BLOCK]><![endif]-->                            <svg class="h-10 w-10" fill="none" viewBox="0 0 24 24" stroke="currentColor" aria-hidden="true">
                                 <path stroke-linecap="round" stroke-linejoin="round" stroke-width="1.5" d="M7 11a3 3 0 100-6 3 3 0 000 6zm10 0a3 3 0 100-6 3 3 0 000 6zM4 20a5 5 0 0110 0M10 20a5 5 0 0110 0"/>
@@ -381,7 +407,7 @@
                                     <article class="group flex h-full min-h-[430px] flex-col overflow-hidden rounded-lg border border-border-soft bg-bg-card transition duration-300 hover:-translate-y-1 hover:border-accent/60 hover:shadow-card-hover">
     <a href="./planovoe-kesarevo-sechenie-podgotovka-k-rodam/" class="block">
         <div class="relative aspect-[16/10] overflow-hidden bg-gradient-card">
-            <!--[if BLOCK]><![endif]-->                <div class="flex h-full w-full items-center justify-center bg-[linear-gradient(135deg,#FFFFFF_0%,#F8F9FA_50%,#EAFBFD_100%)]">
+            <!--[if BLOCK]><![endif]-->                <div class="flex h-full w-full items-center justify-center bg-[linear-gradient(135deg,#FFFFFF_0%,#F6F8F9_50%,#DDF3F6_100%)]">
                     <div class="flex h-20 w-20 items-center justify-center rounded-lg border border-accent/25 bg-white text-accent shadow-card transition duration-300 group-hover:scale-105">
                         <!--[if BLOCK]><![endif]-->                            <svg class="h-10 w-10" fill="none" viewBox="0 0 24 24" stroke="currentColor" aria-hidden="true">
                                 <path stroke-linecap="round" stroke-linejoin="round" stroke-width="1.5" d="M12 3c3 2.5 6 6.2 6 10a6 6 0 01-12 0c0-3.8 3-7.5 6-10z"/>
@@ -427,7 +453,7 @@
                                     <article class="group flex h-full min-h-[430px] flex-col overflow-hidden rounded-lg border border-border-soft bg-bg-card transition duration-300 hover:-translate-y-1 hover:border-accent/60 hover:shadow-card-hover">
     <a href="./onlayn-kurs-podgotovki-k-rodam/" class="block">
         <div class="relative aspect-[16/10] overflow-hidden bg-gradient-card">
-            <!--[if BLOCK]><![endif]-->                <div class="flex h-full w-full items-center justify-center bg-[linear-gradient(135deg,#FFFFFF_0%,#F8F9FA_50%,#EAFBFD_100%)]">
+            <!--[if BLOCK]><![endif]-->                <div class="flex h-full w-full items-center justify-center bg-[linear-gradient(135deg,#FFFFFF_0%,#F6F8F9_50%,#DDF3F6_100%)]">
                     <div class="flex h-20 w-20 items-center justify-center rounded-lg border border-accent/25 bg-white text-accent shadow-card transition duration-300 group-hover:scale-105">
                         <!--[if BLOCK]><![endif]-->                            <svg class="h-10 w-10" fill="none" viewBox="0 0 24 24" stroke="currentColor" aria-hidden="true">
                                 <path stroke-linecap="round" stroke-linejoin="round" stroke-width="1.5" d="M12 3c3 2.5 6 6.2 6 10a6 6 0 01-12 0c0-3.8 3-7.5 6-10z"/>
@@ -474,7 +500,7 @@
                                     <article class="group flex h-full min-h-[430px] flex-col overflow-hidden rounded-lg border border-border-soft bg-bg-card transition duration-300 hover:-translate-y-1 hover:border-accent/60 hover:shadow-card-hover">
     <a href="./adaptatsiya-k-detskomu-sadu/" class="block">
         <div class="relative aspect-[16/10] overflow-hidden bg-gradient-card">
-            <!--[if BLOCK]><![endif]-->                <div class="flex h-full w-full items-center justify-center bg-[linear-gradient(135deg,#FFFFFF_0%,#F8F9FA_50%,#EAFBFD_100%)]">
+            <!--[if BLOCK]><![endif]-->                <div class="flex h-full w-full items-center justify-center bg-[linear-gradient(135deg,#FFFFFF_0%,#F6F8F9_50%,#DDF3F6_100%)]">
                     <div class="flex h-20 w-20 items-center justify-center rounded-lg border border-accent/25 bg-white text-accent shadow-card transition duration-300 group-hover:scale-105">
                         <!--[if BLOCK]><![endif]-->                            <svg class="h-10 w-10" fill="none" viewBox="0 0 24 24" stroke="currentColor" aria-hidden="true">
                                 <path stroke-linecap="round" stroke-linejoin="round" stroke-width="1.5" d="M12 3c3 2.5 6 6.2 6 10a6 6 0 01-12 0c0-3.8 3-7.5 6-10z"/>
@@ -521,7 +547,7 @@
                                     <article class="group flex h-full min-h-[430px] flex-col overflow-hidden rounded-lg border border-border-soft bg-bg-card transition duration-300 hover:-translate-y-1 hover:border-accent/60 hover:shadow-card-hover">
     <a href="./grudnoe-vskarmlivanie-ot-a-do-ya/" class="block">
         <div class="relative aspect-[16/10] overflow-hidden bg-gradient-card">
-            <!--[if BLOCK]><![endif]-->                <div class="flex h-full w-full items-center justify-center bg-[linear-gradient(135deg,#FFFFFF_0%,#F8F9FA_50%,#EAFBFD_100%)]">
+            <!--[if BLOCK]><![endif]-->                <div class="flex h-full w-full items-center justify-center bg-[linear-gradient(135deg,#FFFFFF_0%,#F6F8F9_50%,#DDF3F6_100%)]">
                     <div class="flex h-20 w-20 items-center justify-center rounded-lg border border-accent/25 bg-white text-accent shadow-card transition duration-300 group-hover:scale-105">
                         <!--[if BLOCK]><![endif]-->                            <svg class="h-10 w-10" fill="none" viewBox="0 0 24 24" stroke="currentColor" aria-hidden="true">
                                 <path stroke-linecap="round" stroke-linejoin="round" stroke-width="1.5" d="M12 21c4 0 7-3 7-7 0-5-4-9-7-11-3 2-7 6-7 11 0 4 3 7 7 7z"/>
@@ -568,7 +594,7 @@
                                     <article class="group flex h-full min-h-[430px] flex-col overflow-hidden rounded-lg border border-border-soft bg-bg-card transition duration-300 hover:-translate-y-1 hover:border-accent/60 hover:shadow-card-hover">
     <a href="./uhod-za-novorozhdennym/" class="block">
         <div class="relative aspect-[16/10] overflow-hidden bg-gradient-card">
-            <!--[if BLOCK]><![endif]-->                <div class="flex h-full w-full items-center justify-center bg-[linear-gradient(135deg,#FFFFFF_0%,#F8F9FA_50%,#EAFBFD_100%)]">
+            <!--[if BLOCK]><![endif]-->                <div class="flex h-full w-full items-center justify-center bg-[linear-gradient(135deg,#FFFFFF_0%,#F6F8F9_50%,#DDF3F6_100%)]">
                     <div class="flex h-20 w-20 items-center justify-center rounded-lg border border-accent/25 bg-white text-accent shadow-card transition duration-300 group-hover:scale-105">
                         <!--[if BLOCK]><![endif]-->                            <svg class="h-10 w-10" fill="none" viewBox="0 0 24 24" stroke="currentColor" aria-hidden="true">
                                 <path stroke-linecap="round" stroke-linejoin="round" stroke-width="1.5" d="M12 21c4 0 7-3 7-7 0-5-4-9-7-11-3 2-7 6-7 11 0 4 3 7 7 7z"/>
@@ -615,7 +641,7 @@
                                     <article class="group flex h-full min-h-[430px] flex-col overflow-hidden rounded-lg border border-border-soft bg-bg-card transition duration-300 hover:-translate-y-1 hover:border-accent/60 hover:shadow-card-hover">
     <a href="./kurs-podgotovki-k-rodam-za-3-chasa/" class="block">
         <div class="relative aspect-[16/10] overflow-hidden bg-gradient-card">
-            <!--[if BLOCK]><![endif]-->                <div class="flex h-full w-full items-center justify-center bg-[linear-gradient(135deg,#FFFFFF_0%,#F8F9FA_50%,#EAFBFD_100%)]">
+            <!--[if BLOCK]><![endif]-->                <div class="flex h-full w-full items-center justify-center bg-[linear-gradient(135deg,#FFFFFF_0%,#F6F8F9_50%,#DDF3F6_100%)]">
                     <div class="flex h-20 w-20 items-center justify-center rounded-lg border border-accent/25 bg-white text-accent shadow-card transition duration-300 group-hover:scale-105">
                         <!--[if BLOCK]><![endif]-->                            <svg class="h-10 w-10" fill="none" viewBox="0 0 24 24" stroke="currentColor" aria-hidden="true">
                                 <path stroke-linecap="round" stroke-linejoin="round" stroke-width="1.5" d="M12 3c3 2.5 6 6.2 6 10a6 6 0 01-12 0c0-3.8 3-7.5 6-10z"/>
@@ -839,6 +865,6 @@
 </div>
 
     <!-- Livewire Scripts -->
-<script src="../livewire/livewire.js"   data-csrf="8coea0Y1I2TfJazk4ON63op1J6xDy1uQbkur2CA0" data-update-uri="/livewire/update" data-navigate-once="true"></script>
+<script src="../livewire/livewire.js"   data-csrf="bgcXoFuzeDRF1c6AJRrLEsULOxPTrmzVKNtr5EkJ" data-update-uri="/livewire/update" data-navigate-once="true"></script>
     </body>
 </html>

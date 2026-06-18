@@ -35,6 +35,17 @@
     <link href="https://fonts.googleapis.com/css2?family=Playfair+Display:ital,wght@0,400;0,600;0,700;1,400;1,600&family=Inter:wght@300;400;500;600&display=swap" rel="stylesheet">
 
     {{-- Styles --}}
+    <script>
+        (function () {
+            try {
+                if (window.sessionStorage.getItem('sitePreloaderSeen') !== '1') {
+                    document.documentElement.classList.add('site-preloader-enabled');
+                }
+            } catch (error) {
+                document.documentElement.classList.add('site-preloader-enabled');
+            }
+        })();
+    </script>
     @vite(['resources/css/app.css', 'resources/js/app.js'])
     @livewireStyles
 
@@ -60,6 +71,21 @@
     @stack('head')
 </head>
 <body class="bg-bg-base text-text-primary font-body antialiased">
+    <div id="site-preloader" class="site-preloader" role="status" aria-live="polite" aria-label="Загрузка сайта">
+        <div class="site-preloader__inner">
+            <img
+                src="{{ asset('images/site/maternity-logo-web.svg') }}"
+                alt=""
+                aria-hidden="true"
+                class="site-preloader__logo"
+            >
+            <div class="site-preloader__text">
+                <p class="site-preloader__eyebrow">Школа материнства</p>
+                <p class="site-preloader__brand">Рожаем вместе</p>
+            </div>
+            <div class="site-preloader__line" aria-hidden="true"></div>
+        </div>
+    </div>
 
     {{-- Header --}}
     <x-header />
