@@ -24,38 +24,38 @@ export default {
 
                 // Accent colors
                 'accent': {
-                    DEFAULT: '#C94B6D',
-                    main:    '#C94B6D',
-                    hover:   '#D83B65',
-                    light:   '#F06C8E',
-                    dark:    '#A93656',
+                    DEFAULT: '#A93656',
+                    main:    '#A93656',
+                    hover:   '#96304C',
+                    light:   '#C95A73',
+                    dark:    '#7F2A42',
                 },
                 'gold': {
-                    DEFAULT: '#2FAFBE',
-                    light:   '#6BD1DC',
-                    dark:    '#245064',
+                    DEFAULT: '#247F8A',
+                    light:   '#58BAC5',
+                    dark:    '#1F4A57',
                 },
                 'mint': {
-                    DEFAULT: '#2FAFBE',
-                    light:   '#6BD1DC',
-                    dark:    '#245064',
+                    DEFAULT: '#247F8A',
+                    light:   '#58BAC5',
+                    dark:    '#1F4A57',
                 },
-                'sky-soft': '#6BD1DC',
+                'sky-soft': '#58BAC5',
                 'brand-blue': {
-                    DEFAULT: '#2FAFBE',
-                    light:   '#6BD1DC',
-                    dark:    '#245064',
+                    DEFAULT: '#247F8A',
+                    light:   '#58BAC5',
+                    dark:    '#1F4A57',
                 },
 
                 // Text
                 'text-primary': '#333333',
-                'text-heading': '#263747',
-                'text-muted':   '#56606A',
+                'text-heading': '#233445',
+                'text-muted':   '#4F5963',
                 'text-subtle':  '#8A949E',
 
                 // Border
-                'border-card':  '#6BD1DC',
-                'border-soft':  '#D5E4EA',
+                'border-card':  '#58BAC5',
+                'border-soft':  '#C8D9DF',
             },
 
             fontFamily: {
@@ -81,15 +81,15 @@ export default {
             },
 
             boxShadow: {
-                'card':   '0 18px 45px rgba(47, 175, 190, 0.13)',
-                'card-hover': '0 22px 60px rgba(201, 75, 109, 0.18)',
-                'glow':   '0 18px 45px rgba(216, 59, 101, 0.25)',
+                'card':   '0 18px 45px rgba(36, 127, 138, 0.13)',
+                'card-hover': '0 22px 60px rgba(169, 54, 86, 0.18)',
+                'glow':   '0 18px 45px rgba(150, 48, 76, 0.24)',
             },
 
             backgroundImage: {
-                'gradient-accent': 'linear-gradient(135deg, #C94B6D 0%, #F06C8E 100%)',
+                'gradient-accent': 'linear-gradient(135deg, #A93656 0%, #C95A73 100%)',
                 'gradient-dark':   'linear-gradient(180deg, #FFFFFF 0%, #F6F8F9 100%)',
-                'gradient-hero':   'linear-gradient(135deg, #FFFFFF 0%, #FBE8EE 48%, #DDF3F6 100%)',
+                'gradient-hero':   'linear-gradient(135deg, #FFFFFF 0%, #F4E3E8 48%, #D9EDF0 100%)',
                 'gradient-card':   'linear-gradient(135deg, #FFFFFF 0%, #F6F8F9 100%)',
             },
 
