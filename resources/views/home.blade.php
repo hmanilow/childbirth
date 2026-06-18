@@ -26,7 +26,7 @@
 @endsection
 
 @section('content')
-<section class="relative overflow-hidden bg-[linear-gradient(135deg,#FFFFFF_0%,#F4E3E8_48%,#D9EDF0_100%)] pt-44">
+<section class="relative overflow-hidden bg-[linear-gradient(135deg,#FFFFFF_0%,#EAD5DA_48%,#C9DEE7_100%)] pt-44">
     <div class="mx-auto grid min-h-[560px] max-w-7xl items-center gap-10 px-4 pb-14 sm:px-6 lg:grid-cols-[1.05fr_0.95fr] lg:px-8">
         <div class="w-full min-w-0 max-w-3xl animate-fade-up">
             <h1 class="font-heading text-[2rem] font-bold leading-[1.08] text-text-heading sm:text-5xl lg:text-hero">
