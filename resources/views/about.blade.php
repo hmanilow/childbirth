@@ -1,7 +1,13 @@
 @extends('layouts.app')
 
-@section('title', 'Обо мне — Школа материнства рожаем вместе')
-@section('description', 'Кратко о специалисте, который ведёт занятия школы материнства и помогает семьям подготовиться к родам и первым месяцам.')
+@php
+    $specialistName = $globalSettings['specialist_name'] ?? 'Елена Тимофеева';
+@endphp
+
+@section('title', $specialistName . ' — автор школы «Рожаем вместе»')
+@section('description', $specialistName . ' — автор школы материнства «Рожаем вместе». Подготовка к родам, уходу за малышом и первым месяцам материнства.')
+@section('og_title', $specialistName . ' — автор школы «Рожаем вместе»')
+@section('og_description', $specialistName . ' — автор школы материнства «Рожаем вместе». Подготовка к родам, уходу за малышом и первым месяцам материнства.')
 
 @section('content')
 <section class="bg-gradient-hero pt-44 pb-16">
@@ -21,7 +27,7 @@
         <div>
             <span class="section-eyebrow">Обо мне</span>
             <h1 class="mt-2 font-heading text-4xl font-bold leading-tight text-text-heading lg:text-5xl">
-                Елена, специалист по подготовке к родам
+                {{ $specialistName }} — автор школы «Рожаем вместе»
             </h1>
             <div class="mt-6 space-y-4 text-lg leading-relaxed text-text-muted">
                 <p>

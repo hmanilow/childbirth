@@ -13,6 +13,7 @@ const base = new URL(baseUrl);
 const seedPaths = [
     '/',
     '/about',
+    '/doulas',
     '/courses',
     '/contacts',
     '/privacy',

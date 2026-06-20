@@ -14,6 +14,7 @@ class SettingsSeeder extends Seeder
             ['key' => 'site_name',        'value' => 'Школа материнства рожаем вместе',    'type' => 'string', 'group' => 'general'],
             ['key' => 'site_tagline',     'value' => 'Курсы для будущих мам и пап',        'type' => 'string', 'group' => 'general'],
             ['key' => 'specialist_name',  'value' => 'Елена Тимофеева',                    'type' => 'string', 'group' => 'general'],
+            ['key' => 'specialist_name_genitive', 'value' => 'Елены Тимофеевой',           'type' => 'string', 'group' => 'general'],
             ['key' => 'specialist_title', 'value' => 'Специалист по подготовке к родам',   'type' => 'string', 'group' => 'general'],
             ['key' => 'specialist_photo', 'value' => '',                                   'type' => 'string', 'group' => 'general'],
             ['key' => 'specialist_about_photo', 'value' => '',                             'type' => 'string', 'group' => 'general'],
@@ -35,7 +36,7 @@ class SettingsSeeder extends Seeder
 
             // SEO
             ['key' => 'meta_title',       'value' => 'Школа материнства рожаем вместе — курсы для будущих родителей', 'type' => 'string', 'group' => 'seo'],
-            ['key' => 'meta_description', 'value' => 'Онлайн и офлайн курсы по подготовке к родам, уходу за малышом и спокойному старту родительства.', 'type' => 'string', 'group' => 'seo'],
+            ['key' => 'meta_description', 'value' => 'Курсы подготовки к родам, партнёрству, уходу за малышом и первым месяцам материнства.', 'type' => 'string', 'group' => 'seo'],
             ['key' => 'og_image',         'value' => '', 'type' => 'string', 'group' => 'seo'],
 
             // Analytics

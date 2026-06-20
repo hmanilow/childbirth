@@ -9,41 +9,48 @@
    ============================================================ */
 @layer base {
     :root {
-        --color-bg-main: #F3E2E5;
-        --color-bg-soft: #EED6DC;
-        --color-bg-muted: #D8C8C9;
-        --color-bg-cool: #D9E8E7;
-        --color-text-main: #263241;
-        --color-text-muted: #56616A;
-        --color-text-soft: #7A6570;
-        --color-primary: #B04463;
-        --color-primary-hover: #96364F;
-        --color-primary-soft: #D98CA0;
-        --color-secondary: #7BBFC1;
-        --color-secondary-soft: #CFE7E6;
-        --color-secondary-dark: #356D70;
-        --color-card: #FFF8F7;
-        --color-card-muted: #F7ECEE;
-        --color-border: #E2C7CE;
+        --color-bg-main: #E7D0D4;
+        --color-bg-soft: #DCC1C8;
+        --color-bg-deep: #C8AEB6;
+        --color-bg-warm: #EFE1DC;
+        --color-bg-cool: #C9DDDC;
+        --color-text-main: #25303D;
+        --color-text-muted: #4F5D69;
+        --color-text-soft: #7B626D;
+        --color-primary: #A83E5C;
+        --color-primary-hover: #873049;
+        --color-primary-deep: #753044;
+        --color-primary-soft: #CF7F96;
+        --color-secondary: #6FAFB2;
+        --color-secondary-soft: #C5DEDD;
+        --color-secondary-dark: #326568;
+        --color-card: #FFF3F1;
+        --color-card-muted: #F3E4E6;
+        --color-border: #D7B6BF;
+        --shadow-soft: 0 18px 50px rgba(76, 43, 55, 0.16);
+        --shadow-deep: 0 24px 70px rgba(76, 43, 55, 0.22);
+        --shadow-glow: 0 16px 38px rgba(168, 62, 92, 0.28);
 
         /* RGB channels let Tailwind opacity modifiers use the same theme tokens. */
-        --color-bg-main-rgb: 243 226 229;
-        --color-bg-soft-rgb: 238 214 220;
-        --color-bg-muted-rgb: 216 200 201;
-        --color-bg-cool-rgb: 217 232 231;
-        --color-text-main-rgb: 38 50 65;
-        --color-text-muted-rgb: 86 97 106;
-        --color-text-soft-rgb: 122 101 112;
-        --color-primary-rgb: 176 68 99;
-        --color-primary-hover-rgb: 150 54 79;
-        --color-primary-soft-rgb: 217 140 160;
-        --color-secondary-rgb: 123 191 193;
-        --color-secondary-soft-rgb: 207 231 230;
-        --color-secondary-dark-rgb: 53 109 112;
-        --color-card-rgb: 255 248 247;
-        --color-card-muted-rgb: 247 236 238;
-        --color-border-rgb: 226 199 206;
-        --color-shadow-rgb: 92 54 66;
+        --color-bg-main-rgb: 231 208 212;
+        --color-bg-soft-rgb: 220 193 200;
+        --color-bg-deep-rgb: 200 174 182;
+        --color-bg-warm-rgb: 239 225 220;
+        --color-bg-cool-rgb: 201 221 220;
+        --color-text-main-rgb: 37 48 61;
+        --color-text-muted-rgb: 79 93 105;
+        --color-text-soft-rgb: 123 98 109;
+        --color-primary-rgb: 168 62 92;
+        --color-primary-hover-rgb: 135 48 73;
+        --color-primary-deep-rgb: 117 48 68;
+        --color-primary-soft-rgb: 207 127 150;
+        --color-secondary-rgb: 111 175 178;
+        --color-secondary-soft-rgb: 197 222 221;
+        --color-secondary-dark-rgb: 50 101 104;
+        --color-card-rgb: 255 243 241;
+        --color-card-muted-rgb: 243 228 230;
+        --color-border-rgb: 215 182 191;
+        --color-shadow-rgb: 76 43 55;
     }
 
     html {
@@ -55,8 +62,8 @@
     body {
         @apply bg-bg-base text-text-primary font-body;
         background-image:
-            radial-gradient(circle at 16% 8%, rgba(var(--color-secondary-rgb), 0.12), transparent 30%),
-            radial-gradient(circle at 84% 0%, rgba(var(--color-primary-rgb), 0.1), transparent 28%);
+            radial-gradient(circle at 84% 4%, rgb(var(--color-secondary-rgb) / 0.14), transparent 28%),
+            radial-gradient(circle at 12% 12%, rgb(var(--color-primary-rgb) / 0.12), transparent 30%);
     }
 
     /* Scrollbar styling */
@@ -104,7 +111,9 @@
         justify-content: center;
         padding: 2rem;
         color: var(--color-text-main);
-        background: linear-gradient(135deg, var(--color-bg-main) 0%, var(--color-bg-soft) 52%, var(--color-bg-cool) 100%);
+        background:
+            radial-gradient(circle at 82% 18%, rgb(var(--color-secondary-rgb) / 0.2), transparent 30%),
+            linear-gradient(135deg, var(--color-bg-warm) 0%, var(--color-bg-main) 44%, var(--color-bg-deep) 100%);
         opacity: 1;
         visibility: visible;
         transition: opacity 0.58s ease, visibility 0.58s ease;
@@ -131,7 +140,7 @@
     .site-preloader__logo {
         width: clamp(9rem, 18vw, 14rem);
         height: auto;
-        filter: drop-shadow(0 1.2rem 2.4rem rgba(var(--color-shadow-rgb), 0.18));
+        filter: drop-shadow(0 1.2rem 2.4rem rgb(var(--color-shadow-rgb) / 0.18));
         animation: preloaderLogoIn 0.72s ease-out both, preloaderLogoFloat 2.8s ease-in-out 0.72s infinite;
     }
 
@@ -164,7 +173,7 @@
         width: min(14rem, 62vw);
         overflow: hidden;
         border-radius: 999px;
-        background: linear-gradient(90deg, transparent, rgba(var(--color-primary-rgb), 0.34), rgba(var(--color-secondary-rgb), 0.34), transparent);
+        background: linear-gradient(90deg, transparent, rgb(var(--color-primary-rgb) / 0.34), rgb(var(--color-secondary-rgb) / 0.34), transparent);
     }
 
     .site-preloader__line::after {
@@ -192,7 +201,7 @@
     .btn-accent {
         @apply btn
                bg-gradient-accent text-white
-               shadow-card hover:opacity-95 hover:shadow-glow
+               shadow-card hover:bg-gradient-accent-hover hover:shadow-glow
                active:scale-95;
     }
     .btn-accent.btn-lg { @apply px-8 py-4 text-base; }
@@ -306,7 +315,7 @@
    ============================================================ */
 @layer utilities {
     .text-gradient-accent {
-        background: linear-gradient(135deg, var(--color-primary), var(--color-primary-soft));
+        background: linear-gradient(135deg, var(--color-primary-deep), var(--color-primary));
         -webkit-background-clip: text;
         -webkit-text-fill-color: transparent;
         background-clip: text;

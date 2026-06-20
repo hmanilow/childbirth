@@ -1,20 +1,22 @@
 @extends('layouts.app')
 
 @php
-    $siteName = $globalSettings['site_name'] ?? 'Школа материнства рожаем вместе';
+    $specialistName = $globalSettings['specialist_name'] ?? 'Елена Тимофеева';
+    $specialistNameGenitive = $globalSettings['specialist_name_genitive'] ?? 'Елены Тимофеевой';
+    $brandName = "Школа материнства {$specialistNameGenitive} «Рожаем вместе»";
 @endphp
 
-@section('title', $siteName . ' — курсы для будущих мам и пап')
-@section('description', 'Онлайн и офлайн курсы по подготовке к родам, уходу за малышом и спокойному старту родительства.')
-@section('og_title', $siteName)
-@section('og_description', 'Курсы для будущих родителей: подготовка к родам, партнёрство, уход за новорождённым и первые месяцы семьи.')
+@section('title', $brandName)
+@section('description', 'Курсы подготовки к родам, партнёрству, уходу за малышом и первым месяцам материнства.')
+@section('og_title', $brandName)
+@section('og_description', 'Курсы подготовки к родам, партнёрству, уходу за малышом и первым месяцам материнства.')
 
 @section('structured_data')
 <script type="application/ld+json">
 {
   "@@context": "https://schema.org",
   "@type": "Organization",
-  "name": "{{ $siteName }}",
+  "name": "{{ $brandName }}",
   "url": "{{ url('/') }}",
   "telephone": "{{ $globalSettings['phone'] ?? '' }}",
   "sameAs": [
@@ -29,6 +31,9 @@
 <section class="relative overflow-hidden bg-gradient-hero pt-44">
     <div class="mx-auto grid min-h-[560px] max-w-7xl items-center gap-10 px-4 pb-14 sm:px-6 lg:grid-cols-[1.05fr_0.95fr] lg:px-8">
         <div class="w-full min-w-0 max-w-3xl animate-fade-up">
+            <p class="mb-4 text-sm font-semibold text-accent">
+                Авторская школа материнства {{ $specialistNameGenitive }}
+            </p>
             <h1 class="font-heading text-[2rem] font-bold leading-[1.08] text-text-heading sm:text-5xl lg:text-hero">
                 Курсы для будущих <br class="sm:hidden">мам и пап
             </h1>

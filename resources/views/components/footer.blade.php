@@ -3,6 +3,7 @@
     $email = trim((string) ($globalSettings['email'] ?? ''));
     $address = trim((string) ($globalSettings['address'] ?? ''));
     $siteName = $globalSettings['site_name'] ?? 'Школа материнства рожаем вместе';
+    $specialistNameGenitive = $globalSettings['specialist_name_genitive'] ?? 'Елены Тимофеевой';
     $socials = [
         'vk' => $globalSettings['vk_url'] ?? $globalSettings['social_vk'] ?? '',
         'telegram' => $globalSettings['telegram_url'] ?? $globalSettings['social_telegram'] ?? '',
@@ -25,7 +26,10 @@
                     <span class="block text-xs font-semibold uppercase tracking-widest text-accent">рожаем вместе</span>
                 </span>
             </a>
-            <p class="max-w-sm text-sm leading-relaxed text-text-muted">
+            <p class="max-w-sm text-sm font-semibold leading-relaxed text-text-heading">
+                Школа материнства {{ $specialistNameGenitive }} «Рожаем вместе»
+            </p>
+            <p class="mt-2 max-w-sm text-sm leading-relaxed text-text-muted">
                 Онлайн и офлайн курсы для будущих родителей: подготовка к родам, уход за малышом и спокойный старт семьи.
             </p>
 

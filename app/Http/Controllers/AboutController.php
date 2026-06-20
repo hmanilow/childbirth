@@ -13,6 +13,11 @@ class AboutController extends Controller
         return view('about');
     }
 
+    public function doulas(): View
+    {
+        return view('doulas');
+    }
+
     public function doula(): View
     {
         $service = Service::where('slug', 'doula-v-rodah')->first();

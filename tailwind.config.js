@@ -23,7 +23,9 @@ export default {
                 'bg-card':    themeColor('card'),
                 'bg-section': themeColor('bg-soft'),
                 'bg-light':   themeColor('card-muted'),
-                'bg-muted':   themeColor('bg-muted'),
+                'bg-muted':   themeColor('bg-deep'),
+                'bg-deep':    themeColor('bg-deep'),
+                'bg-warm':    themeColor('bg-warm'),
                 'bg-cool':    themeColor('bg-cool'),
 
                 // Accent colors
@@ -32,7 +34,8 @@ export default {
                     main:    themeColor('primary'),
                     hover:   themeColor('primary-hover'),
                     light:   themeColor('primary-soft'),
-                    dark:    themeColor('primary-hover'),
+                    dark:    themeColor('primary-deep'),
+                    deep:    themeColor('primary-deep'),
                 },
                 'gold': {
                     DEFAULT: themeColor('secondary'),
@@ -85,17 +88,18 @@ export default {
             },
 
             boxShadow: {
-                'card':   '0 18px 50px rgba(var(--color-shadow-rgb), 0.14)',
-                'card-hover': '0 22px 60px rgba(var(--color-shadow-rgb), 0.2)',
-                'glow':   '0 16px 38px rgba(var(--color-primary-rgb), 0.24)',
+                'card':   'var(--shadow-soft)',
+                'card-hover': 'var(--shadow-deep)',
+                'glow':   'var(--shadow-glow)',
             },
 
             backgroundImage: {
-                'gradient-accent': 'linear-gradient(135deg, var(--color-primary) 0%, var(--color-primary-soft) 100%)',
+                'gradient-accent': 'linear-gradient(135deg, var(--color-primary) 0%, var(--color-primary-deep) 100%)',
+                'gradient-accent-hover': 'linear-gradient(135deg, var(--color-primary-hover) 0%, var(--color-primary-deep) 100%)',
                 'gradient-dark':   'linear-gradient(180deg, var(--color-card) 0%, var(--color-card-muted) 100%)',
-                'gradient-hero':   'linear-gradient(135deg, var(--color-bg-main) 0%, var(--color-bg-soft) 52%, var(--color-bg-cool) 100%)',
+                'gradient-hero':   'radial-gradient(circle at 82% 18%, rgb(var(--color-secondary-rgb) / 0.2), transparent 30%), linear-gradient(135deg, var(--color-bg-warm) 0%, var(--color-bg-main) 44%, var(--color-bg-deep) 100%)',
                 'gradient-card':   'linear-gradient(135deg, var(--color-card) 0%, var(--color-card-muted) 100%)',
-                'gradient-card-muted': 'linear-gradient(135deg, var(--color-card) 0%, var(--color-card-muted) 52%, var(--color-secondary-soft) 100%)',
+                'gradient-card-muted': 'linear-gradient(135deg, var(--color-card) 0%, var(--color-card-muted) 68%, var(--color-secondary-soft) 100%)',
             },
 
             animation: {

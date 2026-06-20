@@ -36,6 +36,7 @@ Route::get('/robots.txt', [RobotsController::class, 'index'])->name('robots');
 */
 Route::get('/', [HomeController::class, 'index'])->name('home');
 Route::get('/about', [AboutController::class, 'index'])->name('about');
+Route::get('/doulas', [AboutController::class, 'doulas'])->name('doulas');
 Route::get('/doula', [AboutController::class, 'doula'])->name('doula');
 Route::get('/birth-prep', [AboutController::class, 'birthPrep'])->name('birth-prep');
 Route::get('/partner-birth', [AboutController::class, 'partnerBirth'])->name('partner-birth');

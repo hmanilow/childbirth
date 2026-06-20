@@ -1,10 +1,12 @@
 @php
     $phone = trim((string) ($globalSettings['phone'] ?? ''));
     $siteName = $globalSettings['site_name'] ?? 'Школа материнства рожаем вместе';
+    $specialistNameGenitive = $globalSettings['specialist_name_genitive'] ?? 'Елены Тимофеевой';
     $logoPath = $globalSettings['site_logo'] ?? '';
     $nav = [
         ['title' => 'Курсы', 'url' => route('courses.index')],
         ['title' => 'Обо мне', 'url' => route('about')],
+        ['title' => 'Наши доулы', 'url' => route('doulas')],
         ['title' => 'Контакты', 'url' => route('contacts')],
     ];
 @endphp
@@ -30,10 +32,11 @@
                 <div class="hidden min-w-0 flex-col sm:flex">
                     <span class="font-heading text-2xl font-bold leading-tight text-text-heading lg:text-3xl xl:text-[2rem]">Школа материнства</span>
                     <span class="text-base font-semibold uppercase tracking-widest text-accent lg:text-lg">рожаем вместе</span>
+                    <span class="mt-1 text-xs font-medium text-text-muted">Школа материнства {{ $specialistNameGenitive }}</span>
                 </div>
             </a>
 
-            <nav class="hidden items-center gap-2 lg:flex">
+            <nav class="hidden items-center gap-1 xl:flex">
                 @foreach($nav as $item)
                     <a
                         href="{{ $item['url'] }}"
@@ -44,7 +47,7 @@
                 @endforeach
             </nav>
 
-            <div class="hidden items-center gap-4 lg:flex">
+            <div class="hidden items-center gap-4 xl:flex">
                 @if($phone !== '')
                     <a href="tel:{{ preg_replace('/[^+\d]/', '', $phone) }}" class="text-sm font-medium text-text-muted transition-colors duration-200 hover:text-accent">
                         {{ $phone }}
@@ -57,7 +60,7 @@
 
             <button
                 @click="open = !open"
-                class="rounded-btn p-2 text-text-muted transition-colors duration-200 hover:bg-bg-light hover:text-accent lg:hidden"
+                class="rounded-btn p-2 text-text-muted transition-colors duration-200 hover:bg-bg-light hover:text-accent xl:hidden"
                 :aria-expanded="open"
                 aria-label="Открыть меню"
             >
@@ -79,12 +82,15 @@
         x-transition:leave="transition ease-in duration-150"
         x-transition:leave-start="opacity-100 translate-y-0"
         x-transition:leave-end="opacity-0 -translate-y-4"
-        class="border-t border-border-soft bg-bg-card/[0.96] backdrop-blur-md lg:hidden"
+        class="border-t border-border-soft bg-bg-card/[0.96] backdrop-blur-md xl:hidden"
         @click.outside="open = false"
     >
         <div class="mx-auto max-w-7xl space-y-1 px-4 py-4">
+            <p class="mb-3 border-b border-border-soft px-4 pb-3 text-xs font-medium text-text-muted sm:hidden">
+                Школа материнства {{ $specialistNameGenitive }}
+            </p>
             @foreach($nav as $item)
-                <a href="{{ $item['url'] }}" class="block rounded-btn px-4 py-3 text-text-muted transition-colors duration-200 hover:bg-bg-light hover:text-text-primary">
+                <a href="{{ $item['url'] }}" @click="open = false" class="block rounded-btn px-4 py-3 text-text-muted transition-colors duration-200 hover:bg-bg-light hover:text-text-primary">
                     {{ $item['title'] }}
                 </a>
             @endforeach
@@ -95,7 +101,7 @@
                         {{ $phone }}
                     </a>
                 @endif
-                <a href="{{ route('contacts') }}#form" class="btn-accent block w-full text-center">
+                <a href="{{ route('contacts') }}#form" @click="open = false" class="btn-accent block w-full text-center">
                     Подобрать курс
                 </a>
             </div>
