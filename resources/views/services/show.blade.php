@@ -37,7 +37,7 @@
                 {!! $service->description !!}
             </div>
 
-            <div class="mt-12 pt-8 border-t border-white/10">
+            <div class="mt-12 border-t border-border-soft pt-8">
                 <a href="{{ route('contacts') }}" class="btn-accent px-10 mr-4">Записаться</a>
                 <a href="{{ route('services.index') }}" class="btn-outline px-8">Все услуги</a>
             </div>

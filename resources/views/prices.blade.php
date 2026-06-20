@@ -18,9 +18,9 @@
     <section class="py-16">
         <div class="container mx-auto px-4 sm:px-6 max-w-5xl">
             <h2 class="section-heading mb-8">Услуги</h2>
-            <div class="divide-y divide-white/10 border border-white/10 rounded-2xl overflow-hidden">
+            <div class="divide-y divide-border-soft overflow-hidden rounded-2xl border border-border-soft bg-bg-card shadow-card">
                 @foreach($services as $service)
-                    <div class="flex items-center justify-between p-5 hover:bg-white/3 transition-colors">
+                    <div class="flex items-center justify-between p-5 transition-colors hover:bg-bg-light">
                         <div class="flex-1 pr-4">
                             <a href="{{ route('services.show', $service->slug) }}"
                                class="font-medium text-text-primary hover:text-accent-main transition-colors">

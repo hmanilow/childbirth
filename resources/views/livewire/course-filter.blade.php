@@ -14,7 +14,7 @@
                     <button
                         type="button"
                         wire:click="$set('format', '{{ $value }}')"
-                        class="rounded-btn border px-4 py-2 text-sm font-semibold transition duration-200 {{ $format === $value ? 'border-accent bg-accent text-white shadow-glow' : 'border-border-soft bg-white text-text-muted hover:border-accent/60 hover:text-accent' }}"
+                        class="rounded-btn border px-4 py-2 text-sm font-semibold transition duration-200 {{ $format === $value ? 'border-accent bg-accent text-white shadow-glow' : 'border-border-soft bg-bg-card text-text-muted hover:border-accent/60 hover:text-accent' }}"
                     >
                         {{ $label }}
                     </button>
@@ -41,7 +41,7 @@
             <button
                 type="button"
                 wire:click="$set('category', '')"
-                class="shrink-0 rounded-full border px-4 py-2 text-xs font-semibold transition duration-200 {{ $category === '' ? 'border-gold bg-gold/15 text-gold-dark' : 'border-border-soft bg-white text-text-muted hover:border-gold/70 hover:text-gold-dark' }}"
+                class="shrink-0 rounded-full border px-4 py-2 text-xs font-semibold transition duration-200 {{ $category === '' ? 'border-gold bg-gold/15 text-gold-dark' : 'border-border-soft bg-bg-card text-text-muted hover:border-gold/70 hover:text-gold-dark' }}"
             >
                 Все темы
             </button>
@@ -50,7 +50,7 @@
                     type="button"
                     wire:key="category-{{ md5($categoryOption) }}"
                     wire:click="$set('category', '{{ $categoryOption }}')"
-                    class="shrink-0 rounded-full border px-4 py-2 text-xs font-semibold transition duration-200 {{ $category === $categoryOption ? 'border-gold bg-gold/15 text-gold-dark' : 'border-border-soft bg-white text-text-muted hover:border-gold/70 hover:text-gold-dark' }}"
+                    class="shrink-0 rounded-full border px-4 py-2 text-xs font-semibold transition duration-200 {{ $category === $categoryOption ? 'border-gold bg-gold/15 text-gold-dark' : 'border-border-soft bg-bg-card text-text-muted hover:border-gold/70 hover:text-gold-dark' }}"
                 >
                     {{ $categoryOption }}
                 </button>

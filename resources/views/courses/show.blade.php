@@ -118,7 +118,7 @@
             <h2 class="section-heading mb-8">Что вы узнаете</h2>
             <div class="grid sm:grid-cols-2 lg:grid-cols-3 gap-4">
                 @foreach($course->what_you_learn as $item)
-                    <div class="flex items-start gap-3 p-4 rounded-xl bg-bg-base border border-white/5">
+                    <div class="flex items-start gap-3 rounded-xl border border-border-soft bg-bg-base p-4">
                         <svg class="w-5 h-5 text-accent-main mt-0.5 shrink-0" fill="none" viewBox="0 0 24 24" stroke="currentColor">
                             <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M5 13l4 4L19 7"/>
                         </svg>
@@ -137,9 +137,9 @@
             <h2 class="section-heading mb-8">Программа курса</h2>
             <div class="space-y-3" x-data="{ open: 0 }">
                 @foreach($course->modules as $i => $module)
-                    <div class="border border-white/10 rounded-xl overflow-hidden">
+                    <div class="overflow-hidden rounded-xl border border-border-soft bg-bg-card">
                         <button @click="open = open === {{ $i }} ? null : {{ $i }}"
-                            class="w-full flex items-center justify-between p-5 text-left hover:bg-white/5 transition-colors">
+                            class="flex w-full items-center justify-between p-5 text-left transition-colors hover:bg-bg-light">
                             <div>
                                 <span class="text-text-muted text-sm">Модуль {{ $i + 1 }}</span>
                                 <h3 class="font-semibold text-text-primary mt-0.5">{{ $module->title }}</h3>
@@ -154,7 +154,7 @@
                             </div>
                         </button>
                         <div x-show="open === {{ $i }}" x-collapse>
-                            <ul class="divide-y divide-white/5 px-5 pb-4">
+                            <ul class="divide-y divide-border-soft px-5 pb-4">
                                 @foreach($module->publishedLessons as $lesson)
                                     <li class="flex items-center gap-3 py-3">
                                         @if($lesson->is_preview)

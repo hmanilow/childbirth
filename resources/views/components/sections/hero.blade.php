@@ -17,7 +17,7 @@
         >
     @endif
 
-    <div class="absolute inset-0 bg-[linear-gradient(90deg,rgba(255,255,255,0.98)_0%,rgba(238,241,241,0.93)_44%,rgba(191,212,218,0.42)_100%)]"></div>
+    <div class="absolute inset-0 bg-gradient-hero opacity-90"></div>
     <img
         src="{{ asset('images/site/maternity-logo-web.svg') }}"
         alt=""
@@ -28,7 +28,7 @@
 
     <div class="relative mx-auto w-full max-w-7xl px-4 py-12 sm:px-6 lg:px-8 lg:py-20">
         <div class="max-w-2xl animate-fade-up">
-            <div class="mb-6 inline-flex items-center gap-2 rounded-full border border-accent/25 bg-white/70 px-4 py-1.5 shadow-card backdrop-blur-sm">
+            <div class="mb-6 inline-flex items-center gap-2 rounded-full border border-accent/25 bg-bg-card/70 px-4 py-1.5 shadow-card backdrop-blur-sm">
                 <span class="h-2 w-2 rounded-full bg-gold"></span>
                 <span class="text-sm font-medium tracking-wide text-accent">{{ $title }}</span>
             </div>

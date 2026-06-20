@@ -4,10 +4,10 @@
 @section('description', 'Кратко о специалисте, который ведёт занятия школы материнства и помогает семьям подготовиться к родам и первым месяцам.')
 
 @section('content')
-<section class="bg-[linear-gradient(135deg,#FFFFFF_0%,#DED0D3_52%,#BFD4DA_100%)] pt-44 pb-16">
+<section class="bg-gradient-hero pt-44 pb-16">
     <div class="mx-auto grid max-w-6xl items-center gap-10 px-4 sm:px-6 lg:grid-cols-[0.9fr_1.1fr] lg:px-8">
         <div class="flex justify-center lg:justify-start">
-            <div class="w-full max-w-sm rounded-lg border border-accent/20 bg-white p-10 text-center shadow-card-hover sm:p-12">
+            <div class="w-full max-w-sm rounded-lg border border-accent/20 bg-bg-card p-10 text-center shadow-card-hover sm:p-12">
                 <img
                     src="{{ asset('images/site/maternity-logo-web.svg') }}"
                     alt="Школа материнства рожаем вместе"
@@ -41,17 +41,17 @@
 
 <section class="py-16">
     <div class="mx-auto grid max-w-6xl gap-5 px-4 sm:px-6 md:grid-cols-3 lg:px-8">
-        <div class="rounded-lg border border-border-soft bg-white p-6">
+        <div class="rounded-lg border border-border-soft bg-bg-card p-6 shadow-card">
             <p class="text-xs font-semibold uppercase tracking-widest text-accent">Подход</p>
             <h2 class="mt-3 font-heading text-2xl font-bold text-text-heading">Без давления</h2>
             <p class="mt-3 text-sm leading-relaxed text-text-muted">Обсуждаем варианты и решения спокойно, без навязывания единственного сценария.</p>
         </div>
-        <div class="rounded-lg border border-border-soft bg-white p-6">
+        <div class="rounded-lg border border-border-soft bg-bg-card p-6 shadow-card">
             <p class="text-xs font-semibold uppercase tracking-widest text-accent">Практика</p>
             <h2 class="mt-3 font-heading text-2xl font-bold text-text-heading">По делу</h2>
             <p class="mt-3 text-sm leading-relaxed text-text-muted">На занятиях остаются только те знания, которые можно применить в реальной жизни.</p>
         </div>
-        <div class="rounded-lg border border-border-soft bg-white p-6">
+        <div class="rounded-lg border border-border-soft bg-bg-card p-6 shadow-card">
             <p class="text-xs font-semibold uppercase tracking-widest text-accent">Формат</p>
             <h2 class="mt-3 font-heading text-2xl font-bold text-text-heading">Гибко</h2>
             <p class="mt-3 text-sm leading-relaxed text-text-muted">Можно выбрать онлайн-курс, очное занятие или индивидуальную подготовку.</p>

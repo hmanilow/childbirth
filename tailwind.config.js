@@ -2,6 +2,8 @@ import defaultTheme from 'tailwindcss/defaultTheme';
 import forms from '@tailwindcss/forms';
 import typography from '@tailwindcss/typography';
 
+const themeColor = (name) => `rgb(var(--color-${name}-rgb) / <alpha-value>)`;
+
 /** @type {import('tailwindcss').Config} */
 export default {
     content: [
@@ -17,45 +19,47 @@ export default {
         extend: {
             colors: {
                 // Base backgrounds
-                'bg-base':    '#FFFFFF',
-                'bg-card':    '#FFFFFF',
-                'bg-section': '#F5F7F8',
-                'bg-light':   '#EEF1F1',
+                'bg-base':    themeColor('bg-main'),
+                'bg-card':    themeColor('card'),
+                'bg-section': themeColor('bg-soft'),
+                'bg-light':   themeColor('card-muted'),
+                'bg-muted':   themeColor('bg-muted'),
+                'bg-cool':    themeColor('bg-cool'),
 
                 // Accent colors
                 'accent': {
-                    DEFAULT: '#9F3F58',
-                    main:    '#9F3F58',
-                    hover:   '#842F48',
-                    light:   '#C96D78',
-                    dark:    '#842F48',
+                    DEFAULT: themeColor('primary'),
+                    main:    themeColor('primary'),
+                    hover:   themeColor('primary-hover'),
+                    light:   themeColor('primary-soft'),
+                    dark:    themeColor('primary-hover'),
                 },
                 'gold': {
-                    DEFAULT: '#2F8F8A',
-                    light:   '#67BFBA',
-                    dark:    '#27666F',
+                    DEFAULT: themeColor('secondary'),
+                    light:   themeColor('secondary-soft'),
+                    dark:    themeColor('secondary-dark'),
                 },
                 'mint': {
-                    DEFAULT: '#2F8F8A',
-                    light:   '#67BFBA',
-                    dark:    '#27666F',
+                    DEFAULT: themeColor('secondary'),
+                    light:   themeColor('secondary-soft'),
+                    dark:    themeColor('secondary-dark'),
                 },
-                'sky-soft': '#BFD4DA',
+                'sky-soft': themeColor('bg-cool'),
                 'brand-blue': {
-                    DEFAULT: '#2F8F8A',
-                    light:   '#67BFBA',
-                    dark:    '#27666F',
+                    DEFAULT: themeColor('secondary'),
+                    light:   themeColor('secondary-soft'),
+                    dark:    themeColor('secondary-dark'),
                 },
 
                 // Text
-                'text-primary': '#343434',
-                'text-heading': '#223241',
-                'text-muted':   '#56616A',
-                'text-subtle':  '#87919A',
+                'text-primary': themeColor('text-main'),
+                'text-heading': themeColor('text-main'),
+                'text-muted':   themeColor('text-muted'),
+                'text-subtle':  themeColor('text-soft'),
 
                 // Border
-                'border-card':  '#67BFBA',
-                'border-soft':  '#C4D4DA',
+                'border-card':  themeColor('secondary'),
+                'border-soft':  themeColor('border'),
             },
 
             fontFamily: {
@@ -81,16 +85,17 @@ export default {
             },
 
             boxShadow: {
-                'card':   '0 18px 45px rgba(47, 143, 138, 0.13)',
-                'card-hover': '0 22px 60px rgba(159, 63, 88, 0.18)',
-                'glow':   '0 18px 45px rgba(132, 47, 72, 0.24)',
+                'card':   '0 18px 50px rgba(var(--color-shadow-rgb), 0.14)',
+                'card-hover': '0 22px 60px rgba(var(--color-shadow-rgb), 0.2)',
+                'glow':   '0 16px 38px rgba(var(--color-primary-rgb), 0.24)',
             },
 
             backgroundImage: {
-                'gradient-accent': 'linear-gradient(135deg, #9F3F58 0%, #C96D78 100%)',
-                'gradient-dark':   'linear-gradient(180deg, #FFFFFF 0%, #F5F7F8 100%)',
-                'gradient-hero':   'linear-gradient(135deg, #FFFFFF 0%, #DED0D3 48%, #BFD4DA 100%)',
-                'gradient-card':   'linear-gradient(135deg, #FFFFFF 0%, #EEF1F1 100%)',
+                'gradient-accent': 'linear-gradient(135deg, var(--color-primary) 0%, var(--color-primary-soft) 100%)',
+                'gradient-dark':   'linear-gradient(180deg, var(--color-card) 0%, var(--color-card-muted) 100%)',
+                'gradient-hero':   'linear-gradient(135deg, var(--color-bg-main) 0%, var(--color-bg-soft) 52%, var(--color-bg-cool) 100%)',
+                'gradient-card':   'linear-gradient(135deg, var(--color-card) 0%, var(--color-card-muted) 100%)',
+                'gradient-card-muted': 'linear-gradient(135deg, var(--color-card) 0%, var(--color-card-muted) 52%, var(--color-secondary-soft) 100%)',
             },
 
             animation: {

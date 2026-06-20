@@ -12,7 +12,7 @@
 <header
     x-data="{ open: false, scrolled: false }"
     x-init="window.addEventListener('scroll', () => { scrolled = window.scrollY > 36 })"
-    :class="scrolled ? 'bg-white/94 shadow-card' : 'bg-white/86'"
+    :class="scrolled ? 'bg-bg-card/[0.94] shadow-card' : 'bg-bg-card/[0.86]'"
     class="fixed left-0 right-0 top-0 z-50 border-b border-border-soft/80 backdrop-blur-md transition-all duration-300"
 >
     <div class="mx-auto max-w-7xl px-4 sm:px-6 lg:px-8">
@@ -79,7 +79,7 @@
         x-transition:leave="transition ease-in duration-150"
         x-transition:leave-start="opacity-100 translate-y-0"
         x-transition:leave-end="opacity-0 -translate-y-4"
-        class="border-t border-border-soft bg-white/96 backdrop-blur-md lg:hidden"
+        class="border-t border-border-soft bg-bg-card/[0.96] backdrop-blur-md lg:hidden"
         @click.outside="open = false"
     >
         <div class="mx-auto max-w-7xl space-y-1 px-4 py-4">

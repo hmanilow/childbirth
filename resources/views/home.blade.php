@@ -26,7 +26,7 @@
 @endsection
 
 @section('content')
-<section class="relative overflow-hidden bg-[linear-gradient(135deg,#FFFFFF_0%,#DED0D3_48%,#BFD4DA_100%)] pt-44">
+<section class="relative overflow-hidden bg-gradient-hero pt-44">
     <div class="mx-auto grid min-h-[560px] max-w-7xl items-center gap-10 px-4 pb-14 sm:px-6 lg:grid-cols-[1.05fr_0.95fr] lg:px-8">
         <div class="w-full min-w-0 max-w-3xl animate-fade-up">
             <h1 class="font-heading text-[2rem] font-bold leading-[1.08] text-text-heading sm:text-5xl lg:text-hero">
@@ -43,8 +43,8 @@
         </div>
 
         <div class="relative hidden h-full min-h-[420px] lg:block">
-            <div class="absolute inset-y-8 right-0 w-[86%] rounded-lg bg-white/70 shadow-card"></div>
-            <div class="absolute right-10 top-10 w-[78%] rounded-lg border border-accent/20 bg-white p-8 shadow-card-hover">
+            <div class="absolute inset-y-8 right-0 w-[86%] rounded-lg bg-bg-card/70 shadow-card"></div>
+            <div class="absolute right-10 top-10 w-[78%] rounded-lg border border-accent/20 bg-bg-card p-8 shadow-card-hover">
                 <p class="text-sm font-semibold uppercase tracking-widest text-accent">Каталог</p>
                 <div class="mt-6 space-y-4">
                     @foreach($categories as $category)

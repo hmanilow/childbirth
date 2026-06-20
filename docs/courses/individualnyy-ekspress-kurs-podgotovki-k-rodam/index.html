@@ -41,7 +41,7 @@
             }
         })();
     </script>
-    <link rel="preload" as="style" href="../../build/assets/app-DU7agD7a.css" /><link rel="modulepreload" as="script" href="../../build/assets/app-8CfIhL6w.js" /><link rel="stylesheet" href="../../build/assets/app-DU7agD7a.css" data-navigate-track="reload" /><script type="module" src="../../build/assets/app-8CfIhL6w.js" data-navigate-track="reload"></script>    <!-- Livewire Styles --><style >[wire\:loading][wire\:loading], [wire\:loading\.delay][wire\:loading\.delay], [wire\:loading\.inline-block][wire\:loading\.inline-block], [wire\:loading\.inline][wire\:loading\.inline], [wire\:loading\.block][wire\:loading\.block], [wire\:loading\.flex][wire\:loading\.flex], [wire\:loading\.table][wire\:loading\.table], [wire\:loading\.grid][wire\:loading\.grid], [wire\:loading\.inline-flex][wire\:loading\.inline-flex] {display: none;}[wire\:loading\.delay\.none][wire\:loading\.delay\.none], [wire\:loading\.delay\.shortest][wire\:loading\.delay\.shortest], [wire\:loading\.delay\.shorter][wire\:loading\.delay\.shorter], [wire\:loading\.delay\.short][wire\:loading\.delay\.short], [wire\:loading\.delay\.default][wire\:loading\.delay\.default], [wire\:loading\.delay\.long][wire\:loading\.delay\.long], [wire\:loading\.delay\.longer][wire\:loading\.delay\.longer], [wire\:loading\.delay\.longest][wire\:loading\.delay\.longest] {display: none;}[wire\:offline][wire\:offline] {display: none;}[wire\:dirty]:not(textarea):not(input):not(select) {display: none;}:root {--livewire-progress-bar-color: #2299dd;}[x-cloak] {display: none !important;}[wire\:cloak] {display: none !important;}dialog#livewire-error::backdrop {background-color: rgba(0, 0, 0, .6);}</style>
+    <link rel="preload" as="style" href="../../build/assets/app-CZtoH4Tr.css" /><link rel="modulepreload" as="script" href="../../build/assets/app-8CfIhL6w.js" /><link rel="stylesheet" href="../../build/assets/app-CZtoH4Tr.css" data-navigate-track="reload" /><script type="module" src="../../build/assets/app-8CfIhL6w.js" data-navigate-track="reload"></script>    <!-- Livewire Styles --><style >[wire\:loading][wire\:loading], [wire\:loading\.delay][wire\:loading\.delay], [wire\:loading\.inline-block][wire\:loading\.inline-block], [wire\:loading\.inline][wire\:loading\.inline], [wire\:loading\.block][wire\:loading\.block], [wire\:loading\.flex][wire\:loading\.flex], [wire\:loading\.table][wire\:loading\.table], [wire\:loading\.grid][wire\:loading\.grid], [wire\:loading\.inline-flex][wire\:loading\.inline-flex] {display: none;}[wire\:loading\.delay\.none][wire\:loading\.delay\.none], [wire\:loading\.delay\.shortest][wire\:loading\.delay\.shortest], [wire\:loading\.delay\.shorter][wire\:loading\.delay\.shorter], [wire\:loading\.delay\.short][wire\:loading\.delay\.short], [wire\:loading\.delay\.default][wire\:loading\.delay\.default], [wire\:loading\.delay\.long][wire\:loading\.delay\.long], [wire\:loading\.delay\.longer][wire\:loading\.delay\.longer], [wire\:loading\.delay\.longest][wire\:loading\.delay\.longest] {display: none;}[wire\:offline][wire\:offline] {display: none;}[wire\:dirty]:not(textarea):not(input):not(select) {display: none;}:root {--livewire-progress-bar-color: #2299dd;}[x-cloak] {display: none !important;}[wire\:cloak] {display: none !important;}dialog#livewire-error::backdrop {background-color: rgba(0, 0, 0, .6);}</style>
 
     
         
@@ -86,7 +86,7 @@
     <header
     x-data="{ open: false, scrolled: false }"
     x-init="window.addEventListener('scroll', () => { scrolled = window.scrollY > 36 })"
-    :class="scrolled ? 'bg-white/94 shadow-card' : 'bg-white/86'"
+    :class="scrolled ? 'bg-bg-card/[0.94] shadow-card' : 'bg-bg-card/[0.86]'"
     class="fixed left-0 right-0 top-0 z-50 border-b border-border-soft/80 backdrop-blur-md transition-all duration-300"
 >
     <div class="mx-auto max-w-7xl px-4 sm:px-6 lg:px-8">
@@ -154,7 +154,7 @@
         x-transition:leave="transition ease-in duration-150"
         x-transition:leave-start="opacity-100 translate-y-0"
         x-transition:leave-end="opacity-0 -translate-y-4"
-        class="border-t border-border-soft bg-white/96 backdrop-blur-md lg:hidden"
+        class="border-t border-border-soft bg-bg-card/[0.96] backdrop-blur-md lg:hidden"
         @click.outside="open = false"
     >
         <div class="mx-auto max-w-7xl space-y-1 px-4 py-4">
@@ -233,25 +233,25 @@
         <div class="container mx-auto px-4 sm:px-6">
             <h2 class="section-heading mb-8">Что вы узнаете</h2>
             <div class="grid sm:grid-cols-2 lg:grid-cols-3 gap-4">
-                                    <div class="flex items-start gap-3 p-4 rounded-xl bg-bg-base border border-white/5">
+                                    <div class="flex items-start gap-3 rounded-xl border border-border-soft bg-bg-base p-4">
                         <svg class="w-5 h-5 text-accent-main mt-0.5 shrink-0" fill="none" viewBox="0 0 24 24" stroke="currentColor">
                             <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M5 13l4 4L19 7"/>
                         </svg>
                         <span class="text-text-primary text-sm leading-relaxed">Понятный план подготовки без лишней теории</span>
                     </div>
-                                    <div class="flex items-start gap-3 p-4 rounded-xl bg-bg-base border border-white/5">
+                                    <div class="flex items-start gap-3 rounded-xl border border-border-soft bg-bg-base p-4">
                         <svg class="w-5 h-5 text-accent-main mt-0.5 shrink-0" fill="none" viewBox="0 0 24 24" stroke="currentColor">
                             <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M5 13l4 4L19 7"/>
                         </svg>
                         <span class="text-text-primary text-sm leading-relaxed">Практические шаги для семьи</span>
                     </div>
-                                    <div class="flex items-start gap-3 p-4 rounded-xl bg-bg-base border border-white/5">
+                                    <div class="flex items-start gap-3 rounded-xl border border-border-soft bg-bg-base p-4">
                         <svg class="w-5 h-5 text-accent-main mt-0.5 shrink-0" fill="none" viewBox="0 0 24 24" stroke="currentColor">
                             <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M5 13l4 4L19 7"/>
                         </svg>
                         <span class="text-text-primary text-sm leading-relaxed">Что важно обсудить и подготовить до родов</span>
                     </div>
-                                    <div class="flex items-start gap-3 p-4 rounded-xl bg-bg-base border border-white/5">
+                                    <div class="flex items-start gap-3 rounded-xl border border-border-soft bg-bg-base p-4">
                         <svg class="w-5 h-5 text-accent-main mt-0.5 shrink-0" fill="none" viewBox="0 0 24 24" stroke="currentColor">
                             <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M5 13l4 4L19 7"/>
                         </svg>
@@ -370,6 +370,6 @@
 </div>
 
     <!-- Livewire Scripts -->
-<script src="../../livewire/livewire.js"   data-csrf="SmFmQoJ2X0tRMCbDxGayWCRTurZEA5XslNoegQ3M" data-update-uri="/livewire/update" data-navigate-once="true"></script>
+<script src="../../livewire/livewire.js"   data-csrf="XxKQ4kU0OsUmDoubdocFRcxtZe5HKZKBfSN1iBwf" data-update-uri="/livewire/update" data-navigate-once="true"></script>
     </body>
 </html>

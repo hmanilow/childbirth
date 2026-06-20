@@ -16,7 +16,7 @@
             <div class="relative flex justify-center">
                 <div class="relative">
                     {{-- Main photo --}}
-                    <div class="overflow-hidden rounded-[1.25rem] border border-border-soft bg-white shadow-card">
+                    <div class="overflow-hidden rounded-[1.25rem] border border-border-soft bg-bg-card shadow-card">
                         @if($photo)
                             <img src="{{ $photo }}" alt="{{ $name }}" class="w-full max-w-md h-auto object-cover">
                         @else

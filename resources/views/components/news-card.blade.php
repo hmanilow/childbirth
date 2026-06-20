@@ -23,7 +23,7 @@
             <p class="text-text-muted text-sm leading-relaxed mb-4 flex-1">{{ Str::limit($post->excerpt, 120) }}</p>
         @endif
 
-        <div class="flex items-center justify-between mt-auto pt-4 border-t border-white/5 text-xs text-text-muted">
+        <div class="mt-auto flex items-center justify-between border-t border-border-soft pt-4 text-xs text-text-muted">
             <time datetime="{{ $post->publish_at?->toIso8601String() }}">
                 {{ $post->publish_at?->translatedFormat('d F Y') }}
             </time>
