@@ -49,7 +49,7 @@
 
             <div class="hidden items-center gap-4 xl:flex">
                 @if($phone !== '')
-                    <a href="tel:{{ preg_replace('/[^+\d]/', '', $phone) }}" class="text-sm font-medium text-text-muted transition-colors duration-200 hover:text-accent">
+                    <a href="tel:{{ preg_replace('/[^+\d]/', '', $phone) }}" class="whitespace-nowrap text-sm font-medium text-text-muted transition-colors duration-200 hover:text-accent">
                         {{ $phone }}
                     </a>
                 @endif

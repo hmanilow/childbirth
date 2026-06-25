@@ -1,7 +1,7 @@
 @php
     $specialistNameGenitive = $globalSettings['specialist_name_genitive'] ?? 'Елены Тимофеевой';
     $defaultBrandTitle = "Школа материнства {$specialistNameGenitive} «Рожаем вместе»";
-    $defaultDescription = 'Курсы подготовки к родам, партнёрству, уходу за малышом и первым месяцам материнства.';
+    $defaultDescription = 'Курсы подготовки к родам, партнёрству, уходу за малышом и первым месяцам материнства в Москве и Московской области.';
 @endphp
 <!DOCTYPE html>
 <html lang="ru" class="scroll-smooth">

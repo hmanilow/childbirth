@@ -22,7 +22,7 @@ class SettingsSeeder extends Seeder
             ['key' => 'site_logo',        'value' => '',                                   'type' => 'string', 'group' => 'general'],
 
             // Contacts
-            ['key' => 'phone',            'value' => '',  'type' => 'string', 'group' => 'contacts'],
+            ['key' => 'phone',            'value' => '+7 (999) 345-69-96',  'type' => 'string', 'group' => 'contacts'],
             ['key' => 'email',            'value' => '',  'type' => 'string', 'group' => 'contacts'],
             ['key' => 'address',          'value' => '', 'type' => 'string', 'group' => 'contacts'],
 
@@ -36,7 +36,7 @@ class SettingsSeeder extends Seeder
 
             // SEO
             ['key' => 'meta_title',       'value' => 'Школа материнства рожаем вместе — курсы для будущих родителей', 'type' => 'string', 'group' => 'seo'],
-            ['key' => 'meta_description', 'value' => 'Курсы подготовки к родам, партнёрству, уходу за малышом и первым месяцам материнства.', 'type' => 'string', 'group' => 'seo'],
+            ['key' => 'meta_description', 'value' => 'Курсы подготовки к родам, партнёрству, уходу за малышом и первым месяцам материнства в Москве и Московской области.', 'type' => 'string', 'group' => 'seo'],
             ['key' => 'og_image',         'value' => '', 'type' => 'string', 'group' => 'seo'],
 
             // Analytics

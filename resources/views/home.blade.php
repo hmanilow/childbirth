@@ -7,9 +7,9 @@
 @endphp
 
 @section('title', $brandName)
-@section('description', 'Курсы подготовки к родам, партнёрству, уходу за малышом и первым месяцам материнства.')
+@section('description', 'Курсы подготовки к родам, партнёрству, уходу за малышом и первым месяцам материнства в Москве и Московской области.')
 @section('og_title', $brandName)
-@section('og_description', 'Курсы подготовки к родам, партнёрству, уходу за малышом и первым месяцам материнства.')
+@section('og_description', 'Курсы подготовки к родам и поддержка будущих родителей в Москве и Московской области.')
 
 @section('structured_data')
 <script type="application/ld+json">
@@ -19,6 +19,16 @@
   "name": "{{ $brandName }}",
   "url": "{{ url('/') }}",
   "telephone": "{{ $globalSettings['phone'] ?? '' }}",
+  "areaServed": [
+    {
+      "@@type": "City",
+      "name": "Москва"
+    },
+    {
+      "@@type": "AdministrativeArea",
+      "name": "Московская область"
+    }
+  ],
   "sameAs": [
     "{{ $globalSettings['telegram_url'] ?? '' }}",
     "{{ $globalSettings['vk_url'] ?? '' }}"
@@ -40,6 +50,7 @@
             <p class="mt-5 max-w-2xl text-lg leading-relaxed text-text-muted">
                 Подготовка к родам, партнёрству, уходу за малышом и первым месяцам семьи в онлайн и офлайн форматах.
             </p>
+            <p class="mt-3 text-sm font-semibold text-gold-dark">Москва и Московская область</p>
 
             <div class="mt-8 flex flex-col gap-3 sm:flex-row sm:flex-wrap">
                 <a href="#online" class="btn-accent btn-lg w-full sm:w-auto">Онлайн-курсы</a>

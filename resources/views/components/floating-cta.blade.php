@@ -1,8 +1,9 @@
 @php
     $phone    = $globalSettings['phone'] ?? '';
-    $telegram = $globalSettings['social_telegram'] ?? '';
-    $whatsapp = $globalSettings['whatsapp'] ?? '';
+    $telegram = $globalSettings['telegram_url'] ?? $globalSettings['social_telegram'] ?? '';
+    $whatsapp = $globalSettings['whatsapp'] ?? $phone;
     $phoneClean = preg_replace('/[^+\d]/', '', $phone);
+    $whatsappClean = preg_replace('/[^\d]/', '', $whatsapp);
 @endphp
 
 <div
@@ -22,7 +23,7 @@
     >
         @if(!empty($whatsapp))
         <a
-            href="https://wa.me/{{ preg_replace('/[^+\d]/', '', $whatsapp) }}"
+            href="https://wa.me/{{ $whatsappClean }}"
             target="_blank"
             rel="noopener"
             class="flex items-center gap-2 bg-green-500 hover:bg-green-600 text-white px-4 py-2.5 rounded-full shadow-lg text-sm font-medium transition-colors duration-200"
