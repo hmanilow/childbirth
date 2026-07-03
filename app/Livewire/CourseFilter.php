@@ -3,6 +3,7 @@
 namespace App\Livewire;
 
 use App\Domain\Courses\Models\Course;
+use Livewire\Attributes\Url;
 use Livewire\Component;
 use Livewire\WithPagination;
 
@@ -11,7 +12,8 @@ class CourseFilter extends Component
     use WithPagination;
 
     public string $search = '';
-    public string $format = 'all';
+    #[Url(except: 'online')]
+    public string $format = Course::FORMAT_ONLINE;
     public string $category = '';
     public string $sort   = 'featured';
 
@@ -50,14 +52,14 @@ class CourseFilter extends Component
         }
 
         $query = match ($this->sort) {
-            'price_asc'  => $query->orderBy('price'),
-            'price_desc' => $query->orderByDesc('price'),
+            'title'      => $query->orderBy('title'),
             'new'        => $query->orderByDesc('created_at'),
             default      => $query->orderByDesc('is_featured')->orderBy('sort_order'),
         };
 
-        $courses = $query->paginate(9);
+        $courses = $query->paginate(18);
         $categories = Course::published()
+            ->where('format', $this->format)
             ->whereNotNull('category')
             ->orderBy('category')
             ->pluck('category')

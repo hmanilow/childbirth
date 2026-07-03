@@ -1,6 +1,5 @@
 @php
-    $specialistNameGenitive = $globalSettings['specialist_name_genitive'] ?? 'Елены Тимофеевой';
-    $defaultBrandTitle = "Школа материнства {$specialistNameGenitive} «Рожаем вместе»";
+    $defaultBrandTitle = 'Школа материнства «Рожаем вместе»';
     $defaultDescription = 'Курсы подготовки к родам, партнёрству, уходу за малышом и первым месяцам материнства в Москве и Московской области.';
 @endphp
 <!DOCTYPE html>
@@ -106,7 +105,7 @@
     {{-- Floating CTA: WhatsApp / Telegram --}}
     <x-floating-cta />
 
-    @livewireScripts
+    @livewireScriptConfig
     @stack('scripts')
 </body>
 </html>

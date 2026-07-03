@@ -3,7 +3,6 @@
     $email = trim((string) ($globalSettings['email'] ?? ''));
     $address = trim((string) ($globalSettings['address'] ?? ''));
     $siteName = $globalSettings['site_name'] ?? 'Школа материнства рожаем вместе';
-    $specialistNameGenitive = $globalSettings['specialist_name_genitive'] ?? 'Елены Тимофеевой';
     $socials = [
         'vk' => $globalSettings['vk_url'] ?? $globalSettings['social_vk'] ?? '',
         'telegram' => $globalSettings['telegram_url'] ?? $globalSettings['social_telegram'] ?? '',
@@ -27,7 +26,7 @@
                 </span>
             </a>
             <p class="max-w-sm text-sm font-semibold leading-relaxed text-text-heading">
-                Школа материнства {{ $specialistNameGenitive }} «Рожаем вместе»
+                Школа материнства «Рожаем вместе»
             </p>
             <p class="mt-2 max-w-sm text-sm leading-relaxed text-text-muted">
                 Онлайн и офлайн курсы для будущих родителей: подготовка к родам, уход за малышом и спокойный старт семьи.
@@ -59,7 +58,8 @@
         <div>
             <h3 class="mb-4 font-heading text-base font-semibold text-text-heading">Информация</h3>
             <ul class="space-y-2">
-                <li><a href="{{ route('about') }}" class="footer-link">Обо мне</a></li>
+                <li><a href="{{ route('about') }}" class="footer-link">Наши специалисты</a></li>
+                <li><a href="{{ route('reviews') }}" class="footer-link">Отзывы</a></li>
                 <li><a href="{{ route('contacts') }}" class="footer-link">Контакты</a></li>
                 <li><a href="{{ route('privacy') }}" class="footer-link">Политика конфиденциальности</a></li>
                 <li><a href="{{ route('terms') }}" class="footer-link">Пользовательское соглашение</a></li>

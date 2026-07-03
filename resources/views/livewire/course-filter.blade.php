@@ -1,7 +1,6 @@
 <div>
     @php
         $formatOptions = [
-            'all' => 'Все курсы',
             \App\Domain\Courses\Models\Course::FORMAT_ONLINE => 'Онлайн',
             \App\Domain\Courses\Models\Course::FORMAT_OFFLINE => 'Офлайн',
         ];
@@ -11,13 +10,13 @@
         <div class="flex flex-col gap-4 lg:flex-row lg:items-center lg:justify-between">
             <div class="flex flex-wrap gap-2">
                 @foreach($formatOptions as $value => $label)
-                    <button
-                        type="button"
-                        wire:click="$set('format', '{{ $value }}')"
+                    <a
+                        href="{{ route('courses.index', ['format' => $value]) }}"
+                        wire:click.prevent="$set('format', '{{ $value }}')"
                         class="rounded-btn border px-4 py-2 text-sm font-semibold transition duration-200 {{ $format === $value ? 'border-accent bg-accent text-white shadow-glow' : 'border-border-soft bg-bg-card text-text-muted hover:border-accent/60 hover:text-accent' }}"
                     >
                         {{ $label }}
-                    </button>
+                    </a>
                 @endforeach
             </div>
 
@@ -29,10 +28,9 @@
                     placeholder="Поиск курса"
                 >
                 <select wire:model.live="sort" class="input">
-                    <option value="featured">Популярные</option>
+                    <option value="featured">По порядку</option>
                     <option value="new">Новые</option>
-                    <option value="price_asc">Цена ↑</option>
-                    <option value="price_desc">Цена ↓</option>
+                    <option value="title">По названию</option>
                 </select>
             </div>
         </div>

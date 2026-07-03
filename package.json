@@ -2,6 +2,7 @@
     "private": true,
     "type": "module",
     "scripts": {
+        "test": "node --test tests/static",
         "dev": "vite",
         "build": "vite build",
         "export:preview": "node scripts/export-static-preview.mjs"

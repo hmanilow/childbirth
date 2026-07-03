@@ -4,35 +4,42 @@
 @section('description', $course->meta_description ?: $course->short_desc)
 
 @section('structured_data')
+@php
+    $courseSchema = [
+        '@context' => 'https://schema.org',
+        '@type' => 'Course',
+        'name' => $course->title,
+        'description' => $course->short_desc,
+        'provider' => [
+            '@type' => 'Organization',
+            'name' => $globalSettings['site_name'] ?? 'Школа материнства «Рожаем вместе»',
+        ],
+    ];
+
+    if (($course->access_type ?? '') !== 'manual') {
+        $courseSchema['offers'] = [
+            '@type' => 'Offer',
+            'price' => $course->price,
+            'priceCurrency' => 'RUB',
+        ];
+    }
+@endphp
 <script type="application/ld+json">
-{
-  "@@context": "https://schema.org",
-  "@type": "Course",
-  "name": "{{ $course->title }}",
-  "description": "{{ $course->short_desc }}",
-  "provider": {
-    "@type": "Organization",
-    "name": "{{ $globalSettings['site_name'] ?? 'Школа материнства рожаем вместе' }}"
-  },
-  "offers": {
-    "@type": "Offer",
-    "price": "{{ $course->price }}",
-    "priceCurrency": "RUB"
-  }
-}
+{!! json_encode($courseSchema, JSON_UNESCAPED_UNICODE | JSON_UNESCAPED_SLASHES | JSON_PRETTY_PRINT) !!}
 </script>
 @endsection
 
 @section('content')
 @php
     $paymentsEnabled = (bool) (($globalSettings ?? [])['yookassa_enabled'] ?? false);
-    $courseCheckoutUrl = $paymentsEnabled
+    $isManual = ($course->access_type ?? '') === 'manual';
+    $courseCheckoutUrl = $paymentsEnabled && ! $isManual
         ? route('checkout.show', $course->slug)
         : route('contacts') . '?course=' . rawurlencode($course->slug) . '#form';
     $isFree = ((float) $course->price) <= 0;
     $isOffline = ($course->format ?? '') === \App\Domain\Courses\Models\Course::FORMAT_OFFLINE;
     $formatLabel = method_exists($course, 'formatLabel') ? $course->formatLabel() : 'Онлайн';
-    $ctaLabel = $isFree ? 'Записаться бесплатно' : 'Записаться за ' . number_format((float) $course->price, 0, '.', ' ') . ' ₽';
+    $ctaLabel = $isManual ? 'Записаться' : ($isFree ? 'Записаться бесплатно' : 'Записаться за ' . number_format((float) $course->price, 0, '.', ' ') . ' ₽');
 @endphp
 
 <main>
@@ -58,6 +65,13 @@
 
                     @if($course->short_desc)
                         <p class="text-text-muted text-lg leading-relaxed mb-6">{{ $course->short_desc }}</p>
+                    @endif
+
+                    @if($isManual)
+                        <div class="mb-8 grid max-w-lg grid-cols-2 gap-3 rounded-btn border border-border-soft bg-bg-card p-4 text-sm">
+                            <div><span class="block text-text-muted">Стоимость</span><strong class="mt-1 block text-text-heading">Уточняется</strong></div>
+                            <div><span class="block text-text-muted">Расписание</span><strong class="mt-1 block text-text-heading">Уточняется</strong></div>
+                        </div>
                     @endif
 
                     {{-- Stats --}}

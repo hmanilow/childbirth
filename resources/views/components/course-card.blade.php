@@ -5,12 +5,13 @@
     $formatLabel = method_exists($course, 'formatLabel') ? $course->formatLabel() : 'Онлайн';
     $isOffline = ($course->format ?? '') === \App\Domain\Courses\Models\Course::FORMAT_OFFLINE;
     $isFree = ((float) $course->price) <= 0;
+    $isManual = ($course->access_type ?? '') === 'manual';
     $iconType = str_contains($slug, 'papa') || str_contains($slug, 'partner')
         ? 'family'
         : (str_contains($slug, 'uhod') || str_contains($slug, 'vskarmlivanie') || str_contains($slug, 'son') ? 'baby' : 'birth');
 @endphp
 
-<article class="group flex h-full min-h-[430px] flex-col overflow-hidden rounded-lg border border-border-soft bg-bg-card transition duration-300 hover:-translate-y-1 hover:border-accent/60 hover:shadow-card-hover">
+<article class="group flex h-full min-h-[500px] flex-col overflow-hidden rounded-lg border border-border-soft bg-bg-card transition duration-300 hover:-translate-y-1 hover:border-accent/60 hover:shadow-card-hover">
     <a href="{{ route('courses.show', $course->slug) }}" class="block">
         <div class="relative aspect-[16/10] overflow-hidden bg-gradient-card">
             @if($course->cover)
@@ -66,33 +67,22 @@
             <p class="mb-5 flex-1 text-sm leading-relaxed text-text-muted">{{ Str::limit($course->short_desc, 132) }}</p>
         @endif
 
-        <div class="mb-5 flex flex-wrap items-center gap-3 text-xs text-text-muted">
-            @if($course->lessons_count)
-                <span>{{ $course->lessons_count }} занятий</span>
-            @endif
-            @if($course->duration_hours)
-                <span>{{ $course->duration_hours }} ч</span>
-            @endif
-            <span>{{ $isOffline ? 'очная встреча' : 'онлайн-доступ' }}</span>
+        <div class="mb-5 grid grid-cols-2 gap-3 rounded-btn bg-bg-light p-3 text-xs text-text-muted">
+            <div>
+                <span class="block text-text-subtle">Стоимость</span>
+                <span class="mt-1 block font-semibold text-text-heading">{{ $isManual ? 'Уточняется' : ($isFree ? 'Бесплатно' : number_format((float) $course->price, 0, '.', ' ') . ' ₽') }}</span>
+            </div>
+            <div>
+                <span class="block text-text-subtle">Расписание</span>
+                <span class="mt-1 block font-semibold text-text-heading">Уточняется</span>
+            </div>
         </div>
 
-        <div class="mt-auto flex items-center justify-between gap-4 border-t border-border-soft pt-4">
-            <div>
-                @if($isFree)
-                    <span class="text-xl font-bold text-accent">Бесплатно</span>
-                @else
-                    <span class="text-xl font-bold text-accent">{{ number_format((float) $course->price, 0, '.', ' ') }} ₽</span>
-                    @if($course->hasDiscount())
-                        <span class="ml-2 text-sm text-text-muted line-through">
-                            {{ number_format((float) $course->old_price, 0, '.', ' ') }} ₽
-                        </span>
-                    @endif
-                @endif
-            </div>
-
-            <a href="{{ route('courses.show', $course->slug) }}" class="btn-outline btn-sm shrink-0">
+        <div class="mt-auto grid grid-cols-2 gap-3 border-t border-border-soft pt-4">
+            <a href="{{ route('courses.show', $course->slug) }}" class="btn-outline btn-sm w-full">
                 Подробнее
             </a>
+            <a href="{{ route('contacts') }}?course={{ rawurlencode($course->slug) }}#form" class="btn-accent btn-sm w-full">Записаться</a>
         </div>
     </div>
 </article>

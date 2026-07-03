@@ -128,6 +128,32 @@
     </div>
 </section>
 
+<section class="bg-bg-warm py-16" aria-labelledby="doula-check-title">
+    <div class="mx-auto max-w-7xl px-4 sm:px-6 lg:px-8">
+        <div class="max-w-3xl">
+            <span class="section-eyebrow">Перед заключением договора</span>
+            <h2 id="doula-check-title" class="section-heading mt-2">Что важно уточнить перед сопровождением в родах</h2>
+            <p class="section-subheading text-base leading-relaxed sm:text-lg">
+                Эти три пункта помогают заранее согласовать условия и спокойно выбрать специалиста.
+            </p>
+        </div>
+
+        <div class="mt-10 grid grid-cols-1 gap-5 md:grid-cols-3">
+            @foreach([
+                ['number' => '01', 'title' => 'Анализы и допуск', 'text' => 'Перед сопровождением уточните необходимые анализы, прививки и допуск согласно требованиям выбранного роддома.'],
+                ['number' => '02', 'title' => 'Официальный договор', 'text' => 'Заранее зафиксируйте формат помощи, обязанности специалиста, стоимость и другие условия сопровождения.'],
+                ['number' => '03', 'title' => 'Образование и сертификаты', 'text' => 'Попросите показать документы об образовании и обучении, которые подтверждают подготовку специалиста.'],
+            ] as $item)
+                <article class="rounded-card border border-border-soft bg-bg-card p-6 shadow-card sm:p-8">
+                    <span class="flex h-12 w-12 items-center justify-center rounded-full bg-gold/20 text-sm font-bold text-gold-dark">{{ $item['number'] }}</span>
+                    <h3 class="mt-6 font-heading text-2xl font-bold text-text-heading">{{ $item['title'] }}</h3>
+                    <p class="mt-4 text-sm leading-relaxed text-text-muted">{{ $item['text'] }}</p>
+                </article>
+            @endforeach
+        </div>
+    </div>
+</section>
+
 <section id="elena-packages" class="scroll-mt-40 bg-bg-base py-16">
     <div class="mx-auto max-w-7xl px-4 sm:px-6 lg:px-8">
         <div class="max-w-3xl">

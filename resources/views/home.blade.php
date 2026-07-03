@@ -1,9 +1,7 @@
 @extends('layouts.app')
 
 @php
-    $specialistName = $globalSettings['specialist_name'] ?? 'Елена Тимофеева';
-    $specialistNameGenitive = $globalSettings['specialist_name_genitive'] ?? 'Елены Тимофеевой';
-    $brandName = "Школа материнства {$specialistNameGenitive} «Рожаем вместе»";
+    $brandName = 'Школа материнства «Рожаем вместе»';
 @endphp
 
 @section('title', $brandName)
@@ -42,7 +40,7 @@
     <div class="mx-auto grid min-h-[560px] max-w-7xl items-center gap-10 px-4 pb-14 sm:px-6 lg:grid-cols-[1.05fr_0.95fr] lg:px-8">
         <div class="w-full min-w-0 max-w-3xl animate-fade-up">
             <p class="mb-4 text-sm font-semibold text-accent">
-                Авторская школа материнства {{ $specialistNameGenitive }}
+                Школа материнства «Рожаем вместе»
             </p>
             <h1 class="font-heading text-[2rem] font-bold leading-[1.08] text-text-heading sm:text-5xl lg:text-hero">
                 Курсы для будущих <br class="sm:hidden">мам и пап

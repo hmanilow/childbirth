@@ -14,6 +14,7 @@ const seedPaths = [
     '/',
     '/about',
     '/doulas',
+    '/reviews',
     '/courses',
     '/contacts',
     '/privacy',
@@ -56,6 +57,9 @@ const assetPrefixes = [
 
 const assetExtension = /\.(avif|css|eot|gif|ico|jpe?g|js|json|map|mjs|pdf|png|svg|ttf|webp|woff2?)$/i;
 const maxPages = Number.parseInt(process.env.STATIC_PREVIEW_MAX_PAGES ?? '80', 10);
+const staticVariants = new Map([
+    ['/courses/offline', '/courses?format=offline'],
+]);
 
 function toPosix(value) {
     return value.split(path.sep).join('/');
@@ -183,8 +187,12 @@ function rewriteHtml(html, routePath, availablePages) {
             return full;
         }
 
-        const pathname = normalizeRoutePath(localUrl.pathname);
+        let pathname = normalizeRoutePath(localUrl.pathname);
         const hash = localUrl.hash || '';
+
+        if (pathname === '/courses') {
+            pathname = localUrl.searchParams.get('format') === 'offline' ? '/courses/offline' : '/courses';
+        }
 
         if (isAssetPath(pathname)) {
             const assetTarget = pathname.replace(/^\/+/, '');
@@ -198,7 +206,10 @@ function rewriteHtml(html, routePath, availablePages) {
         return `${attr}=${quote}#${quote}`;
     });
 
-    return rewritten.replaceAll(baseUrl, '');
+    return rewritten
+        .replace(/\s+wire:[\w.-]+=(["'])[\s\S]*?\1/gi, '')
+        .replaceAll(baseUrl, '')
+        .replace(/[ \t]+$/gm, '');
 }
 
 async function exists(targetPath) {
@@ -268,6 +279,17 @@ async function exportPreview() {
 
     if (pages.size === 0) {
         throw new Error(`No pages were exported from ${baseUrl}`);
+    }
+
+    for (const [outputRoute, sourceRoute] of staticVariants) {
+        try {
+            const html = await fetchPage(sourceRoute);
+            if (html) {
+                pages.set(outputRoute, html);
+            }
+        } catch (error) {
+            console.warn(`Skipped static variant ${sourceRoute}: ${error.message}`);
+        }
     }
 
     const resolvedDocs = path.resolve(docsDir);
