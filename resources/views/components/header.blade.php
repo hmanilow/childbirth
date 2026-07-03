@@ -5,8 +5,7 @@
     $nav = [
         ['title' => 'Наши специалисты', 'url' => route('about')],
         ['title' => 'Акции и новости', 'url' => route('news.index')],
-        ['title' => 'Сопровождение в родах / Доула', 'url' => route('doulas')],
-        ['title' => 'Услуги после родов', 'url' => route('services.index')],
+        ['title' => 'Наши Доулы', 'url' => route('doulas')],
         ['title' => 'Отзывы', 'url' => route('reviews')],
     ];
 @endphp
@@ -68,13 +67,19 @@
             @endforeach
 
             <div class="group relative flex" @mouseenter="coursesOpen = true" @mouseleave="coursesOpen = false">
+                <a
+                    href="{{ route('courses.index') }}"
+                    class="flex items-center pl-4 pr-2 text-sm font-medium text-white transition-colors hover:bg-accent-dark/55"
+                >
+                    Курсы и абонементы
+                </a>
                 <button
                     type="button"
                     @click="coursesOpen = !coursesOpen"
                     :aria-expanded="coursesOpen"
-                    class="flex items-center gap-2 px-4 text-sm font-medium text-white transition-colors hover:bg-accent-dark/55"
+                    class="flex items-center px-2 pr-4 text-white transition-colors hover:bg-accent-dark/55"
+                    aria-label="Открыть форматы курсов"
                 >
-                    Курсы и абонементы
                     <svg class="h-4 w-4 transition-transform" :class="coursesOpen && 'rotate-180'" fill="none" viewBox="0 0 24 24" stroke="currentColor" aria-hidden="true">
                         <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="m6 9 6 6 6-6"/>
                     </svg>
@@ -112,12 +117,14 @@
                 <a href="{{ $item['url'] }}" @click="open = false" class="block rounded-btn px-4 py-3 text-text-muted transition-colors hover:bg-bg-light hover:text-text-primary">{{ $item['title'] }}</a>
             @endforeach
 
-            <button type="button" @click="coursesOpen = !coursesOpen" class="flex w-full items-center justify-between rounded-btn px-4 py-3 text-left text-text-muted transition-colors hover:bg-bg-light hover:text-text-primary">
-                <span>Курсы и абонементы</span>
-                <svg class="h-4 w-4 transition-transform" :class="coursesOpen && 'rotate-180'" fill="none" viewBox="0 0 24 24" stroke="currentColor" aria-hidden="true">
-                    <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="m6 9 6 6 6-6"/>
-                </svg>
-            </button>
+            <div class="flex items-stretch rounded-btn text-text-muted transition-colors hover:bg-bg-light hover:text-text-primary">
+                <a href="{{ route('courses.index') }}" @click="open = false" class="flex flex-1 items-center px-4 py-3">Курсы и абонементы</a>
+                <button type="button" @click="coursesOpen = !coursesOpen" class="px-4" aria-label="Открыть форматы курсов">
+                    <svg class="h-4 w-4 transition-transform" :class="coursesOpen && 'rotate-180'" fill="none" viewBox="0 0 24 24" stroke="currentColor" aria-hidden="true">
+                        <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="m6 9 6 6 6-6"/>
+                    </svg>
+                </button>
+            </div>
             <div x-show="coursesOpen" x-collapse x-cloak class="ml-4 border-l border-border-soft pl-3">
                 <a href="{{ route('courses.index', ['format' => 'online']) }}" @click="open = false" class="block rounded-btn px-4 py-3 text-sm text-text-muted hover:bg-bg-light hover:text-accent">Онлайн-курсы</a>
                 <a href="{{ route('courses.index', ['format' => 'offline']) }}" @click="open = false" class="block rounded-btn px-4 py-3 text-sm text-text-muted hover:bg-bg-light hover:text-accent">Офлайн-курсы</a>

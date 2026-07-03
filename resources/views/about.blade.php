@@ -3,7 +3,7 @@
 @section('title', 'Наши специалисты — Школа материнства «Рожаем вместе»')
 @section('description', 'Специалисты школы материнства «Рожаем вместе». Знакомьтесь с основателем и руководителем школы Еленой Тимофеевой.')
 @section('og_title', 'Наши специалисты — Школа материнства «Рожаем вместе»')
-@section('og_description', 'Команда школы материнства «Рожаем вместе». Анкеты специалистов будут дополняться.')
+@section('og_description', 'Краткое знакомство со специалистами школы материнства «Рожаем вместе».')
 
 @section('content')
 <section class="min-h-[70vh] bg-gradient-hero pb-20 pt-44">
@@ -27,15 +27,13 @@
             <div class="flex flex-col justify-center p-7 sm:p-10 lg:p-14">
                 <p class="text-sm font-semibold uppercase tracking-widest text-accent">Основатель школы</p>
                 <h2 class="mt-3 font-heading text-3xl font-bold text-text-heading sm:text-4xl">Елена Тимофеева</h2>
-                <p class="mt-4 max-w-2xl text-lg font-semibold leading-relaxed text-text-heading">
-                    Основатель и руководитель школы материнства «Рожаем вместе»
-                </p>
-                <p class="mt-5 max-w-2xl leading-relaxed text-text-muted">
-                    Анкета специалиста скоро будет дополнена.
-                </p>
-                <div class="mt-8 flex flex-col gap-3 sm:flex-row">
-                    <a href="{{ route('doulas') }}" class="btn-accent">Сопровождение в родах</a>
-                    <a href="{{ route('contacts') }}#form" class="btn-outline">Связаться со школой</a>
+                <div class="mt-5 max-w-2xl space-y-4 leading-relaxed text-text-muted">
+                    <p>
+                        Меня зовут Елена Тимофеева. Я многодетная мама, профессиональная доула, помощница в родах, основатель и руководитель школы материнства «Рожаем вместе».
+                    </p>
+                    <p>
+                        Я создала эту школу, чтобы беременность, роды и первые месяцы материнства начинались не со страха и растерянности, а с понимания, спокойствия и уверенности.
+                    </p>
                 </div>
             </div>
         </article>

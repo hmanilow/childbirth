@@ -19,9 +19,10 @@ test('public branding is neutral and the header has two navigation rows', async 
     assert.match(header, /Наши специалисты/);
     assert.match(header, /Акции и новости/);
     assert.match(header, /Курсы и абонементы/);
-    assert.match(header, /Сопровождение в родах/);
-    assert.match(header, /Услуги после родов/);
+    assert.match(header, /Наши Доулы/);
+    assert.doesNotMatch(header, /Услуги после родов/);
     assert.match(header, /Отзывы/);
+    assert.match(header, /href="\{\{ route\('courses\.index'\) \}\}"/);
     assert.match(header, /'format' => 'online'/);
     assert.match(header, /'format' => 'offline'/);
 });
@@ -34,13 +35,19 @@ test('about is a single specialist card and doulas include the verification bloc
 
     assert.match(about, /Наши специалисты/);
     assert.match(about, /Елена Тимофеева/);
-    assert.match(about, /Основатель и руководитель школы материнства «Рожаем вместе»/);
-    assert.match(about, /Анкета специалиста скоро будет дополнена/);
+    assert.match(about, /основатель и руководитель школы материнства «Рожаем вместе»/i);
+    assert.match(about, /Меня зовут Елена Тимофеева\. Я многодетная мама/);
+    assert.match(about, /Я создала эту школу, чтобы беременность, роды и первые месяцы материнства/);
+    assert.doesNotMatch(about, /Анкета специалиста скоро будет дополнена/);
+    assert.doesNotMatch(about, /Сопровождение в родах/);
+    assert.doesNotMatch(about, /Связаться со школой/);
 
     assert.match(doulas, /Что важно уточнить перед сопровождением в родах/);
     assert.match(doulas, /Анализы и допуск/);
     assert.match(doulas, /Официальный договор/);
     assert.match(doulas, /Образование и сертификаты/);
+    assert.match(doulas, /Пакет Аделины/);
+    assert.doesNotMatch(doulas, /id="adelina-package"/);
 });
 
 test('course seeder publishes exactly one online and sixteen offline manual programs', async () => {

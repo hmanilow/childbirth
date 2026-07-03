@@ -41,7 +41,7 @@
             }
         })();
     </script>
-    <link rel="preload" as="style" href="../build/assets/app-C--G2LW8.css" /><link rel="modulepreload" as="script" href="../build/assets/app-B5Qb_3I9.js" /><link rel="stylesheet" href="../build/assets/app-C--G2LW8.css" data-navigate-track="reload" /><script type="module" src="../build/assets/app-B5Qb_3I9.js" data-navigate-track="reload"></script>    <!-- Livewire Styles --><style >[wire\:loading][wire\:loading], [wire\:loading\.delay][wire\:loading\.delay], [wire\:loading\.inline-block][wire\:loading\.inline-block], [wire\:loading\.inline][wire\:loading\.inline], [wire\:loading\.block][wire\:loading\.block], [wire\:loading\.flex][wire\:loading\.flex], [wire\:loading\.table][wire\:loading\.table], [wire\:loading\.grid][wire\:loading\.grid], [wire\:loading\.inline-flex][wire\:loading\.inline-flex] {display: none;}[wire\:loading\.delay\.none][wire\:loading\.delay\.none], [wire\:loading\.delay\.shortest][wire\:loading\.delay\.shortest], [wire\:loading\.delay\.shorter][wire\:loading\.delay\.shorter], [wire\:loading\.delay\.short][wire\:loading\.delay\.short], [wire\:loading\.delay\.default][wire\:loading\.delay\.default], [wire\:loading\.delay\.long][wire\:loading\.delay\.long], [wire\:loading\.delay\.longer][wire\:loading\.delay\.longer], [wire\:loading\.delay\.longest][wire\:loading\.delay\.longest] {display: none;}[wire\:offline][wire\:offline] {display: none;}[wire\:dirty]:not(textarea):not(input):not(select) {display: none;}:root {--livewire-progress-bar-color: #2299dd;}[x-cloak] {display: none !important;}[wire\:cloak] {display: none !important;}dialog#livewire-error::backdrop {background-color: rgba(0, 0, 0, .6);}</style>
+    <link rel="preload" as="style" href="../build/assets/app-DgqI8aAX.css" /><link rel="modulepreload" as="script" href="../build/assets/app-B5Qb_3I9.js" /><link rel="stylesheet" href="../build/assets/app-DgqI8aAX.css" data-navigate-track="reload" /><script type="module" src="../build/assets/app-B5Qb_3I9.js" data-navigate-track="reload"></script>    <!-- Livewire Styles --><style >[wire\:loading][wire\:loading], [wire\:loading\.delay][wire\:loading\.delay], [wire\:loading\.inline-block][wire\:loading\.inline-block], [wire\:loading\.inline][wire\:loading\.inline], [wire\:loading\.block][wire\:loading\.block], [wire\:loading\.flex][wire\:loading\.flex], [wire\:loading\.table][wire\:loading\.table], [wire\:loading\.grid][wire\:loading\.grid], [wire\:loading\.inline-flex][wire\:loading\.inline-flex] {display: none;}[wire\:loading\.delay\.none][wire\:loading\.delay\.none], [wire\:loading\.delay\.shortest][wire\:loading\.delay\.shortest], [wire\:loading\.delay\.shorter][wire\:loading\.delay\.shorter], [wire\:loading\.delay\.short][wire\:loading\.delay\.short], [wire\:loading\.delay\.default][wire\:loading\.delay\.default], [wire\:loading\.delay\.long][wire\:loading\.delay\.long], [wire\:loading\.delay\.longer][wire\:loading\.delay\.longer], [wire\:loading\.delay\.longest][wire\:loading\.delay\.longest] {display: none;}[wire\:offline][wire\:offline] {display: none;}[wire\:dirty]:not(textarea):not(input):not(select) {display: none;}:root {--livewire-progress-bar-color: #2299dd;}[x-cloak] {display: none !important;}[wire\:cloak] {display: none !important;}dialog#livewire-error::backdrop {background-color: rgba(0, 0, 0, .6);}</style>
 
 
 
@@ -118,13 +118,19 @@
                 </a>
 
             <div class="group relative flex" @mouseenter="coursesOpen = true" @mouseleave="coursesOpen = false">
+                <a
+                    href="../courses/"
+                    class="flex items-center pl-4 pr-2 text-sm font-medium text-white transition-colors hover:bg-accent-dark/55"
+                >
+                    Курсы и абонементы
+                </a>
                 <button
                     type="button"
                     @click="coursesOpen = !coursesOpen"
                     :aria-expanded="coursesOpen"
-                    class="flex items-center gap-2 px-4 text-sm font-medium text-white transition-colors hover:bg-accent-dark/55"
+                    class="flex items-center px-2 pr-4 text-white transition-colors hover:bg-accent-dark/55"
+                    aria-label="Открыть форматы курсов"
                 >
-                    Курсы и абонементы
                     <svg class="h-4 w-4 transition-transform" :class="coursesOpen && 'rotate-180'" fill="none" viewBox="0 0 24 24" stroke="currentColor" aria-hidden="true">
                         <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="m6 9 6 6 6-6"/>
                     </svg>
@@ -142,10 +148,7 @@
             </div>
 
                             <a href="./" class="flex items-center px-4 text-center text-sm font-medium text-white transition-colors hover:bg-accent-dark/55">
-                    Сопровождение в родах / Доула
-                </a>
-                            <a href="#" class="flex items-center px-4 text-center text-sm font-medium text-white transition-colors hover:bg-accent-dark/55">
-                    Услуги после родов
+                    Наши Доулы
                 </a>
                             <a href="../reviews/" class="flex items-center px-4 text-center text-sm font-medium text-white transition-colors hover:bg-accent-dark/55">
                     Отзывы
@@ -165,19 +168,20 @@
                             <a href="../about/" @click="open = false" class="block rounded-btn px-4 py-3 text-text-muted transition-colors hover:bg-bg-light hover:text-text-primary">Наши специалисты</a>
                             <a href="#" @click="open = false" class="block rounded-btn px-4 py-3 text-text-muted transition-colors hover:bg-bg-light hover:text-text-primary">Акции и новости</a>
 
-            <button type="button" @click="coursesOpen = !coursesOpen" class="flex w-full items-center justify-between rounded-btn px-4 py-3 text-left text-text-muted transition-colors hover:bg-bg-light hover:text-text-primary">
-                <span>Курсы и абонементы</span>
-                <svg class="h-4 w-4 transition-transform" :class="coursesOpen && 'rotate-180'" fill="none" viewBox="0 0 24 24" stroke="currentColor" aria-hidden="true">
-                    <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="m6 9 6 6 6-6"/>
-                </svg>
-            </button>
+            <div class="flex items-stretch rounded-btn text-text-muted transition-colors hover:bg-bg-light hover:text-text-primary">
+                <a href="../courses/" @click="open = false" class="flex flex-1 items-center px-4 py-3">Курсы и абонементы</a>
+                <button type="button" @click="coursesOpen = !coursesOpen" class="px-4" aria-label="Открыть форматы курсов">
+                    <svg class="h-4 w-4 transition-transform" :class="coursesOpen && 'rotate-180'" fill="none" viewBox="0 0 24 24" stroke="currentColor" aria-hidden="true">
+                        <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="m6 9 6 6 6-6"/>
+                    </svg>
+                </button>
+            </div>
             <div x-show="coursesOpen" x-collapse x-cloak class="ml-4 border-l border-border-soft pl-3">
                 <a href="../courses/" @click="open = false" class="block rounded-btn px-4 py-3 text-sm text-text-muted hover:bg-bg-light hover:text-accent">Онлайн-курсы</a>
                 <a href="../courses/offline/" @click="open = false" class="block rounded-btn px-4 py-3 text-sm text-text-muted hover:bg-bg-light hover:text-accent">Офлайн-курсы</a>
             </div>
 
-                            <a href="./" @click="open = false" class="block rounded-btn px-4 py-3 text-text-muted transition-colors hover:bg-bg-light hover:text-text-primary">Сопровождение в родах / Доула</a>
-                            <a href="#" @click="open = false" class="block rounded-btn px-4 py-3 text-text-muted transition-colors hover:bg-bg-light hover:text-text-primary">Услуги после родов</a>
+                            <a href="./" @click="open = false" class="block rounded-btn px-4 py-3 text-text-muted transition-colors hover:bg-bg-light hover:text-text-primary">Наши Доулы</a>
                             <a href="../reviews/" @click="open = false" class="block rounded-btn px-4 py-3 text-text-muted transition-colors hover:bg-bg-light hover:text-text-primary">Отзывы</a>
 
             <div class="space-y-3 border-t border-border-soft pt-4">
@@ -236,7 +240,7 @@
                         <h2 class="font-heading text-2xl font-bold text-text-heading">Аделина</h2>
                         <p class="mt-2 text-sm font-semibold text-accent">Доула школы</p>
                         <p class="mt-4 flex-1 text-sm leading-relaxed text-text-muted">Меня зовут Аделина. Я мама погодок и доула по призванию души. Пройдя собственный путь материнства, я поняла, что поддержка женщины в родах — моё истинное дело. Моя цель — помочь вам чувствовать себя защищённо, уверенно и спокойно в этот важный момент.</p>
-                                                    <a href="#adelina-package" class="btn-outline btn-sm mt-6 w-full">
+                                                    <a href="#elena-packages" class="btn-outline btn-sm mt-6 w-full">
                                 Пакеты сопровождения
                             </a>
                                             </div>
@@ -296,16 +300,16 @@
 <section id="elena-packages" class="scroll-mt-40 bg-bg-base py-16">
     <div class="mx-auto max-w-7xl px-4 sm:px-6 lg:px-8">
         <div class="max-w-3xl">
-            <span class="section-eyebrow">Елена Тимофеева</span>
+            <span class="section-eyebrow">Наши доулы</span>
             <h2 class="section-heading mt-2">Пакеты сопровождения</h2>
             <p class="section-subheading text-base leading-relaxed sm:text-lg">
                 Выберите объём поддержки, который соответствует вашим ожиданиям от подготовки, родов и первых месяцев с малышом.
             </p>
         </div>
 
-        <div class="mt-10 grid grid-cols-1 gap-5 lg:grid-cols-3">
+        <div class="mt-10 grid grid-cols-1 gap-5 md:grid-cols-2 xl:grid-cols-4">
                             <article class="border-border-soft shadow-card flex h-full flex-col rounded-card border bg-bg-card p-6 sm:p-8">
-                                        <p class="text-sm font-semibold text-accent">Базовый</p>
+                                        <p class="text-sm font-semibold text-accent">Елена · Базовый</p>
                     <p class="mt-3 font-heading text-4xl font-bold text-text-heading">45 000 ₽</p>
                     <ul class="mt-6 flex-1 space-y-3">
                                                     <li class="flex gap-3 text-sm leading-relaxed text-text-muted">
@@ -329,7 +333,7 @@
                                             <span class="mb-5 inline-flex w-fit rounded-full bg-accent/15 px-3 py-1 text-xs font-semibold uppercase tracking-widest text-accent">
                             Расширенная поддержка
                         </span>
-                                        <p class="text-sm font-semibold text-accent">Премиум</p>
+                                        <p class="text-sm font-semibold text-accent">Елена · Премиум</p>
                     <p class="mt-3 font-heading text-4xl font-bold text-text-heading">55 000 ₽</p>
                     <ul class="mt-6 flex-1 space-y-3">
                                                     <li class="flex gap-3 text-sm leading-relaxed text-text-muted">
@@ -358,7 +362,7 @@
                     </a>
                 </article>
                             <article class="border-border-soft shadow-card flex h-full flex-col rounded-card border bg-bg-card p-6 sm:p-8">
-                                        <p class="text-sm font-semibold text-accent">VIP</p>
+                                        <p class="text-sm font-semibold text-accent">Елена · VIP</p>
                     <p class="mt-3 font-heading text-4xl font-bold text-text-heading">70 000 ₽</p>
                     <ul class="mt-6 flex-1 space-y-3">
                                                     <li class="flex gap-3 text-sm leading-relaxed text-text-muted">
@@ -386,23 +390,10 @@
                         Обсудить пакет
                     </a>
                 </article>
-                    </div>
-    </div>
-</section>
-
-<section id="adelina-package" class="scroll-mt-40 bg-bg-warm py-16">
-    <div class="mx-auto max-w-5xl px-4 sm:px-6 lg:px-8">
-        <article class="grid overflow-hidden rounded-card border border-border-soft bg-bg-card shadow-card-hover lg:grid-cols-[0.7fr_1.3fr]">
-            <img
-                src="../images/site/adelina-doula.jpg"
-                alt="Аделина, доула школы «Рожаем вместе»"
-                class="h-full min-h-72 w-full object-cover object-center"
-            >
-            <div class="flex flex-col p-6 sm:p-8 lg:p-10">
-                <span class="text-xs font-semibold uppercase tracking-widest text-accent">Аделина</span>
-                <h2 class="mt-3 font-heading text-3xl font-bold text-text-heading">Сопровождение родов</h2>
-                <p class="mt-4 font-heading text-4xl font-bold text-text-heading">36 000 ₽</p>
-                <ul class="mt-6 grid gap-3 sm:grid-cols-3">
+                        <article class="flex h-full flex-col rounded-card border border-border-soft bg-bg-card p-6 shadow-card sm:p-8">
+                <p class="text-sm font-semibold text-accent">Пакет Аделины</p>
+                <p class="mt-3 font-heading text-4xl font-bold text-text-heading">36 000 ₽</p>
+                <ul class="mt-6 flex-1 space-y-3">
                                             <li class="flex gap-3 text-sm leading-relaxed text-text-muted">
                             <span class="mt-1 flex h-5 w-5 shrink-0 items-center justify-center rounded-full bg-gold/20 text-xs font-bold text-gold-dark">✓</span>
                             <span>Связь с 36-й недели.</span>
@@ -416,11 +407,9 @@
                             <span>Поддержка в течение двух часов после родов.</span>
                         </li>
                                     </ul>
-                <a href="../contacts/#form" class="btn-accent mt-8 w-full sm:w-fit">
-                    Обсудить пакет
-                </a>
-            </div>
-        </article>
+                <a href="../contacts/#form" class="btn-outline mt-8 w-full">Обсудить пакет</a>
+            </article>
+        </div>
     </div>
 </section>
     </main>
@@ -543,6 +532,6 @@
     </button>
 </div>
 
-    <script  data-navigate-once="true">window.livewireScriptConfig = {"csrf":"vCTufJYU60cE65iFl3EQR4l0YCnk1M2BTFwsie6Z","uri":"\/livewire\/update","progressBar":"","nonce":""};</script>
+    <script  data-navigate-once="true">window.livewireScriptConfig = {"csrf":"sLELTOnAl74RJHsbhQzSaNa9TAEvkuEiSCi9WYp3","uri":"\/livewire\/update","progressBar":"","nonce":""};</script>
     </body>
 </html>
