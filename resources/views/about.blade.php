@@ -1,9 +1,9 @@
 @extends('layouts.app')
 
 @section('title', 'Наши специалисты — Школа материнства «Рожаем вместе»')
-@section('description', 'Елена Тимофеева, семейный психолог Вячеслав и доула Екатерина — специалисты школы материнства «Рожаем вместе».')
+@section('description', 'Елена Тимофеева и семейный психолог Вячеслав — специалисты школы материнства «Рожаем вместе».')
 @section('og_title', 'Наши специалисты — Школа материнства «Рожаем вместе»')
-@section('og_description', 'Познакомьтесь с командой школы: подготовка к родам, семейная психология и бережное сопровождение.')
+@section('og_description', 'Познакомьтесь со специалистами школы: подготовка к родам, поддержка семьи и семейная психология.')
 
 @section('content')
 @php
@@ -24,14 +24,6 @@
             'image_position' => 'object-top',
             'summary' => 'Многодетный отец и семейный психолог. Помогает парам выстраивать диалог и готовиться к изменениям до и после рождения ребёнка.',
         ],
-        [
-            'id' => 'ekaterina',
-            'name' => 'Екатерина',
-            'role' => 'Доула школы',
-            'image' => 'images/site/ekaterina-specialist.webp',
-            'image_position' => 'object-top',
-            'summary' => 'Бережно сопровождает женщину в родах, создавая спокойную атмосферу и поддерживая её собственный темп и выбор.',
-        ],
     ];
 @endphp
 
@@ -45,7 +37,7 @@
             </p>
         </div>
 
-        <div class="mt-12 grid grid-cols-1 gap-5 md:grid-cols-2 lg:grid-cols-3">
+        <div class="mt-12 grid grid-cols-1 gap-5 md:grid-cols-2">
             @foreach($specialists as $specialist)
                 <article
                     class="group flex h-full flex-col overflow-hidden rounded-card border bg-bg-card shadow-card transition duration-300 hover:-translate-y-1 hover:shadow-card-hover"
@@ -196,41 +188,6 @@
                 </div>
             </article>
 
-            <article
-                x-show="active === 'ekaterina'"
-                x-collapse
-                x-cloak
-                class="overflow-hidden rounded-card border border-border-soft bg-bg-card shadow-card-hover"
-            >
-                <div class="grid gap-0 lg:grid-cols-[0.75fr_1.25fr]">
-                    <div class="bg-bg-warm p-7 sm:p-10 lg:p-12">
-                        <span class="section-eyebrow">Бережное сопровождение</span>
-                        <h2 class="mt-3 font-heading text-3xl font-bold text-text-heading sm:text-4xl">Екатерина</h2>
-                        <p class="mt-5 leading-relaxed text-text-muted">
-                            Я рядом с женщиной в один из самых важных моментов её жизни — во время родов.
-                        </p>
-                        <p class="mt-4 leading-relaxed text-text-muted">
-                            Сопровождаю этот путь бережно, без давления и лишних ожиданий. Для меня важно, чтобы женщина чувствовала себя в безопасности, была услышана и могла прожить свой опыт в собственном темпе и ритме.
-                        </p>
-                    </div>
-                    <div class="p-7 sm:p-10 lg:p-12">
-                        <h3 class="font-heading text-2xl font-bold text-text-heading">Как я поддерживаю</h3>
-                        <ul class="mt-6 space-y-4">
-                            @foreach([
-                                'Эмоциональная поддержка без оценок и давления',
-                                'Создание спокойной и уютной атмосферы',
-                                'Физическая поддержка во время схваток: дыхание, положения тела и ароматерапия',
-                                'Присутствие, в котором можно расслабиться и быть собой',
-                            ] as $support)
-                                <li class="flex gap-3 leading-relaxed text-text-muted">
-                                    <span class="mt-1 flex h-6 w-6 shrink-0 items-center justify-center rounded-full bg-gold/20 text-xs font-bold text-gold-dark">✓</span>
-                                    <span>{{ $support }}</span>
-                                </li>
-                            @endforeach
-                        </ul>
-                    </div>
-                </div>
-            </article>
         </div>
     </div>
 </section>

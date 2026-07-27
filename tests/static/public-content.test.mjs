@@ -27,7 +27,7 @@ test('public branding is neutral and the header has two navigation rows', async 
     assert.match(header, /'format' => 'offline'/);
 });
 
-test('about contains three specialists and doulas include the verification block', async () => {
+test('about contains two specialists and doulas include Ekaterina and the verification block', async () => {
     const [about, doulas] = await Promise.all([
         read('resources/views/about.blade.php'),
         read('resources/views/doulas.blade.php'),
@@ -37,13 +37,11 @@ test('about contains three specialists and doulas include the verification block
     assert.match(about, /Елена Тимофеева/);
     assert.match(about, /Вячеслав/);
     assert.match(about, /Семейный психолог/);
-    assert.match(about, /Екатерина/);
-    assert.match(about, /Доула школы/);
     assert.match(about, /vyacheslav-specialist\.webp/);
-    assert.match(about, /ekaterina-specialist\.webp/);
     assert.match(about, /Профессиональные направления/);
     assert.match(about, /Подготовка к партнёрским родам/);
-    assert.match(about, /Как я поддерживаю/);
+    assert.doesNotMatch(about, /Екатерина/);
+    assert.doesNotMatch(about, /ekaterina-specialist\.webp/);
     assert.doesNotMatch(about, /Анкета специалиста скоро будет дополнена/);
     assert.doesNotMatch(about, /каждого десятого мужчины/i);
     assert.doesNotMatch(about, /отцовский инстинкт/i);
@@ -53,6 +51,9 @@ test('about contains three specialists and doulas include the verification block
     assert.match(doulas, /Официальный договор/);
     assert.match(doulas, /Образование и сертификаты/);
     assert.match(doulas, /Пакет Аделины/);
+    assert.match(doulas, /Екатерина/);
+    assert.match(doulas, /ekaterina-specialist\.webp/);
+    assert.match(doulas, /hidden min-h-14 md:flex/);
     assert.doesNotMatch(doulas, /id="adelina-package"/);
 });
 

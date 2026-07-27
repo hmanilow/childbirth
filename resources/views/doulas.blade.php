@@ -22,12 +22,12 @@
             'packages_anchor' => 'elena-packages',
         ],
         [
-            'initials' => 'Д',
-            'name' => 'Доула школы',
-            'role' => 'Специалист школы',
-            'image' => null,
-            'image_position' => '',
-            'description' => 'Анкета скоро будет заполнена.',
+            'initials' => 'Е',
+            'name' => 'Екатерина',
+            'role' => 'Доула школы',
+            'image' => 'images/site/ekaterina-specialist.webp',
+            'image_position' => 'object-top',
+            'description' => 'Я рядом с женщиной в один из самых важных моментов её жизни — во время родов. Сопровождаю этот путь бережно, без давления и лишних ожиданий. Помогаю создать спокойную атмосферу, поддерживаю дыханием, удобными положениями тела и внимательным присутствием.',
             'packages_anchor' => null,
         ],
     ];
@@ -71,7 +71,7 @@
 @endphp
 
 @section('title', 'Наши доулы — сопровождение родов в Москве и Московской области')
-@section('description', 'Доулы школы материнства «Рожаем вместе»: сопровождение беременности и родов в Москве и Московской области. Пакеты Елены Тимофеевой и Аделины.')
+@section('description', 'Доулы школы материнства «Рожаем вместе»: Елена Тимофеева, Аделина и Екатерина. Сопровождение беременности и родов в Москве и Московской области.')
 @section('og_title', 'Наши доулы — Школа материнства «Рожаем вместе»')
 @section('og_description', 'Познакомьтесь с доулами школы и выберите пакет сопровождения родов в Москве и Московской области.')
 
@@ -118,7 +118,7 @@
                             </a>
                         @else
                             <button type="button" class="btn-outline btn-sm mt-6 w-full" disabled aria-disabled="true">
-                                Подробнее
+                                Доула школы
                             </button>
                         @endif
                     </div>
@@ -168,9 +168,13 @@
             @foreach($elenaPackages as $package)
                 <article class="{{ $package['featured'] ? 'border-accent/60 shadow-card-hover' : 'border-border-soft shadow-card' }} flex h-full flex-col rounded-card border bg-bg-card p-6 sm:p-8">
                     @if($package['featured'])
-                        <span class="mb-5 inline-flex w-fit rounded-full bg-accent/15 px-3 py-1 text-xs font-semibold uppercase tracking-widest text-accent">
-                            Расширенная поддержка
-                        </span>
+                        <div class="mb-5 flex min-h-0 items-start md:min-h-14">
+                            <span class="inline-flex w-fit rounded-full bg-accent/15 px-3 py-1 text-xs font-semibold uppercase tracking-widest text-accent">
+                                Расширенная поддержка
+                            </span>
+                        </div>
+                    @else
+                        <div class="mb-5 hidden min-h-14 md:flex" aria-hidden="true"></div>
                     @endif
                     <p class="text-sm font-semibold text-accent">Елена · {{ $package['name'] }}</p>
                     <p class="mt-3 font-heading text-4xl font-bold text-text-heading">{{ $package['price'] }}</p>
@@ -188,6 +192,7 @@
                 </article>
             @endforeach
             <article class="flex h-full flex-col rounded-card border border-border-soft bg-bg-card p-6 shadow-card sm:p-8">
+                <div class="mb-5 hidden min-h-14 md:block" aria-hidden="true"></div>
                 <p class="text-sm font-semibold text-accent">Пакет Аделины</p>
                 <p class="mt-3 font-heading text-4xl font-bold text-text-heading">36 000 ₽</p>
                 <ul class="mt-6 flex-1 space-y-3">
