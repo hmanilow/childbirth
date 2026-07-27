@@ -27,7 +27,7 @@ test('public branding is neutral and the header has two navigation rows', async 
     assert.match(header, /'format' => 'offline'/);
 });
 
-test('about is a single specialist card and doulas include the verification block', async () => {
+test('about contains three specialists and doulas include the verification block', async () => {
     const [about, doulas] = await Promise.all([
         read('resources/views/about.blade.php'),
         read('resources/views/doulas.blade.php'),
@@ -35,12 +35,18 @@ test('about is a single specialist card and doulas include the verification bloc
 
     assert.match(about, /Наши специалисты/);
     assert.match(about, /Елена Тимофеева/);
-    assert.match(about, /основатель и руководитель школы материнства «Рожаем вместе»/i);
-    assert.match(about, /Меня зовут Елена Тимофеева\. Я многодетная мама/);
-    assert.match(about, /Я создала эту школу, чтобы беременность, роды и первые месяцы материнства/);
+    assert.match(about, /Вячеслав/);
+    assert.match(about, /Семейный психолог/);
+    assert.match(about, /Екатерина/);
+    assert.match(about, /Доула школы/);
+    assert.match(about, /vyacheslav-specialist\.webp/);
+    assert.match(about, /ekaterina-specialist\.webp/);
+    assert.match(about, /Профессиональные направления/);
+    assert.match(about, /Подготовка к партнёрским родам/);
+    assert.match(about, /Как я поддерживаю/);
     assert.doesNotMatch(about, /Анкета специалиста скоро будет дополнена/);
-    assert.doesNotMatch(about, /Сопровождение в родах/);
-    assert.doesNotMatch(about, /Связаться со школой/);
+    assert.doesNotMatch(about, /каждого десятого мужчины/i);
+    assert.doesNotMatch(about, /отцовский инстинкт/i);
 
     assert.match(doulas, /Что важно уточнить перед сопровождением в родах/);
     assert.match(doulas, /Анализы и допуск/);
@@ -50,36 +56,59 @@ test('about is a single specialist card and doulas include the verification bloc
     assert.doesNotMatch(doulas, /id="adelina-package"/);
 });
 
-test('course seeder publishes exactly one online and sixteen offline manual programs', async () => {
+test('course seeder prepares five offline and eight online programs with three drafts', async () => {
     const seeder = await read('database/seeders/CourseSeeder.php');
-    const expectedTitles = [
-        'Мягкое рождение',
-        'Базовый полный курс',
-        'Экспресс-полный курс',
-        'Экспресс-курс',
+    const publishedTitles = [
+        'Для будущих и состоявшихся мам',
+        'Онлайн-курс для будущих мам',
+        'Онлайн-курс для состоявшихся мам',
+        'Здоровая беременность',
+        'Подготовка к родам',
+        'Курс подготовки к родам «Базовый»',
+        'Интенсив «Всё о родах» за 4 часа',
+        'Интенсив «Всё о детях» за 4 часа',
         'Фитнес для беременных',
-        'Фитнес + дыхание',
-        'Только лекции',
-        'Дыхание + лекции',
-        'Один день «Всё о родах»',
-        'Один день «Всё о детях»',
-        'Партнёрские роды',
-        'Гипнороды',
-        'Йога для беременных',
-        'Домашний курс',
-        'Школа будущих родителей',
-        'Совместные роды',
-        'Программа «Лёгкое рождение»',
+        'Фитнес для беременных + дыхание в родах',
     ];
+    const draftTitles = ['Восстановление мамы', 'Здоровье новорождённого', 'Будни мамы с ребёнком'];
 
-    for (const title of expectedTitles) {
+    for (const title of [...publishedTitles, ...draftTitles]) {
         assert.match(seeder, new RegExp(`'title'\\s*=>\\s*'${title.replace(/[.*+?^${}()|[\]\\]/g, '\\$&')}'`));
     }
+    for (const title of draftTitles) {
+        const escaped = title.replace(/[.*+?^${}()|[\]\\]/g, '\\$&');
+        assert.match(seeder, new RegExp(`'title'\\s*=>\\s*'${escaped}'[\\s\\S]{0,1000}'is_published'\\s*=>\\s*false`));
+    }
 
-    assert.equal((seeder.match(/'title'\s*=>/g) ?? []).length, 17);
-    assert.equal((seeder.match(/Course::FORMAT_ONLINE/g) ?? []).length, 1);
-    assert.equal((seeder.match(/Course::FORMAT_OFFLINE/g) ?? []).length, 16);
+    assert.equal((seeder.match(/'title'\s*=>/g) ?? []).length, 13);
+    assert.equal((seeder.match(/Course::FORMAT_ONLINE/g) ?? []).length, 8);
+    assert.equal((seeder.match(/Course::FORMAT_OFFLINE/g) ?? []).length, 5);
     assert.match(seeder, /'access_type'\s*=>\s*'manual'/);
+    assert.match(seeder, /'pricing_options'\s*=>/);
+    assert.match(seeder, /'price'\s*=>\s*14900/);
+    assert.match(seeder, /'old_price'\s*=>\s*18000/);
+    assert.match(seeder, /'access_days'\s*=>\s*180/);
+    assert.doesNotMatch(seeder, /позволит родить без боли и травм/i);
+    assert.doesNotMatch(seeder, /лучшие роддома/i);
+});
+
+test('course pricing options are centralized in the model, migration and admin', async () => {
+    const [model, migration, resource, card, coursePage] = await Promise.all([
+        read('app/Domain/Courses/Models/Course.php'),
+        read('database/migrations/2026_07_27_000001_add_pricing_options_to_courses_table.php'),
+        read('app/Filament/Resources/CourseResource.php'),
+        read('resources/views/components/course-card.blade.php'),
+        read('resources/views/courses/show.blade.php'),
+    ]);
+
+    assert.match(model, /'pricing_options'\s*=>\s*'array'/);
+    assert.match(model, /function priceLabel/);
+    assert.match(migration, /json\('pricing_options'\)/);
+    assert.match(resource, /Repeater::make\('pricing_options'\)/);
+    assert.match(resource, /'manual'\s*=>\s*'Ручная запись'/);
+    assert.match(card, /priceLabel/);
+    assert.match(coursePage, /AggregateOffer/);
+    assert.match(coursePage, /Полная программа курса/);
 });
 
 test('reviews route exists and stays outside the sitemap', async () => {

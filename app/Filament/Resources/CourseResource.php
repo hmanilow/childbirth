@@ -28,6 +28,7 @@ class CourseResource extends Resource
                     Forms\Components\TextInput::make('title')->label('Название')->required()->live(onBlur: true)
                         ->afterStateUpdated(fn ($state, Forms\Set $set) => $set('slug', \Str::slug($state))),
                     Forms\Components\TextInput::make('slug')->label('Slug')->required(),
+                    Forms\Components\TextInput::make('subtitle')->label('Подзаголовок'),
                     Forms\Components\Select::make('format')->label('Формат')->options([
                         Course::FORMAT_ONLINE => 'Онлайн',
                         Course::FORMAT_OFFLINE => 'Офлайн',
@@ -42,10 +43,23 @@ class CourseResource extends Resource
                 Forms\Components\Tabs\Tab::make('Цена и доступ')->schema([
                     Forms\Components\TextInput::make('price')->label('Цена')->numeric()->prefix('₽')->required(),
                     Forms\Components\TextInput::make('old_price')->label('Старая цена')->numeric()->prefix('₽'),
+                    Forms\Components\Repeater::make('pricing_options')
+                        ->label('Варианты стоимости')
+                        ->schema([
+                            Forms\Components\TextInput::make('label')->label('Название варианта')->required(),
+                            Forms\Components\TextInput::make('price')->label('Цена')->numeric()->prefix('₽')->required(),
+                            Forms\Components\TextInput::make('old_price')->label('Старая цена')->numeric()->prefix('₽'),
+                            Forms\Components\TextInput::make('note')->label('Примечание')->columnSpanFull(),
+                        ])
+                        ->columns(2)
+                        ->columnSpanFull()
+                        ->collapsible()
+                        ->itemLabel(fn (array $state): ?string => $state['label'] ?? null),
                     Forms\Components\Select::make('access_type')->label('Тип доступа')->options([
-                        'lifetime' => 'Навсегда',
-                        'limited'  => 'Ограниченный',
-                    ])->default('lifetime'),
+                        'manual' => 'Ручная запись',
+                        'paid' => 'Платный доступ',
+                        'free' => 'Бесплатный доступ',
+                    ])->default('manual')->required(),
                     Forms\Components\TextInput::make('access_days')->label('Дней доступа')->numeric(),
                     Forms\Components\Select::make('level')->label('Уровень')->options([
                         'beginner'     => 'Начинающий',
@@ -90,7 +104,10 @@ class CourseResource extends Resource
                     ->color(fn (?string $state): string => $state === Course::FORMAT_OFFLINE ? 'warning' : 'info')
                     ->sortable(),
                 Tables\Columns\TextColumn::make('category')->label('Категория')->searchable()->toggleable(),
-                Tables\Columns\TextColumn::make('price')->label('Цена')->money('RUB')->sortable(),
+                Tables\Columns\TextColumn::make('price')
+                    ->label('Цена')
+                    ->formatStateUsing(fn (Course $record): string => $record->priceLabel())
+                    ->sortable(),
                 Tables\Columns\IconColumn::make('is_published')->label('Опубл.')->boolean(),
                 Tables\Columns\IconColumn::make('is_featured')->label('Хит')->boolean()->toggleable(),
                 Tables\Columns\TextColumn::make('lessons_count')->label('Уроков')->sortable(),

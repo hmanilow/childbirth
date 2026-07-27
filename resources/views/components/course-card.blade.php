@@ -4,8 +4,11 @@
     $slug = (string) ($course->slug ?? '');
     $formatLabel = method_exists($course, 'formatLabel') ? $course->formatLabel() : 'Онлайн';
     $isOffline = ($course->format ?? '') === \App\Domain\Courses\Models\Course::FORMAT_OFFLINE;
-    $isFree = ((float) $course->price) <= 0;
-    $isManual = ($course->access_type ?? '') === 'manual';
+    $priceLabel = method_exists($course, 'priceLabel') ? $course->priceLabel() : 'Уточняется';
+    $detailLabel = $isOffline ? 'Расписание' : 'Доступ';
+    $detailValue = $isOffline
+        ? 'По предварительной записи'
+        : ($course->access_days ? $course->access_days . ' дней' : 'После оформления');
     $iconType = str_contains($slug, 'papa') || str_contains($slug, 'partner')
         ? 'family'
         : (str_contains($slug, 'uhod') || str_contains($slug, 'vskarmlivanie') || str_contains($slug, 'son') ? 'baby' : 'birth');
@@ -61,6 +64,9 @@
             <h3 class="font-heading text-xl font-semibold leading-snug text-text-heading transition-colors group-hover:text-accent">
                 {{ $course->title }}
             </h3>
+            @if($course->subtitle)
+                <p class="mt-2 text-sm font-medium leading-relaxed text-text-primary">{{ $course->subtitle }}</p>
+            @endif
         </a>
 
         @if($course->short_desc)
@@ -70,11 +76,14 @@
         <div class="mb-5 grid grid-cols-2 gap-3 rounded-btn bg-bg-light p-3 text-xs text-text-muted">
             <div>
                 <span class="block text-text-subtle">Стоимость</span>
-                <span class="mt-1 block font-semibold text-text-heading">{{ $isManual ? 'Уточняется' : ($isFree ? 'Бесплатно' : number_format((float) $course->price, 0, '.', ' ') . ' ₽') }}</span>
+                <span class="mt-1 block font-semibold text-text-heading">{{ $priceLabel }}</span>
+                @if($course->hasDiscount())
+                    <span class="mt-0.5 block text-text-subtle line-through">{{ number_format((float) $course->old_price, 0, '.', ' ') }} ₽</span>
+                @endif
             </div>
             <div>
-                <span class="block text-text-subtle">Расписание</span>
-                <span class="mt-1 block font-semibold text-text-heading">Уточняется</span>
+                <span class="block text-text-subtle">{{ $detailLabel }}</span>
+                <span class="mt-1 block font-semibold leading-snug text-text-heading">{{ $detailValue }}</span>
             </div>
         </div>
 

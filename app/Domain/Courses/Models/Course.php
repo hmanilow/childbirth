@@ -20,9 +20,9 @@ class Course extends Model implements HasMedia
     public const FORMAT_OFFLINE = 'offline';
 
     protected $fillable = [
-        'title', 'slug', 'short_desc', 'description',
+        'title', 'slug', 'subtitle', 'short_desc', 'description',
         'cover', 'video_preview_url',
-        'price', 'old_price', 'currency',
+        'price', 'old_price', 'pricing_options', 'currency',
         'format', 'category',
         'access_type', 'access_days',
         'level', 'duration_hours', 'lessons_count',
@@ -37,6 +37,7 @@ class Course extends Model implements HasMedia
         'what_you_learn' => 'array',
         'requirements'   => 'array',
         'includes'       => 'array',
+        'pricing_options' => 'array',
         'is_published'   => 'boolean',
         'is_active'      => 'boolean',
         'is_featured'    => 'boolean',
@@ -108,6 +109,27 @@ class Course extends Model implements HasMedia
         }
 
         return (int) round((1 - $this->price / $this->old_price) * 100);
+    }
+
+    public function priceLabel(): string
+    {
+        $prices = collect($this->pricing_options ?? [])
+            ->pluck('price')
+            ->filter(fn ($price) => is_numeric($price) && (float) $price > 0)
+            ->map(fn ($price) => (float) $price);
+
+        if ((float) $this->price > 0) {
+            $prices->push((float) $this->price);
+        }
+
+        if ($prices->isEmpty()) {
+            return 'Уточняется';
+        }
+
+        $lowest = $prices->min();
+        $prefix = $prices->unique()->count() > 1 ? 'от ' : '';
+
+        return $prefix . number_format($lowest, 0, '.', ' ') . ' ₽';
     }
 
     public function registerMediaCollections(): void
