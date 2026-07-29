@@ -4,7 +4,7 @@ import test from 'node:test';
 
 const read = (path) => readFile(new URL(`../../${path}`, import.meta.url), 'utf8');
 
-test('public branding is neutral and the header has two navigation rows', async () => {
+test('public branding is neutral and navigation stays visible without a burger menu', async () => {
     const [header, layout, home, footer] = await Promise.all([
         read('resources/views/components/header.blade.php'),
         read('resources/views/layouts/app.blade.php'),
@@ -25,9 +25,21 @@ test('public branding is neutral and the header has two navigation rows', async 
     assert.match(header, /href="\{\{ route\('courses\.index'\) \}\}"/);
     assert.match(header, /'format' => 'online'/);
     assert.match(header, /'format' => 'offline'/);
+    assert.match(header, /grid-cols-6/);
+    assert.match(header, /sm:grid-cols-5/);
+    assert.doesNotMatch(header, /mobile-navigation/);
+    assert.doesNotMatch(header, /aria-label="Открыть меню"/);
+
+    assert.match(home, /Готовим к родам\./);
+    assert.match(home, /Сопровождаем в родах\./);
+    assert.match(home, /Подготовка к партнёрским родам/);
+    assert.match(home, /Уход за малышом и первый месяц/);
+    assert.match(home, /Познакомиться с доулами/);
+    assert.match(home, /учебных программ/);
+    assert.doesNotMatch(home, /временных программ/);
 });
 
-test('about contains two specialists and doulas include Ekaterina and the verification block', async () => {
+test('about shows four complete specialist profiles and doulas keep their profiles', async () => {
     const [about, doulas] = await Promise.all([
         read('resources/views/about.blade.php'),
         read('resources/views/doulas.blade.php'),
@@ -35,16 +47,22 @@ test('about contains two specialists and doulas include Ekaterina and the verifi
 
     assert.match(about, /Наши специалисты/);
     assert.match(about, /Елена Тимофеева/);
-    assert.match(about, /Вячеслав/);
+    assert.match(about, /Вячеслав Тимофеев/);
     assert.match(about, /Семейный психолог/);
     assert.match(about, /vyacheslav-specialist\.webp/);
-    assert.match(about, /Профессиональные направления/);
     assert.match(about, /Подготовка к партнёрским родам/);
-    assert.doesNotMatch(about, /Екатерина/);
-    assert.doesNotMatch(about, /ekaterina-specialist\.webp/);
+    assert.match(about, /Аделина/);
+    assert.match(about, /adelina-doula\.jpg/);
+    assert.match(about, /Екатерина/);
+    assert.match(about, /ekaterina-specialist\.webp/);
+    assert.match(about, /Член союза профессиональной поддержки материнства/);
+    assert.match(about, /Член ассоциации профессиональных доул/);
+    assert.match(about, /Детский психолог-консультант[\s\S]{0,200}Специалист по коррекции детского сна/);
     assert.doesNotMatch(about, /Анкета специалиста скоро будет дополнена/);
-    assert.doesNotMatch(about, /каждого десятого мужчины/i);
-    assert.doesNotMatch(about, /отцовский инстинкт/i);
+    assert.doesNotMatch(about, /Подробнее/);
+    assert.doesNotMatch(about, /x-show=/);
+    assert.match(about, /каждого десятого мужчины/i);
+    assert.match(about, /отцовский инстинкт/i);
 
     assert.match(doulas, /Что важно уточнить перед сопровождением в родах/);
     assert.match(doulas, /Анализы и допуск/);

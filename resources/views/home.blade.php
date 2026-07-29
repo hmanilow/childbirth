@@ -5,9 +5,9 @@
 @endphp
 
 @section('title', $brandName)
-@section('description', 'Школа материнства «Рожаем вместе»: подготовка к беременности и родам, партнёрские роды, уход за малышом и послеродовая поддержка в Москве и Московской области.')
+@section('description', 'Школа материнства «Рожаем вместе»: подготовка к родам, партнёрские роды, сопровождение доулой, уход за малышом и первый месяц семьи.')
 @section('og_title', $brandName)
-@section('og_description', 'Курсы, доулы и бережная поддержка семьи от подготовки к родам до первых месяцев после рождения малыша.')
+@section('og_description', 'Готовим к родам, сопровождаем в родах и обучаем уходу за малышом в онлайн- и офлайн-форматах.')
 
 @section('structured_data')
 <script type="application/ld+json">
@@ -42,17 +42,18 @@
             <p class="mb-4 text-sm font-semibold text-accent">
                 Школа материнства «Рожаем вместе»
             </p>
-            <h1 class="font-heading text-[2rem] font-bold leading-[1.08] text-text-heading sm:text-5xl lg:text-hero">
-                Курсы для будущих <br class="sm:hidden">мам и пап
+            <h1 class="font-heading text-[2.35rem] font-bold leading-[1.08] text-text-heading sm:text-5xl lg:text-hero">
+                Готовим к родам.<br>
+                Сопровождаем в родах.
             </h1>
             <p class="mt-5 max-w-2xl text-lg leading-relaxed text-text-muted">
-                Подготовка к родам, партнёрству, уходу за малышом и первым месяцам семьи в онлайн и офлайн форматах.
+                Курсы для будущих мам и пап, подготовка к партнёрским родам, сопровождение доулой, уход за малышом и первый месяц семьи — онлайн и офлайн.
             </p>
             <p class="mt-3 text-sm font-semibold text-gold-dark">Москва и Московская область</p>
 
             <div class="mt-8 flex flex-col gap-3 sm:flex-row sm:flex-wrap">
-                <a href="#online" class="btn-accent btn-lg w-full sm:w-auto">Онлайн-курсы</a>
-                <a href="#offline" class="btn-outline btn-lg w-full sm:w-auto">Офлайн-курсы</a>
+                <a href="#courses" class="btn-accent btn-lg w-full sm:w-auto">Выбрать курс</a>
+                <a href="{{ route('doulas') }}" class="btn-outline btn-lg w-full sm:w-auto">Наши доулы</a>
             </div>
         </div>
 
@@ -73,69 +74,59 @@
             </div>
             <div class="absolute bottom-12 left-0 w-[58%] rounded-lg bg-accent p-7 text-white shadow-glow">
                 <p class="text-5xl font-bold leading-none">{{ $courses->count() }}</p>
-                <p class="mt-2 text-sm font-medium uppercase tracking-widest text-white/85">временных программ</p>
+                <p class="mt-2 text-sm font-medium uppercase tracking-widest text-white/85">учебных программ</p>
             </div>
         </div>
     </div>
 </section>
 
 <section class="bg-bg-base py-16" aria-labelledby="welcome-title">
-    <div class="mx-auto grid max-w-7xl gap-10 px-4 sm:px-6 lg:grid-cols-[0.88fr_1.12fr] lg:gap-16 lg:px-8">
-        <div class="max-w-xl">
+    <div class="mx-auto max-w-7xl px-4 sm:px-6 lg:px-8">
+        <div class="max-w-4xl">
             <span class="section-eyebrow">Рожаем вместе</span>
             <h2 id="welcome-title" class="section-heading mt-2">
-                Добро пожаловать в школу материнства «Рожаем вместе»
+                От подготовки к родам до первых недель с малышом
             </h2>
-            <div class="mt-6 space-y-4 text-base leading-relaxed text-text-muted sm:text-lg">
-                <p>
-                    Беременность и роды — важнейшее путешествие в жизни семьи. Мы рядом, чтобы вы прошли его с радостью, уверенностью и спокойствием.
-                </p>
-                <p>
-                    В школе собрана большая база полезной информации о беременности, родах и уходе за малышом в удобном онлайн- и офлайн-формате.
-                </p>
-            </div>
-            <a href="#courses" class="btn-outline btn-lg mt-8 w-full sm:w-auto">Посмотреть курсы</a>
+            <p class="section-subheading max-w-3xl text-base leading-relaxed sm:text-lg">
+                Даём знания, отрабатываем практические навыки и остаёмся рядом в родах и после рождения ребёнка.
+            </p>
         </div>
 
-        <div>
-            <p class="text-xs font-semibold uppercase tracking-widest text-accent">Что мы предлагаем</p>
-            <ul class="mt-4 border-t border-border-soft">
-                <li class="grid gap-2 border-b border-border-soft py-5 sm:grid-cols-[2.5rem_1fr] sm:gap-4">
-                    <span class="font-heading text-2xl font-bold text-gold-dark" aria-hidden="true">01</span>
-                    <div>
-                        <h3 class="font-heading text-xl font-bold text-text-heading">Подготовка к беременности и родам</h3>
-                        <p class="mt-1 text-sm leading-relaxed text-text-muted sm:text-base">Комплексные курсы, которые помогают встретить роды с пониманием происходящего и практическими навыками.</p>
-                    </div>
-                </li>
-                <li class="grid gap-2 border-b border-border-soft py-5 sm:grid-cols-[2.5rem_1fr] sm:gap-4">
-                    <span class="font-heading text-2xl font-bold text-gold-dark" aria-hidden="true">02</span>
-                    <div>
-                        <h3 class="font-heading text-xl font-bold text-text-heading">Партнёрские роды</h3>
-                        <p class="mt-1 text-sm leading-relaxed text-text-muted sm:text-base">Специальная подготовка для пар, которые хотят действовать как единая команда.</p>
-                    </div>
-                </li>
-                <li class="grid gap-2 border-b border-border-soft py-5 sm:grid-cols-[2.5rem_1fr] sm:gap-4">
-                    <span class="font-heading text-2xl font-bold text-gold-dark" aria-hidden="true">03</span>
-                    <div>
-                        <h3 class="font-heading text-xl font-bold text-text-heading">Онлайн- и офлайн-форматы</h3>
-                        <p class="mt-1 text-sm leading-relaxed text-text-muted sm:text-base">Занимайтесь в подходящем темпе и там, где вам удобно.</p>
-                    </div>
-                </li>
-                <li class="grid gap-2 border-b border-border-soft py-5 sm:grid-cols-[2.5rem_1fr] sm:gap-4">
-                    <span class="font-heading text-2xl font-bold text-gold-dark" aria-hidden="true">04</span>
-                    <div>
-                        <h3 class="font-heading text-xl font-bold text-text-heading">Уход за малышом</h3>
-                        <p class="mt-1 text-sm leading-relaxed text-text-muted sm:text-base">Практические знания и навыки, которые пригодятся с первых дней жизни ребёнка.</p>
-                    </div>
-                </li>
-                <li class="grid gap-2 border-b border-border-soft py-5 sm:grid-cols-[2.5rem_1fr] sm:gap-4">
-                    <span class="font-heading text-2xl font-bold text-gold-dark" aria-hidden="true">05</span>
-                    <div>
-                        <h3 class="font-heading text-xl font-bold text-text-heading">Послеродовое сопровождение</h3>
-                        <p class="mt-1 text-sm leading-relaxed text-text-muted sm:text-base">Поддержка мамы и семьи после выписки, когда особенно важно не оставаться наедине с вопросами.</p>
-                    </div>
-                </li>
-            </ul>
+        <div class="mt-10 border-t border-border-soft">
+            <article class="grid gap-4 border-b border-border-soft py-7 md:grid-cols-[4rem_0.85fr_1.15fr] md:items-start md:gap-8">
+                <span class="font-heading text-3xl font-bold text-gold-dark" aria-hidden="true">01</span>
+                <h3 class="font-heading text-2xl font-bold leading-tight text-text-heading sm:text-3xl">Подготовка к родам</h3>
+                <p class="leading-relaxed text-text-muted">
+                    Объясняем этапы родов, учим дыханию, расслаблению и удобным положениям тела, помогаем снизить тревогу и подготовиться к разным сценариям.
+                </p>
+            </article>
+
+            <article class="grid gap-4 border-b border-border-soft py-7 md:grid-cols-[4rem_0.85fr_1.15fr] md:items-start md:gap-8">
+                <span class="font-heading text-3xl font-bold text-gold-dark" aria-hidden="true">02</span>
+                <h3 class="font-heading text-2xl font-bold leading-tight text-text-heading sm:text-3xl">Подготовка к партнёрским родам</h3>
+                <p class="leading-relaxed text-text-muted">
+                    Будущая мама и партнёр учатся действовать как команда: понимать этапы родов, применять массаж и способы поддержки, общаться и сохранять спокойствие.
+                </p>
+            </article>
+
+            <article class="grid gap-4 border-b border-border-soft py-7 md:grid-cols-[4rem_0.85fr_1.15fr] md:items-start md:gap-8">
+                <span class="font-heading text-3xl font-bold text-gold-dark" aria-hidden="true">03</span>
+                <div>
+                    <h3 class="font-heading text-2xl font-bold leading-tight text-text-heading sm:text-3xl">Сопровождение в родах</h3>
+                    <a href="{{ route('doulas') }}" class="mt-4 inline-flex font-semibold text-accent transition-colors hover:text-accent-hover">Познакомиться с доулами</a>
+                </div>
+                <p class="leading-relaxed text-text-muted">
+                    Доула остаётся на связи до родов, находится рядом во время родов, помогает с дыханием, массажем и положениями тела, даёт эмоциональную и информационную поддержку и помогает в первые часы после рождения малыша.
+                </p>
+            </article>
+
+            <article class="grid gap-4 border-b border-border-soft py-7 md:grid-cols-[4rem_0.85fr_1.15fr] md:items-start md:gap-8">
+                <span class="font-heading text-3xl font-bold text-gold-dark" aria-hidden="true">04</span>
+                <h3 class="font-heading text-2xl font-bold leading-tight text-text-heading sm:text-3xl">Уход за малышом и первый месяц</h3>
+                <p class="leading-relaxed text-text-muted">
+                    Обучаем ежедневному уходу, кормлению и пониманию потребностей новорождённого. Материалы о первых неделях семьи доступны в онлайн-формате, а практические занятия проходят офлайн.
+                </p>
+            </article>
         </div>
     </div>
 </section>
