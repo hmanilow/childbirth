@@ -5,6 +5,8 @@
     $phoneDigits = preg_replace('/[^0-9]/', '', $phone);
     $phoneTel = '+' . $phoneDigits;
     $telegramUsername = trim((string) ($globalSettings['telegram_username'] ?? ''));
+    $primaryCenter = collect(config('centers.locations', []))
+        ->first(fn (array $center): bool => (bool) ($center['active'] ?? false));
 @endphp
 
 @section('title', 'Контакты — Школа материнства «Рожаем вместе»')
@@ -92,6 +94,16 @@
 @endif
                         </div>
                     </div>
+
+                    @if($primaryCenter)
+                        <div class="rounded-lg border border-border-soft bg-bg-card p-5 shadow-card">
+                            <p class="text-xs font-semibold uppercase tracking-widest text-accent">Офлайн-центр</p>
+                            <h2 class="mt-2 font-heading text-2xl font-semibold text-text-primary">м. «{{ $primaryCenter['metro'] }}»</h2>
+                            <p class="mt-3 leading-relaxed text-text-muted">{{ $primaryCenter['full_address'] }}</p>
+                            <p class="mt-2 text-sm leading-relaxed text-text-subtle">{{ $primaryCenter['visit_note'] }}</p>
+                            <a href="{{ route('centers') }}" class="mt-4 inline-flex font-semibold text-accent transition-colors hover:text-accent-hover">Карта и схема проезда</a>
+                        </div>
+                    @endif
 
                     <div class="rounded-xl border border-border-soft bg-bg-card p-5 shadow-card">
                         <p class="text-text-muted text-sm leading-relaxed">

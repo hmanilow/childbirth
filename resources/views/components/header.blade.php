@@ -4,7 +4,9 @@
     $logoPath = $globalSettings['site_logo'] ?? '';
     $nav = [
         ['title' => 'Наши специалисты', 'url' => route('about')],
+        ['title' => 'Центры', 'url' => route('centers')],
         ['title' => 'Акции и новости', 'url' => route('news.index')],
+        ['title' => 'Курсы и абонементы', 'url' => route('courses.index'), 'courses' => true],
         ['title' => 'Наши Доулы', 'url' => route('doulas')],
         ['title' => 'Отзывы', 'url' => route('reviews')],
     ];
@@ -64,92 +66,84 @@
     </div>
 
     <div class="border-t border-border-soft/70 bg-accent xl:hidden">
-        <nav class="mx-auto grid max-w-7xl grid-cols-6 px-4 sm:grid-cols-5 sm:px-6 lg:px-8" aria-label="Основная навигация">
-            @foreach(array_slice($nav, 0, 2) as $item)
-                <a href="{{ $item['url'] }}" class="col-span-2 flex min-h-9 items-center justify-center px-1 py-1 text-center text-[10px] font-medium leading-tight text-white transition-colors hover:bg-accent-dark/55 sm:col-span-1 sm:min-h-12 sm:px-2 sm:text-xs">
-                    {{ $item['title'] }}
-                </a>
-            @endforeach
-
-            <div class="relative col-span-2 flex min-h-9 sm:col-span-1 sm:min-h-12" @click.outside="coursesOpen = false">
-                <a
-                    href="{{ route('courses.index') }}"
-                    class="flex flex-1 items-center justify-center py-1 pl-1 text-center text-[10px] font-medium leading-tight text-white transition-colors hover:bg-accent-dark/55 sm:pl-2 sm:text-xs"
-                >
-                    Курсы и абонементы
-                </a>
-                <button
-                    type="button"
-                    @click="coursesOpen = !coursesOpen"
-                    :aria-expanded="coursesOpen"
-                    class="flex w-7 shrink-0 items-center justify-center text-white transition-colors hover:bg-accent-dark/55 sm:w-8"
-                    aria-label="Открыть форматы курсов"
-                >
-                    <svg class="h-3.5 w-3.5 transition-transform" :class="coursesOpen && 'rotate-180'" fill="none" viewBox="0 0 24 24" stroke="currentColor" aria-hidden="true">
-                        <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="m6 9 6 6 6-6"/>
-                    </svg>
-                </button>
-                <div
-                    x-show="coursesOpen"
-                    x-cloak
-                    x-transition
-                    class="absolute right-0 top-full z-50 w-56 border border-border-soft bg-bg-card p-2 shadow-card-hover sm:left-1/2 sm:right-auto sm:-translate-x-1/2"
-                >
-                    <a href="{{ route('courses.index', ['format' => 'online']) }}" class="block rounded-btn px-4 py-3 text-sm font-medium text-text-muted transition-colors hover:bg-bg-light hover:text-accent">Онлайн-курсы</a>
-                    <a href="{{ route('courses.index', ['format' => 'offline']) }}" class="block rounded-btn px-4 py-3 text-sm font-medium text-text-muted transition-colors hover:bg-bg-light hover:text-accent">Офлайн-курсы</a>
-                </div>
-            </div>
-
-            @foreach(array_slice($nav, 2) as $item)
-                <a href="{{ $item['url'] }}" class="col-span-3 flex min-h-9 items-center justify-center px-1 py-1 text-center text-[10px] font-medium leading-tight text-white transition-colors hover:bg-accent-dark/55 sm:col-span-1 sm:min-h-12 sm:px-2 sm:text-xs">
-                    {{ $item['title'] }}
-                </a>
+        <nav class="mx-auto grid max-w-7xl grid-cols-6 px-4 sm:grid-cols-6 sm:px-6 lg:px-8" aria-label="Основная навигация">
+            @foreach($nav as $item)
+                @if(!empty($item['courses']))
+                    <div class="relative col-span-2 flex min-h-9 sm:col-span-1 sm:min-h-12" @click.outside="coursesOpen = false">
+                        <a
+                            href="{{ $item['url'] }}"
+                            class="flex flex-1 items-center justify-center py-1 pl-1 text-center text-[10px] font-medium leading-tight text-white transition-colors hover:bg-accent-dark/55 sm:pl-2 sm:text-xs"
+                        >
+                            {{ $item['title'] }}
+                        </a>
+                        <button
+                            type="button"
+                            @click="coursesOpen = !coursesOpen"
+                            :aria-expanded="coursesOpen"
+                            class="flex w-7 shrink-0 items-center justify-center text-white transition-colors hover:bg-accent-dark/55 sm:w-8"
+                            aria-label="Открыть форматы курсов"
+                        >
+                            <svg class="h-3.5 w-3.5 transition-transform" :class="coursesOpen && 'rotate-180'" fill="none" viewBox="0 0 24 24" stroke="currentColor" aria-hidden="true">
+                                <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="m6 9 6 6 6-6"/>
+                            </svg>
+                        </button>
+                        <div
+                            x-show="coursesOpen"
+                            x-cloak
+                            x-transition
+                            class="absolute right-0 top-full z-50 w-56 border border-border-soft bg-bg-card p-2 shadow-card-hover sm:left-1/2 sm:right-auto sm:-translate-x-1/2"
+                        >
+                            <a href="{{ route('courses.index', ['format' => 'online']) }}" class="block rounded-btn px-4 py-3 text-sm font-medium text-text-muted transition-colors hover:bg-bg-light hover:text-accent">Онлайн-курсы</a>
+                            <a href="{{ route('courses.index', ['format' => 'offline']) }}" class="block rounded-btn px-4 py-3 text-sm font-medium text-text-muted transition-colors hover:bg-bg-light hover:text-accent">Офлайн-курсы</a>
+                        </div>
+                    </div>
+                @else
+                    <a href="{{ $item['url'] }}" class="col-span-2 flex min-h-9 items-center justify-center px-1 py-1 text-center text-[10px] font-medium leading-tight text-white transition-colors hover:bg-accent-dark/55 sm:col-span-1 sm:min-h-12 sm:px-2 sm:text-xs">
+                        {{ $item['title'] }}
+                    </a>
+                @endif
             @endforeach
         </nav>
     </div>
 
     <div class="hidden border-t border-border-soft/70 bg-accent xl:block">
         <nav class="mx-auto flex h-12 max-w-7xl items-stretch justify-center px-4" aria-label="Основная навигация">
-            @foreach(array_slice($nav, 0, 2) as $item)
-                <a href="{{ $item['url'] }}" class="flex items-center px-4 text-center text-sm font-medium text-white transition-colors hover:bg-accent-dark/55">
-                    {{ $item['title'] }}
-                </a>
-            @endforeach
-
-            <div class="group relative flex" @mouseenter="coursesOpen = true" @mouseleave="coursesOpen = false">
-                <a
-                    href="{{ route('courses.index') }}"
-                    class="flex items-center pl-4 pr-2 text-sm font-medium text-white transition-colors hover:bg-accent-dark/55"
-                >
-                    Курсы и абонементы
-                </a>
-                <button
-                    type="button"
-                    @click="coursesOpen = !coursesOpen"
-                    :aria-expanded="coursesOpen"
-                    class="flex items-center px-2 pr-4 text-white transition-colors hover:bg-accent-dark/55"
-                    aria-label="Открыть форматы курсов"
-                >
-                    <svg class="h-4 w-4 transition-transform" :class="coursesOpen && 'rotate-180'" fill="none" viewBox="0 0 24 24" stroke="currentColor" aria-hidden="true">
-                        <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="m6 9 6 6 6-6"/>
-                    </svg>
-                </button>
-                <div
-                    x-show="coursesOpen"
-                    x-cloak
-                    x-transition
-                    @click.outside="coursesOpen = false"
-                    class="absolute left-1/2 top-full z-50 w-64 -translate-x-1/2 border border-border-soft bg-bg-card p-2 shadow-card-hover"
-                >
-                    <a href="{{ route('courses.index', ['format' => 'online']) }}" class="block rounded-btn px-4 py-3 text-sm font-medium text-text-muted transition-colors hover:bg-bg-light hover:text-accent">Онлайн-курсы</a>
-                    <a href="{{ route('courses.index', ['format' => 'offline']) }}" class="block rounded-btn px-4 py-3 text-sm font-medium text-text-muted transition-colors hover:bg-bg-light hover:text-accent">Офлайн-курсы</a>
-                </div>
-            </div>
-
-            @foreach(array_slice($nav, 2) as $item)
-                <a href="{{ $item['url'] }}" class="flex items-center px-4 text-center text-sm font-medium text-white transition-colors hover:bg-accent-dark/55">
-                    {{ $item['title'] }}
-                </a>
+            @foreach($nav as $item)
+                @if(!empty($item['courses']))
+                    <div class="group relative flex" @mouseenter="coursesOpen = true" @mouseleave="coursesOpen = false">
+                        <a
+                            href="{{ $item['url'] }}"
+                            class="flex items-center pl-4 pr-2 text-sm font-medium text-white transition-colors hover:bg-accent-dark/55"
+                        >
+                            {{ $item['title'] }}
+                        </a>
+                        <button
+                            type="button"
+                            @click="coursesOpen = !coursesOpen"
+                            :aria-expanded="coursesOpen"
+                            class="flex items-center px-2 pr-4 text-white transition-colors hover:bg-accent-dark/55"
+                            aria-label="Открыть форматы курсов"
+                        >
+                            <svg class="h-4 w-4 transition-transform" :class="coursesOpen && 'rotate-180'" fill="none" viewBox="0 0 24 24" stroke="currentColor" aria-hidden="true">
+                                <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="m6 9 6 6 6-6"/>
+                            </svg>
+                        </button>
+                        <div
+                            x-show="coursesOpen"
+                            x-cloak
+                            x-transition
+                            @click.outside="coursesOpen = false"
+                            class="absolute left-1/2 top-full z-50 w-64 -translate-x-1/2 border border-border-soft bg-bg-card p-2 shadow-card-hover"
+                        >
+                            <a href="{{ route('courses.index', ['format' => 'online']) }}" class="block rounded-btn px-4 py-3 text-sm font-medium text-text-muted transition-colors hover:bg-bg-light hover:text-accent">Онлайн-курсы</a>
+                            <a href="{{ route('courses.index', ['format' => 'offline']) }}" class="block rounded-btn px-4 py-3 text-sm font-medium text-text-muted transition-colors hover:bg-bg-light hover:text-accent">Офлайн-курсы</a>
+                        </div>
+                    </div>
+                @else
+                    <a href="{{ $item['url'] }}" class="flex items-center px-4 text-center text-sm font-medium text-white transition-colors hover:bg-accent-dark/55">
+                        {{ $item['title'] }}
+                    </a>
+                @endif
             @endforeach
         </nav>
     </div>

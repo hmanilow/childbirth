@@ -14,6 +14,7 @@ const seedPaths = [
     '/',
     '/about',
     '/doulas',
+    '/centers',
     '/reviews',
     '/courses',
     '/contacts',

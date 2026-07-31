@@ -41,7 +41,7 @@
             }
         })();
     </script>
-    <link rel="preload" as="style" href="../../build/assets/app-MIoR0qw6.css" /><link rel="modulepreload" as="script" href="../../build/assets/app-B5Qb_3I9.js" /><link rel="stylesheet" href="../../build/assets/app-MIoR0qw6.css" data-navigate-track="reload" /><script type="module" src="../../build/assets/app-B5Qb_3I9.js" data-navigate-track="reload"></script>    <!-- Livewire Styles --><style >[wire\:loading][wire\:loading], [wire\:loading\.delay][wire\:loading\.delay], [wire\:loading\.inline-block][wire\:loading\.inline-block], [wire\:loading\.inline][wire\:loading\.inline], [wire\:loading\.block][wire\:loading\.block], [wire\:loading\.flex][wire\:loading\.flex], [wire\:loading\.table][wire\:loading\.table], [wire\:loading\.grid][wire\:loading\.grid], [wire\:loading\.inline-flex][wire\:loading\.inline-flex] {display: none;}[wire\:loading\.delay\.none][wire\:loading\.delay\.none], [wire\:loading\.delay\.shortest][wire\:loading\.delay\.shortest], [wire\:loading\.delay\.shorter][wire\:loading\.delay\.shorter], [wire\:loading\.delay\.short][wire\:loading\.delay\.short], [wire\:loading\.delay\.default][wire\:loading\.delay\.default], [wire\:loading\.delay\.long][wire\:loading\.delay\.long], [wire\:loading\.delay\.longer][wire\:loading\.delay\.longer], [wire\:loading\.delay\.longest][wire\:loading\.delay\.longest] {display: none;}[wire\:offline][wire\:offline] {display: none;}[wire\:dirty]:not(textarea):not(input):not(select) {display: none;}:root {--livewire-progress-bar-color: #2299dd;}[x-cloak] {display: none !important;}[wire\:cloak] {display: none !important;}dialog#livewire-error::backdrop {background-color: rgba(0, 0, 0, .6);}</style>
+    <link rel="preload" as="style" href="../../build/assets/app-DcYYce1R.css" /><link rel="modulepreload" as="script" href="../../build/assets/app-B5Qb_3I9.js" /><link rel="stylesheet" href="../../build/assets/app-DcYYce1R.css" data-navigate-track="reload" /><script type="module" src="../../build/assets/app-B5Qb_3I9.js" data-navigate-track="reload"></script>    <!-- Livewire Styles --><style >[wire\:loading][wire\:loading], [wire\:loading\.delay][wire\:loading\.delay], [wire\:loading\.inline-block][wire\:loading\.inline-block], [wire\:loading\.inline][wire\:loading\.inline], [wire\:loading\.block][wire\:loading\.block], [wire\:loading\.flex][wire\:loading\.flex], [wire\:loading\.table][wire\:loading\.table], [wire\:loading\.grid][wire\:loading\.grid], [wire\:loading\.inline-flex][wire\:loading\.inline-flex] {display: none;}[wire\:loading\.delay\.none][wire\:loading\.delay\.none], [wire\:loading\.delay\.shortest][wire\:loading\.delay\.shortest], [wire\:loading\.delay\.shorter][wire\:loading\.delay\.shorter], [wire\:loading\.delay\.short][wire\:loading\.delay\.short], [wire\:loading\.delay\.default][wire\:loading\.delay\.default], [wire\:loading\.delay\.long][wire\:loading\.delay\.long], [wire\:loading\.delay\.longer][wire\:loading\.delay\.longer], [wire\:loading\.delay\.longest][wire\:loading\.delay\.longest] {display: none;}[wire\:offline][wire\:offline] {display: none;}[wire\:dirty]:not(textarea):not(input):not(select) {display: none;}:root {--livewire-progress-bar-color: #2299dd;}[x-cloak] {display: none !important;}[wire\:cloak] {display: none !important;}dialog#livewire-error::backdrop {background-color: rgba(0, 0, 0, .6);}</style>
 
 
 
@@ -131,98 +131,100 @@
     </div>
 
     <div class="border-t border-border-soft/70 bg-accent xl:hidden">
-        <nav class="mx-auto grid max-w-7xl grid-cols-6 px-4 sm:grid-cols-5 sm:px-6 lg:px-8" aria-label="Основная навигация">
-                            <a href="../../about/" class="col-span-2 flex min-h-9 items-center justify-center px-1 py-1 text-center text-[10px] font-medium leading-tight text-white transition-colors hover:bg-accent-dark/55 sm:col-span-1 sm:min-h-12 sm:px-2 sm:text-xs">
-                    Наши специалисты
-                </a>
-                            <a href="#" class="col-span-2 flex min-h-9 items-center justify-center px-1 py-1 text-center text-[10px] font-medium leading-tight text-white transition-colors hover:bg-accent-dark/55 sm:col-span-1 sm:min-h-12 sm:px-2 sm:text-xs">
-                    Акции и новости
-                </a>
-
-            <div class="relative col-span-2 flex min-h-9 sm:col-span-1 sm:min-h-12" @click.outside="coursesOpen = false">
-                <a
-                    href="../"
-                    class="flex flex-1 items-center justify-center py-1 pl-1 text-center text-[10px] font-medium leading-tight text-white transition-colors hover:bg-accent-dark/55 sm:pl-2 sm:text-xs"
-                >
-                    Курсы и абонементы
-                </a>
-                <button
-                    type="button"
-                    @click="coursesOpen = !coursesOpen"
-                    :aria-expanded="coursesOpen"
-                    class="flex w-7 shrink-0 items-center justify-center text-white transition-colors hover:bg-accent-dark/55 sm:w-8"
-                    aria-label="Открыть форматы курсов"
-                >
-                    <svg class="h-3.5 w-3.5 transition-transform" :class="coursesOpen && 'rotate-180'" fill="none" viewBox="0 0 24 24" stroke="currentColor" aria-hidden="true">
-                        <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="m6 9 6 6 6-6"/>
-                    </svg>
-                </button>
-                <div
-                    x-show="coursesOpen"
-                    x-cloak
-                    x-transition
-                    class="absolute right-0 top-full z-50 w-56 border border-border-soft bg-bg-card p-2 shadow-card-hover sm:left-1/2 sm:right-auto sm:-translate-x-1/2"
-                >
-                    <a href="../" class="block rounded-btn px-4 py-3 text-sm font-medium text-text-muted transition-colors hover:bg-bg-light hover:text-accent">Онлайн-курсы</a>
-                    <a href="../offline/" class="block rounded-btn px-4 py-3 text-sm font-medium text-text-muted transition-colors hover:bg-bg-light hover:text-accent">Офлайн-курсы</a>
-                </div>
-            </div>
-
-                            <a href="../../doulas/" class="col-span-3 flex min-h-9 items-center justify-center px-1 py-1 text-center text-[10px] font-medium leading-tight text-white transition-colors hover:bg-accent-dark/55 sm:col-span-1 sm:min-h-12 sm:px-2 sm:text-xs">
-                    Наши Доулы
-                </a>
-                            <a href="../../reviews/" class="col-span-3 flex min-h-9 items-center justify-center px-1 py-1 text-center text-[10px] font-medium leading-tight text-white transition-colors hover:bg-accent-dark/55 sm:col-span-1 sm:min-h-12 sm:px-2 sm:text-xs">
-                    Отзывы
-                </a>
-                    </nav>
+        <nav class="mx-auto grid max-w-7xl grid-cols-6 px-4 sm:grid-cols-6 sm:px-6 lg:px-8" aria-label="Основная навигация">
+                                                <a href="../../about/" class="col-span-2 flex min-h-9 items-center justify-center px-1 py-1 text-center text-[10px] font-medium leading-tight text-white transition-colors hover:bg-accent-dark/55 sm:col-span-1 sm:min-h-12 sm:px-2 sm:text-xs">
+                        Наши специалисты
+                    </a>
+                                                                <a href="../../centers/" class="col-span-2 flex min-h-9 items-center justify-center px-1 py-1 text-center text-[10px] font-medium leading-tight text-white transition-colors hover:bg-accent-dark/55 sm:col-span-1 sm:min-h-12 sm:px-2 sm:text-xs">
+                        Центры
+                    </a>
+                                                                <a href="#" class="col-span-2 flex min-h-9 items-center justify-center px-1 py-1 text-center text-[10px] font-medium leading-tight text-white transition-colors hover:bg-accent-dark/55 sm:col-span-1 sm:min-h-12 sm:px-2 sm:text-xs">
+                        Акции и новости
+                    </a>
+                                                                <div class="relative col-span-2 flex min-h-9 sm:col-span-1 sm:min-h-12" @click.outside="coursesOpen = false">
+                        <a
+                            href="../"
+                            class="flex flex-1 items-center justify-center py-1 pl-1 text-center text-[10px] font-medium leading-tight text-white transition-colors hover:bg-accent-dark/55 sm:pl-2 sm:text-xs"
+                        >
+                            Курсы и абонементы
+                        </a>
+                        <button
+                            type="button"
+                            @click="coursesOpen = !coursesOpen"
+                            :aria-expanded="coursesOpen"
+                            class="flex w-7 shrink-0 items-center justify-center text-white transition-colors hover:bg-accent-dark/55 sm:w-8"
+                            aria-label="Открыть форматы курсов"
+                        >
+                            <svg class="h-3.5 w-3.5 transition-transform" :class="coursesOpen && 'rotate-180'" fill="none" viewBox="0 0 24 24" stroke="currentColor" aria-hidden="true">
+                                <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="m6 9 6 6 6-6"/>
+                            </svg>
+                        </button>
+                        <div
+                            x-show="coursesOpen"
+                            x-cloak
+                            x-transition
+                            class="absolute right-0 top-full z-50 w-56 border border-border-soft bg-bg-card p-2 shadow-card-hover sm:left-1/2 sm:right-auto sm:-translate-x-1/2"
+                        >
+                            <a href="../" class="block rounded-btn px-4 py-3 text-sm font-medium text-text-muted transition-colors hover:bg-bg-light hover:text-accent">Онлайн-курсы</a>
+                            <a href="../offline/" class="block rounded-btn px-4 py-3 text-sm font-medium text-text-muted transition-colors hover:bg-bg-light hover:text-accent">Офлайн-курсы</a>
+                        </div>
+                    </div>
+                                                                <a href="../../doulas/" class="col-span-2 flex min-h-9 items-center justify-center px-1 py-1 text-center text-[10px] font-medium leading-tight text-white transition-colors hover:bg-accent-dark/55 sm:col-span-1 sm:min-h-12 sm:px-2 sm:text-xs">
+                        Наши Доулы
+                    </a>
+                                                                <a href="../../reviews/" class="col-span-2 flex min-h-9 items-center justify-center px-1 py-1 text-center text-[10px] font-medium leading-tight text-white transition-colors hover:bg-accent-dark/55 sm:col-span-1 sm:min-h-12 sm:px-2 sm:text-xs">
+                        Отзывы
+                    </a>
+                                    </nav>
     </div>
 
     <div class="hidden border-t border-border-soft/70 bg-accent xl:block">
         <nav class="mx-auto flex h-12 max-w-7xl items-stretch justify-center px-4" aria-label="Основная навигация">
-                            <a href="../../about/" class="flex items-center px-4 text-center text-sm font-medium text-white transition-colors hover:bg-accent-dark/55">
-                    Наши специалисты
-                </a>
-                            <a href="#" class="flex items-center px-4 text-center text-sm font-medium text-white transition-colors hover:bg-accent-dark/55">
-                    Акции и новости
-                </a>
-
-            <div class="group relative flex" @mouseenter="coursesOpen = true" @mouseleave="coursesOpen = false">
-                <a
-                    href="../"
-                    class="flex items-center pl-4 pr-2 text-sm font-medium text-white transition-colors hover:bg-accent-dark/55"
-                >
-                    Курсы и абонементы
-                </a>
-                <button
-                    type="button"
-                    @click="coursesOpen = !coursesOpen"
-                    :aria-expanded="coursesOpen"
-                    class="flex items-center px-2 pr-4 text-white transition-colors hover:bg-accent-dark/55"
-                    aria-label="Открыть форматы курсов"
-                >
-                    <svg class="h-4 w-4 transition-transform" :class="coursesOpen && 'rotate-180'" fill="none" viewBox="0 0 24 24" stroke="currentColor" aria-hidden="true">
-                        <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="m6 9 6 6 6-6"/>
-                    </svg>
-                </button>
-                <div
-                    x-show="coursesOpen"
-                    x-cloak
-                    x-transition
-                    @click.outside="coursesOpen = false"
-                    class="absolute left-1/2 top-full z-50 w-64 -translate-x-1/2 border border-border-soft bg-bg-card p-2 shadow-card-hover"
-                >
-                    <a href="../" class="block rounded-btn px-4 py-3 text-sm font-medium text-text-muted transition-colors hover:bg-bg-light hover:text-accent">Онлайн-курсы</a>
-                    <a href="../offline/" class="block rounded-btn px-4 py-3 text-sm font-medium text-text-muted transition-colors hover:bg-bg-light hover:text-accent">Офлайн-курсы</a>
-                </div>
-            </div>
-
-                            <a href="../../doulas/" class="flex items-center px-4 text-center text-sm font-medium text-white transition-colors hover:bg-accent-dark/55">
-                    Наши Доулы
-                </a>
-                            <a href="../../reviews/" class="flex items-center px-4 text-center text-sm font-medium text-white transition-colors hover:bg-accent-dark/55">
-                    Отзывы
-                </a>
-                    </nav>
+                                                <a href="../../about/" class="flex items-center px-4 text-center text-sm font-medium text-white transition-colors hover:bg-accent-dark/55">
+                        Наши специалисты
+                    </a>
+                                                                <a href="../../centers/" class="flex items-center px-4 text-center text-sm font-medium text-white transition-colors hover:bg-accent-dark/55">
+                        Центры
+                    </a>
+                                                                <a href="#" class="flex items-center px-4 text-center text-sm font-medium text-white transition-colors hover:bg-accent-dark/55">
+                        Акции и новости
+                    </a>
+                                                                <div class="group relative flex" @mouseenter="coursesOpen = true" @mouseleave="coursesOpen = false">
+                        <a
+                            href="../"
+                            class="flex items-center pl-4 pr-2 text-sm font-medium text-white transition-colors hover:bg-accent-dark/55"
+                        >
+                            Курсы и абонементы
+                        </a>
+                        <button
+                            type="button"
+                            @click="coursesOpen = !coursesOpen"
+                            :aria-expanded="coursesOpen"
+                            class="flex items-center px-2 pr-4 text-white transition-colors hover:bg-accent-dark/55"
+                            aria-label="Открыть форматы курсов"
+                        >
+                            <svg class="h-4 w-4 transition-transform" :class="coursesOpen && 'rotate-180'" fill="none" viewBox="0 0 24 24" stroke="currentColor" aria-hidden="true">
+                                <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="m6 9 6 6 6-6"/>
+                            </svg>
+                        </button>
+                        <div
+                            x-show="coursesOpen"
+                            x-cloak
+                            x-transition
+                            @click.outside="coursesOpen = false"
+                            class="absolute left-1/2 top-full z-50 w-64 -translate-x-1/2 border border-border-soft bg-bg-card p-2 shadow-card-hover"
+                        >
+                            <a href="../" class="block rounded-btn px-4 py-3 text-sm font-medium text-text-muted transition-colors hover:bg-bg-light hover:text-accent">Онлайн-курсы</a>
+                            <a href="../offline/" class="block rounded-btn px-4 py-3 text-sm font-medium text-text-muted transition-colors hover:bg-bg-light hover:text-accent">Офлайн-курсы</a>
+                        </div>
+                    </div>
+                                                                <a href="../../doulas/" class="flex items-center px-4 text-center text-sm font-medium text-white transition-colors hover:bg-accent-dark/55">
+                        Наши Доулы
+                    </a>
+                                                                <a href="../../reviews/" class="flex items-center px-4 text-center text-sm font-medium text-white transition-colors hover:bg-accent-dark/55">
+                        Отзывы
+                    </a>
+                                    </nav>
     </div>
 </header>
 
@@ -411,6 +413,7 @@
             <h3 class="mb-4 font-heading text-base font-semibold text-text-heading">Информация</h3>
             <ul class="space-y-2">
                 <li><a href="../../about/" class="footer-link">Наши специалисты</a></li>
+                <li><a href="../../centers/" class="footer-link">Центры</a></li>
                 <li><a href="../../reviews/" class="footer-link">Отзывы</a></li>
                 <li><a href="../../contacts/" class="footer-link">Контакты</a></li>
                 <li><a href="../../privacy/" class="footer-link">Политика конфиденциальности</a></li>
@@ -424,7 +427,8 @@
                                     <li>
                         <a href="tel:+79993456996" class="footer-link">+7 (999) 345-69-96</a>
                     </li>
-                                                            </ul>
+                                                                    <li><a href="../../centers/" class="footer-link">Москва, 2-я улица Бухвостова, дом 1</a></li>
+                            </ul>
             <a href="../../contacts/#form" class="btn-accent mt-6 inline-flex text-sm">
                 Подобрать курс
             </a>
@@ -490,6 +494,6 @@
     </button>
 </div>
 
-    <script  data-navigate-once="true">window.livewireScriptConfig = {"csrf":"imp1g4KYoQYteUtwxckT2QJx9uhJ7NJ0JYvOF2Wm","uri":"\/livewire\/update","progressBar":"","nonce":""};</script>
+    <script  data-navigate-once="true">window.livewireScriptConfig = {"csrf":"8iM9LDeVsJiGgvMJwXMZYKQAm2u4s0IcKgcMuQMe","uri":"\/livewire\/update","progressBar":"","nonce":""};</script>
     </body>
 </html>

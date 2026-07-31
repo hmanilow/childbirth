@@ -17,16 +17,17 @@ test('public branding is neutral and navigation stays visible without a burger m
     assert.doesNotMatch(publicBranding, /Авторская школа материнства Елены Тимофеевой/);
     assert.match(header, /Работаем без выходных!/);
     assert.match(header, /Наши специалисты/);
+    assert.match(header, /Центры/);
     assert.match(header, /Акции и новости/);
     assert.match(header, /Курсы и абонементы/);
     assert.match(header, /Наши Доулы/);
     assert.doesNotMatch(header, /Услуги после родов/);
     assert.match(header, /Отзывы/);
-    assert.match(header, /href="\{\{ route\('courses\.index'\) \}\}"/);
+    assert.match(header, /'url' => route\('courses\.index'\), 'courses' => true/);
     assert.match(header, /'format' => 'online'/);
     assert.match(header, /'format' => 'offline'/);
     assert.match(header, /grid-cols-6/);
-    assert.match(header, /sm:grid-cols-5/);
+    assert.match(header, /sm:grid-cols-6/);
     assert.doesNotMatch(header, /mobile-navigation/);
     assert.doesNotMatch(header, /aria-label="Открыть меню"/);
 
@@ -36,7 +37,36 @@ test('public branding is neutral and navigation stays visible without a burger m
     assert.match(home, /Уход за малышом и первый месяц/);
     assert.match(home, /Познакомиться с доулами/);
     assert.match(home, /учебных программ/);
+    assert.match(home, /Доульские посиделки/);
+    assert.doesNotMatch(home, /Дульские посиделки/);
     assert.doesNotMatch(home, /временных программ/);
+});
+
+test('centers page uses centralized location data and is exported for GitHub Pages', async () => {
+    const [routes, centers, config, footer, contacts, sitemap, exporter] = await Promise.all([
+        read('routes/web.php'),
+        read('resources/views/centers.blade.php'),
+        read('config/centers.php'),
+        read('resources/views/components/footer.blade.php'),
+        read('resources/views/contacts.blade.php'),
+        read('app/Http/Controllers/SitemapController.php'),
+        read('scripts/export-static-preview.mjs'),
+    ]);
+
+    assert.match(routes, /Route::get\('\/centers'/);
+    assert.match(config, /2-я улица Бухвостова, дом 1/);
+    assert.match(config, /Преображенская площадь/);
+    assert.match(config, /yandex_embed_url/);
+    assert.match(config, /yandex_map_url/);
+    assert.match(centers, /Центр школы на Преображенской площади/);
+    assert.match(centers, /Яндекс Карта/);
+    assert.match(centers, /loading="lazy"/);
+    assert.match(centers, /EducationalOrganization/);
+    assert.match(centers, /PostalAddress/);
+    assert.match(footer, /route\('centers'\)/);
+    assert.match(contacts, /Карта и схема проезда/);
+    assert.match(sitemap, /url\('\/centers'\)/);
+    assert.match(exporter, /'\/centers'/);
 });
 
 test('about shows four complete specialist profiles and doulas keep their profiles', async () => {

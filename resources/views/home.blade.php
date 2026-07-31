@@ -2,6 +2,8 @@
 
 @php
     $brandName = 'Школа материнства «Рожаем вместе»';
+    $primaryCenter = collect(config('centers.locations', []))
+        ->first(fn (array $center): bool => (bool) ($center['active'] ?? false));
 @endphp
 
 @section('title', $brandName)
@@ -169,6 +171,11 @@
                 <div>
                     <p class="text-xs font-semibold uppercase tracking-widest text-gold-dark">Офлайн</p>
                     <h3 class="font-heading text-3xl font-bold text-text-heading">Живые занятия и интенсивы</h3>
+                    @if($primaryCenter)
+                        <a href="{{ route('centers') }}" class="mt-2 inline-flex text-sm font-semibold text-accent transition-colors hover:text-accent-hover">
+                            м. «{{ $primaryCenter['metro'] }}» · {{ $primaryCenter['street_address'] }}
+                        </a>
+                    @endif
                 </div>
                 <span class="hidden rounded-full bg-gold/15 px-4 py-2 text-sm font-semibold text-gold-dark sm:inline-flex">
                     {{ $offlineCourses->count() }} курсов
@@ -208,7 +215,7 @@
 
             <article class="border-t-2 border-gold pt-6">
                 <p class="text-xs font-semibold uppercase tracking-widest text-gold-dark">Бесплатные встречи</p>
-                <h3 class="mt-3 font-heading text-2xl font-bold text-text-heading">Дульские посиделки</h3>
+                <h3 class="mt-3 font-heading text-2xl font-bold text-text-heading">Доульские посиделки</h3>
                 <p class="mt-3 leading-relaxed text-text-muted">
                     Приходите знакомиться с нашими специалистами за чашкой чая в спокойной и уютной атмосфере. Участие бесплатное.
                 </p>

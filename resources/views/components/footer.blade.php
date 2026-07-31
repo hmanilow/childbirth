@@ -1,7 +1,9 @@
 @php
     $phone = trim((string) ($globalSettings['phone'] ?? ''));
     $email = trim((string) ($globalSettings['email'] ?? ''));
-    $address = trim((string) ($globalSettings['address'] ?? ''));
+    $primaryCenter = collect(config('centers.locations', []))
+        ->first(fn (array $center): bool => (bool) ($center['active'] ?? false));
+    $address = trim((string) ($primaryCenter['full_address'] ?? $globalSettings['address'] ?? ''));
     $siteName = $globalSettings['site_name'] ?? 'Школа материнства рожаем вместе';
     $socials = [
         'vk' => $globalSettings['vk_url'] ?? $globalSettings['social_vk'] ?? '',
@@ -59,6 +61,7 @@
             <h3 class="mb-4 font-heading text-base font-semibold text-text-heading">Информация</h3>
             <ul class="space-y-2">
                 <li><a href="{{ route('about') }}" class="footer-link">Наши специалисты</a></li>
+                <li><a href="{{ route('centers') }}" class="footer-link">Центры</a></li>
                 <li><a href="{{ route('reviews') }}" class="footer-link">Отзывы</a></li>
                 <li><a href="{{ route('contacts') }}" class="footer-link">Контакты</a></li>
                 <li><a href="{{ route('privacy') }}" class="footer-link">Политика конфиденциальности</a></li>
@@ -80,7 +83,7 @@
                     </li>
                 @endif
                 @if($address !== '')
-                    <li class="text-sm text-text-muted">{{ $address }}</li>
+                    <li><a href="{{ route('centers') }}" class="footer-link">{{ $address }}</a></li>
                 @endif
             </ul>
             <a href="{{ route('contacts') }}#form" class="btn-accent mt-6 inline-flex text-sm">
