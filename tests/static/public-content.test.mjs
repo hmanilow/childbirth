@@ -180,6 +180,7 @@ test('legal documents, form consents and cookie controls are published consisten
         checkoutController,
         sitemap,
         exporter,
+        exportedHome,
     ] = await Promise.all([
         read('routes/web.php'),
         read('app/Http/Controllers/PageController.php'),
@@ -199,6 +200,7 @@ test('legal documents, form consents and cookie controls are published consisten
         read('app/Http/Controllers/CheckoutController.php'),
         read('app/Http/Controllers/SitemapController.php'),
         read('scripts/export-static-preview.mjs'),
+        read('docs/index.html'),
     ]);
 
     assert.match(routes, /Route::get\('\/personal-data-consent'/);
@@ -244,6 +246,10 @@ test('legal documents, form consents and cookie controls are published consisten
     assert.match(exporter, /'\/personal-data-consent'/);
     assert.match(exporter, /'\/offer'/);
     assert.match(exporter, /\['\/terms', '\/offer'\]/);
+    assert.match(exportedHome, /data-cookie-action="reject"/);
+    assert.match(exportedHome, /data-cookie-action="accept-all"/);
+    assert.match(exportedHome, /data-cookie-action="settings"/);
+    assert.doesNotMatch(exportedHome, /data-cookie-action="#"/);
 });
 
 test('reviews route exists and stays outside the sitemap', async () => {

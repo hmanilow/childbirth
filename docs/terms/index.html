@@ -398,20 +398,20 @@
             </p>
         </div>
         <div class="cookie-consent__actions">
-            <button type="button" class="btn-outline cookie-consent__button" data-cookie-action="#">
+            <button type="button" class="btn-outline cookie-consent__button" data-cookie-action="reject">
                 Отказаться (кроме обязательных)
             </button>
-            <button type="button" class="btn-accent cookie-consent__button" data-cookie-action="#">
+            <button type="button" class="btn-accent cookie-consent__button" data-cookie-action="accept-all">
                 Принять все
             </button>
-            <button type="button" class="btn-ghost cookie-consent__button" data-cookie-action="#">
+            <button type="button" class="btn-ghost cookie-consent__button" data-cookie-action="settings">
                 Настроить согласие
             </button>
         </div>
     </section>
 
     <div class="cookie-preferences" data-cookie-preferences hidden>
-        <button type="button" class="cookie-preferences__backdrop" data-cookie-action="#" aria-label="Закрыть настройки cookie"></button>
+        <button type="button" class="cookie-preferences__backdrop" data-cookie-action="close-settings" aria-label="Закрыть настройки cookie"></button>
         <section
             class="cookie-preferences__dialog"
             role="dialog"
@@ -424,7 +424,7 @@
                     <p class="text-xs font-semibold uppercase tracking-widest text-accent">Ваш выбор</p>
                     <h2 id="cookie-preferences-title" class="mt-1 font-heading text-2xl font-bold text-text-heading">Настройки cookie</h2>
                 </div>
-                <button type="button" class="cookie-preferences__close" data-cookie-action="#" aria-label="Закрыть настройки cookie" title="Закрыть">
+                <button type="button" class="cookie-preferences__close" data-cookie-action="close-settings" aria-label="Закрыть настройки cookie" title="Закрыть">
                     <svg class="h-5 w-5" viewBox="0 0 24 24" fill="none" stroke="currentColor" aria-hidden="true">
                         <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M6 6l12 12M18 6L6 18"/>
                     </svg>
@@ -467,8 +467,8 @@
             </div>
 
             <div class="cookie-preferences__actions">
-                <button type="button" class="btn-outline" data-cookie-action="#">Только необходимые</button>
-                <button type="button" class="btn-accent" data-cookie-action="#">Подтвердить выбор</button>
+                <button type="button" class="btn-outline" data-cookie-action="reject">Только необходимые</button>
+                <button type="button" class="btn-accent" data-cookie-action="save-settings">Подтвердить выбор</button>
             </div>
         </section>
     </div>
@@ -525,6 +525,6 @@
     </button>
 </div>
 
-    <script  data-navigate-once="true">window.livewireScriptConfig = {"csrf":"3MLFnSkTJEmAKLFJSwDwCZOr42Q9foVUzkdFAb9e","uri":"\/livewire\/update","progressBar":"","nonce":""};</script>
+    <script  data-navigate-once="true">window.livewireScriptConfig = {"csrf":"1Ge7cCSKqxalaNTIjeueOCCCdfkFNtMG5VdMwoiW","uri":"\/livewire\/update","progressBar":"","nonce":""};</script>
     </body>
 </html>

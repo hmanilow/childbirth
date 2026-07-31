@@ -174,7 +174,7 @@ function extractPageLinks(html, currentRoutePath) {
 function rewriteHtml(html, routePath, availablePages) {
     const outputPath = outputPathFor(routePath);
 
-    const rewritten = html.replace(/\b(href|src|action|content)=(["'])(.*?)\2/gi, (full, attr, quote, rawValue) => {
+    const rewritten = html.replace(/(?<![-:\w])(href|src|action|content)=(["'])(.*?)\2/gi, (full, attr, quote, rawValue) => {
         const attrName = attr.toLowerCase();
 
         if (attrName === 'action') {
