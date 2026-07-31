@@ -11,6 +11,7 @@ class ContactForm extends Component
     public string $phone   = '';
     public string $email   = '';
     public string $message = '';
+    public bool   $privacyConsent = false;
     public bool   $sent    = false;
 
     protected function rules(): array
@@ -20,6 +21,7 @@ class ContactForm extends Component
             'phone'   => ['required', 'string', 'max:20'],
             'email'   => ['nullable', 'email', 'max:255'],
             'message' => ['nullable', 'string', 'max:2000'],
+            'privacyConsent' => ['required', 'accepted'],
         ];
     }
 
@@ -28,6 +30,7 @@ class ContactForm extends Component
         return [
             'name.required'  => 'Укажите ваше имя.',
             'phone.required' => 'Укажите номер телефона.',
+            'privacyConsent.accepted' => 'Для отправки заявки необходимо дать согласие на обработку персональных данных.',
         ];
     }
 
@@ -44,7 +47,7 @@ class ContactForm extends Component
         ]);
 
         $this->sent = true;
-        $this->reset(['name', 'phone', 'email', 'message']);
+        $this->reset(['name', 'phone', 'email', 'message', 'privacyConsent']);
     }
 
     public function render()

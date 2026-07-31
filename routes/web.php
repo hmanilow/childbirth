@@ -49,7 +49,9 @@ Route::get('/contacts', [ContactController::class, 'index'])->name('contacts');
 Route::get('/centers', [CenterController::class, 'index'])->name('centers');
 Route::get('/partners', [PartnersController::class, 'index'])->name('partners');
 Route::get('/privacy', [PageController::class, 'privacy'])->name('privacy');
-Route::get('/terms', [PageController::class, 'terms'])->name('terms');
+Route::get('/personal-data-consent', [PageController::class, 'personalDataConsent'])->name('personal-data-consent');
+Route::get('/offer', [PageController::class, 'offer'])->name('offer');
+Route::redirect('/terms', '/offer', 301)->name('terms');
 
 // Services
 Route::get('/services', [ServiceController::class, 'index'])->name('services.index');

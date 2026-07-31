@@ -53,20 +53,18 @@
     @vite(['resources/css/app.css', 'resources/js/app.js'])
     @livewireStyles
 
-    {{-- Analytics --}}
+    {{-- Analytics: inert until the visitor allows analytical cookie. --}}
     @if(!empty($globalSettings['yandex_metrica_id']))
-        <!-- Yandex.Metrika -->
-        <script type="text/javascript">
+        <script type="text/plain" data-cookie-category="analytics">
             (function(m,e,t,r,i,k,a){m[i]=m[i]||function(){(m[i].a=m[i].a||[]).push(arguments)};
             m[i].l=1*new Date();k=e.createElement(t),a=e.getElementsByTagName(t)[0],k.async=1,k.src=r,a.parentNode.insertBefore(k,a)})
             (window, document, "script", "https://mc.yandex.ru/metrika/tag.js", "ym");
             ym({{ $globalSettings['yandex_metrica_id'] }}, "init", { clickmap:true, trackLinks:true, accurateTrackBounce:true });
         </script>
-        <noscript><div><img src="https://mc.yandex.ru/watch/{{ $globalSettings['yandex_metrica_id'] }}" style="position:absolute; left:-9999px;" alt="" /></div></noscript>
     @endif
     @if(!empty($globalSettings['google_analytics_id']))
-        <script async src="https://www.googletagmanager.com/gtag/js?id={{ $globalSettings['google_analytics_id'] }}"></script>
-        <script>window.dataLayer=window.dataLayer||[];function gtag(){dataLayer.push(arguments);}gtag('js',new Date());gtag('config','{{ $globalSettings['google_analytics_id'] }}');</script>
+        <script type="text/plain" data-cookie-category="analytics" data-cookie-src="https://www.googletagmanager.com/gtag/js?id={{ $globalSettings['google_analytics_id'] }}" data-cookie-async></script>
+        <script type="text/plain" data-cookie-category="analytics">window.dataLayer=window.dataLayer||[];function gtag(){dataLayer.push(arguments);}gtag('js',new Date());gtag('config','{{ $globalSettings['google_analytics_id'] }}');</script>
     @endif
 
     {{-- JSON-LD Structured Data --}}
@@ -101,6 +99,9 @@
 
     {{-- Footer --}}
     <x-footer />
+
+    {{-- Cookie consent --}}
+    <x-cookie-consent />
 
     {{-- Floating CTA: WhatsApp / Telegram --}}
     <x-floating-cta />

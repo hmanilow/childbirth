@@ -23,7 +23,12 @@ class RegisterController extends Controller
             'email'    => ['required', 'string', 'email', 'max:255', 'unique:users'],
             'phone'    => ['nullable', 'string', 'max:20'],
             'password' => ['required', 'string', 'min:8', 'confirmed'],
+            'privacy_consent' => ['required', 'accepted'],
+        ], [
+            'privacy_consent.accepted' => 'Для регистрации необходимо дать согласие на обработку персональных данных.',
         ]);
+
+        unset($data['privacy_consent']);
 
         $user = User::create($data);
         $user->assignRole('student');

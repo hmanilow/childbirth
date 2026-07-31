@@ -70,13 +70,35 @@
             <div class="min-w-0">
                 <span class="section-eyebrow">Яндекс Карта</span>
                 <h2 id="route-title" class="section-heading mt-2">Схема проезда</h2>
-                <div class="mt-7 h-[320px] w-full max-w-full overflow-hidden rounded-lg border border-border-soft bg-bg-card shadow-card sm:h-[420px] lg:h-[480px]">
+                <div
+                    class="mt-7 h-[320px] w-full max-w-full overflow-hidden rounded-lg border border-border-soft bg-bg-card shadow-card sm:h-[420px] lg:h-[480px]"
+                    data-cookie-embed
+                    data-cookie-category="functional"
+                >
+                    <div class="flex h-full flex-col items-center justify-center px-6 text-center" data-cookie-placeholder>
+                        <span class="flex h-14 w-14 items-center justify-center rounded-full bg-gold/15 text-gold-dark" aria-hidden="true">
+                            <svg class="h-7 w-7" viewBox="0 0 24 24" fill="none" stroke="currentColor">
+                                <path stroke-linecap="round" stroke-linejoin="round" stroke-width="1.8" d="M12 21s6-5.1 6-11a6 6 0 10-12 0c0 5.9 6 11 6 11z"/>
+                                <circle cx="12" cy="10" r="2.2" stroke-width="1.8"/>
+                            </svg>
+                        </span>
+                        <h3 class="mt-4 font-heading text-2xl font-bold text-text-heading">Интерактивная карта</h3>
+                        <p class="mt-2 max-w-lg text-sm leading-relaxed text-text-muted">
+                            Для загрузки Яндекс Карты разрешите функциональные cookie. Адрес и внешняя ссылка доступны без согласия.
+                        </p>
+                        <div class="mt-5 flex flex-col gap-3 sm:flex-row">
+                            <button type="button" class="btn-accent" data-cookie-settings>Настроить cookie</button>
+                            <a href="{{ $center['yandex_map_url'] }}" target="_blank" rel="noopener" class="btn-outline">Открыть в Яндекс Картах</a>
+                        </div>
+                    </div>
                     <iframe
-                        src="{{ $center['yandex_embed_url'] }}"
+                        data-cookie-src="{{ $center['yandex_embed_url'] }}"
+                        data-cookie-content
                         title="Яндекс Карта: {{ $center['full_address'] }}"
                         class="h-full w-full border-0"
                         loading="lazy"
                         allowfullscreen
+                        hidden
                     ></iframe>
                 </div>
             </div>

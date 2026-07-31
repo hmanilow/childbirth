@@ -12,6 +12,7 @@ class LeadForm extends Component
     public string $email   = '';
     public string $message = '';
     public string $source;
+    public bool   $privacyConsent = false;
     public bool   $sent    = false;
 
     public function mount(string $source = 'website'): void
@@ -26,6 +27,7 @@ class LeadForm extends Component
             'phone'   => ['required', 'string', 'max:20'],
             'email'   => ['nullable', 'email', 'max:255'],
             'message' => ['nullable', 'string', 'max:2000'],
+            'privacyConsent' => ['required', 'accepted'],
         ];
     }
 
@@ -35,6 +37,7 @@ class LeadForm extends Component
             'name.required'  => 'Укажите ваше имя.',
             'phone.required' => 'Укажите номер телефона.',
             'email.email'    => 'Некорректный email.',
+            'privacyConsent.accepted' => 'Для отправки заявки необходимо дать согласие на обработку персональных данных.',
         ];
     }
 
@@ -58,7 +61,7 @@ class LeadForm extends Component
         ]);
 
         $this->sent = true;
-        $this->reset(['name', 'phone', 'email', 'message']);
+        $this->reset(['name', 'phone', 'email', 'message', 'privacyConsent']);
     }
 
     public function render()

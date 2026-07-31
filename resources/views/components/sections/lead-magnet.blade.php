@@ -29,10 +29,6 @@
             {{-- Form --}}
             <livewire:lead-form source="lead_magnet" button-text="Получить гайд бесплатно" />
 
-            <p class="text-xs text-text-subtle mt-4">
-                Нажимая кнопку, вы соглашаетесь с
-                <a href="{{ route('privacy') }}" class="text-accent hover:text-accent-light underline">политикой конфиденциальности</a>
-            </p>
         </div>
     </div>
 </section>

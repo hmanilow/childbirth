@@ -44,6 +44,17 @@
                     placeholder="Ваш вопрос или пожелание..."></textarea>
             </div>
 
+            <label class="consent-checkbox text-left">
+                <input wire:model="privacyConsent" type="checkbox" class="consent-checkbox__input">
+                <span>
+                    Я даю согласие на обработку персональных данных в соответствии с
+                    <a href="{{ route('privacy') }}" target="_blank">Политикой обработки персональных данных</a>
+                    и ознакомлен с
+                    <a href="{{ route('personal-data-consent') }}" target="_blank">Согласием на обработку персональных данных</a>
+                </span>
+            </label>
+            @error('privacyConsent')<p class="error-message text-left">{{ $message }}</p>@enderror
+
             <button type="submit" class="btn-accent w-full" wire:loading.attr="disabled" wire:loading.class="opacity-75">
                 <span wire:loading.remove>Отправить заявку</span>
                 <span wire:loading class="flex items-center justify-center gap-2">
@@ -54,11 +65,6 @@
                     Отправляем...
                 </span>
             </button>
-
-            <p class="text-xs text-text-muted text-center">
-                Нажимая кнопку, вы соглашаетесь с
-                <a href="{{ route('privacy') }}" class="text-accent-main hover:underline">политикой конфиденциальности</a>
-            </p>
         </form>
     @endif
 </div>

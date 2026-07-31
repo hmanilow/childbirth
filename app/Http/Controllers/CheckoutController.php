@@ -8,6 +8,7 @@ use App\Domain\Courses\Models\Course;
 use App\Domain\Orders\Models\Order;
 use App\Domain\Payments\Actions\CreateOrderAction;
 use App\Domain\Payments\Actions\InitiateYooKassaPaymentAction;
+use Illuminate\Http\Request;
 
 class CheckoutController extends Controller
 {
@@ -22,10 +23,19 @@ class CheckoutController extends Controller
     }
 
     public function create(
+        Request $request,
         Course $course,
         CreateOrderAction $createOrder,
         InitiateYooKassaPaymentAction $initiatePayment
     ): RedirectResponse {
+        $request->validate([
+            'privacy_consent' => ['required', 'accepted'],
+            'offer_accepted' => ['required', 'accepted'],
+        ], [
+            'privacy_consent.accepted' => 'Для оформления необходимо дать согласие на обработку персональных данных.',
+            'offer_accepted.accepted' => 'Для оформления необходимо принять условия Договора-оферты.',
+        ]);
+
         if (auth()->user()->hasAccessToCourse($course->id)) {
             return redirect()->route('account.course.show', $course->slug);
         }

@@ -19,7 +19,8 @@ const seedPaths = [
     '/courses',
     '/contacts',
     '/privacy',
-    '/terms',
+    '/personal-data-consent',
+    '/offer',
 ];
 
 const excludedPrefixes = [
@@ -60,6 +61,7 @@ const assetExtension = /\.(avif|css|eot|gif|ico|jpe?g|js|json|map|mjs|pdf|png|sv
 const maxPages = Number.parseInt(process.env.STATIC_PREVIEW_MAX_PAGES ?? '80', 10);
 const staticVariants = new Map([
     ['/courses/offline', '/courses?format=offline'],
+    ['/terms', '/offer'],
 ]);
 
 function toPosix(value) {

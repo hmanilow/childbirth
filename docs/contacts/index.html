@@ -41,7 +41,7 @@
             }
         })();
     </script>
-    <link rel="preload" as="style" href="../build/assets/app-DcYYce1R.css" /><link rel="modulepreload" as="script" href="../build/assets/app-B5Qb_3I9.js" /><link rel="stylesheet" href="../build/assets/app-DcYYce1R.css" data-navigate-track="reload" /><script type="module" src="../build/assets/app-B5Qb_3I9.js" data-navigate-track="reload"></script>    <!-- Livewire Styles --><style >[wire\:loading][wire\:loading], [wire\:loading\.delay][wire\:loading\.delay], [wire\:loading\.inline-block][wire\:loading\.inline-block], [wire\:loading\.inline][wire\:loading\.inline], [wire\:loading\.block][wire\:loading\.block], [wire\:loading\.flex][wire\:loading\.flex], [wire\:loading\.table][wire\:loading\.table], [wire\:loading\.grid][wire\:loading\.grid], [wire\:loading\.inline-flex][wire\:loading\.inline-flex] {display: none;}[wire\:loading\.delay\.none][wire\:loading\.delay\.none], [wire\:loading\.delay\.shortest][wire\:loading\.delay\.shortest], [wire\:loading\.delay\.shorter][wire\:loading\.delay\.shorter], [wire\:loading\.delay\.short][wire\:loading\.delay\.short], [wire\:loading\.delay\.default][wire\:loading\.delay\.default], [wire\:loading\.delay\.long][wire\:loading\.delay\.long], [wire\:loading\.delay\.longer][wire\:loading\.delay\.longer], [wire\:loading\.delay\.longest][wire\:loading\.delay\.longest] {display: none;}[wire\:offline][wire\:offline] {display: none;}[wire\:dirty]:not(textarea):not(input):not(select) {display: none;}:root {--livewire-progress-bar-color: #2299dd;}[x-cloak] {display: none !important;}[wire\:cloak] {display: none !important;}dialog#livewire-error::backdrop {background-color: rgba(0, 0, 0, .6);}</style>
+    <link rel="preload" as="style" href="../build/assets/app-IkKXpTlF.css" /><link rel="modulepreload" as="script" href="../build/assets/app-BFBdGcgD.js" /><link rel="stylesheet" href="../build/assets/app-IkKXpTlF.css" data-navigate-track="reload" /><script type="module" src="../build/assets/app-BFBdGcgD.js" data-navigate-track="reload"></script>    <!-- Livewire Styles --><style >[wire\:loading][wire\:loading], [wire\:loading\.delay][wire\:loading\.delay], [wire\:loading\.inline-block][wire\:loading\.inline-block], [wire\:loading\.inline][wire\:loading\.inline], [wire\:loading\.block][wire\:loading\.block], [wire\:loading\.flex][wire\:loading\.flex], [wire\:loading\.table][wire\:loading\.table], [wire\:loading\.grid][wire\:loading\.grid], [wire\:loading\.inline-flex][wire\:loading\.inline-flex] {display: none;}[wire\:loading\.delay\.none][wire\:loading\.delay\.none], [wire\:loading\.delay\.shortest][wire\:loading\.delay\.shortest], [wire\:loading\.delay\.shorter][wire\:loading\.delay\.shorter], [wire\:loading\.delay\.short][wire\:loading\.delay\.short], [wire\:loading\.delay\.default][wire\:loading\.delay\.default], [wire\:loading\.delay\.long][wire\:loading\.delay\.long], [wire\:loading\.delay\.longer][wire\:loading\.delay\.longer], [wire\:loading\.delay\.longest][wire\:loading\.delay\.longest] {display: none;}[wire\:offline][wire\:offline] {display: none;}[wire\:dirty]:not(textarea):not(input):not(select) {display: none;}:root {--livewire-progress-bar-color: #2299dd;}[x-cloak] {display: none !important;}[wire\:cloak] {display: none !important;}dialog#livewire-error::backdrop {background-color: rgba(0, 0, 0, .6);}</style>
 
 
 
@@ -249,6 +249,16 @@
                 <textarea rows="4" class="input resize-none" placeholder="Ваш вопрос..."></textarea>
             </div>
 
+            <label class="consent-checkbox">
+                <input type="checkbox" class="consent-checkbox__input">
+                <span>
+                    Я даю согласие на обработку персональных данных в соответствии с
+                    <a href="../privacy/" target="_blank">Политикой обработки персональных данных</a>
+                    и ознакомлен с
+                    <a href="../personal-data-consent/" target="_blank">Согласием на обработку персональных данных</a>
+                </span>
+            </label>
+            <!--[if BLOCK]><![endif]--><!--[if ENDBLOCK]><![endif]-->
             <button type="submit" class="btn-accent w-full sm:w-auto px-10">
                 <span wire:loading.remove>Отправить</span>
                 <span wire:loading>Отправляем...</span>
@@ -356,8 +366,6 @@
                 <li><a href="../centers/" class="footer-link">Центры</a></li>
                 <li><a href="../reviews/" class="footer-link">Отзывы</a></li>
                 <li><a href="./" class="footer-link">Контакты</a></li>
-                <li><a href="../privacy/" class="footer-link">Политика конфиденциальности</a></li>
-                <li><a href="../terms/" class="footer-link">Пользовательское соглашение</a></li>
             </ul>
         </div>
 
@@ -376,12 +384,112 @@
     </div>
 
     <div class="border-t border-border-soft">
-        <div class="mx-auto flex max-w-7xl flex-col items-center justify-between gap-3 px-4 py-4 text-xs text-text-subtle sm:flex-row sm:px-6 lg:px-8">
+        <div class="mx-auto flex max-w-7xl flex-col gap-4 px-4 py-5 text-xs text-text-subtle sm:px-6 lg:px-8">
             <p>© 2026 Школа материнства рожаем вместе. Все права защищены.</p>
-            <a href="../courses/" class="transition-colors duration-200 hover:text-accent">Каталог курсов</a>
+            <nav class="flex flex-wrap gap-x-5 gap-y-3" aria-label="Юридическая информация">
+                <a href="../privacy/" class="transition-colors duration-200 hover:text-accent">Политика обработки персональных данных</a>
+                <a href="../personal-data-consent/" class="transition-colors duration-200 hover:text-accent">Согласие на обработку персональных данных</a>
+                <a href="../offer/" class="transition-colors duration-200 hover:text-accent">Договор-оферта</a>
+                <a href="../privacy/#cookies" class="transition-colors duration-200 hover:text-accent">Файлы cookie</a>
+                <button type="button" class="text-left transition-colors duration-200 hover:text-accent" data-cookie-settings>Настройки cookie</button>
+            </nav>
         </div>
     </div>
 </footer>
+
+
+    <div id="cookie-consent" class="cookie-consent" hidden data-cookie-consent-root>
+    <section
+        class="cookie-consent__banner"
+        data-cookie-banner
+        role="region"
+        aria-label="Настройки файлов cookie"
+        hidden
+    >
+        <div class="cookie-consent__copy">
+            <p class="cookie-consent__title">Файлы cookie</p>
+            <p class="cookie-consent__text">
+                Мы используем файлы cookie для корректной работы сайта, анализа трафика и улучшения содержания сайта. Продолжая использовать сайт без изменения настроек, вы соглашаетесь на обработку cookie-файлов в соответствии с
+                <a href="../privacy/#cookies">Политикой обработки персональных данных</a>.
+                Вы можете изменить свой выбор в любой момент в настройках браузера или с помощью кнопок ниже.
+            </p>
+        </div>
+        <div class="cookie-consent__actions">
+            <button type="button" class="btn-outline cookie-consent__button" data-cookie-action="#">
+                Отказаться (кроме обязательных)
+            </button>
+            <button type="button" class="btn-accent cookie-consent__button" data-cookie-action="#">
+                Принять все
+            </button>
+            <button type="button" class="btn-ghost cookie-consent__button" data-cookie-action="#">
+                Настроить согласие
+            </button>
+        </div>
+    </section>
+
+    <div class="cookie-preferences" data-cookie-preferences hidden>
+        <button type="button" class="cookie-preferences__backdrop" data-cookie-action="#" aria-label="Закрыть настройки cookie"></button>
+        <section
+            class="cookie-preferences__dialog"
+            role="dialog"
+            aria-modal="true"
+            aria-labelledby="cookie-preferences-title"
+            tabindex="-1"
+        >
+            <div class="cookie-preferences__header">
+                <div>
+                    <p class="text-xs font-semibold uppercase tracking-widest text-accent">Ваш выбор</p>
+                    <h2 id="cookie-preferences-title" class="mt-1 font-heading text-2xl font-bold text-text-heading">Настройки cookie</h2>
+                </div>
+                <button type="button" class="cookie-preferences__close" data-cookie-action="#" aria-label="Закрыть настройки cookie" title="Закрыть">
+                    <svg class="h-5 w-5" viewBox="0 0 24 24" fill="none" stroke="currentColor" aria-hidden="true">
+                        <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M6 6l12 12M18 6L6 18"/>
+                    </svg>
+                </button>
+            </div>
+
+            <p class="mt-4 text-sm leading-relaxed text-text-muted">
+                Выберите категории, которые можно использовать. Обязательные cookie обеспечивают работу сайта и всегда активны.
+            </p>
+
+            <div class="cookie-preferences__list">
+                <label class="cookie-category">
+                    <span>
+                        <span class="cookie-category__name">Необходимые</span>
+                        <span class="cookie-category__description">Работа сайта, форм, безопасности и сохранение вашего выбора.</span>
+                    </span>
+                    <input type="checkbox" checked disabled aria-label="Необходимые cookie всегда активны">
+                </label>
+                <label class="cookie-category">
+                    <span>
+                        <span class="cookie-category__name">Функциональные</span>
+                        <span class="cookie-category__description">Внешние функции сайта, включая интерактивную Яндекс Карту.</span>
+                    </span>
+                    <input type="checkbox" data-cookie-category="functional">
+                </label>
+                <label class="cookie-category">
+                    <span>
+                        <span class="cookie-category__name">Аналитические</span>
+                        <span class="cookie-category__description">Обезличенная статистика посещаемости и использования сайта.</span>
+                    </span>
+                    <input type="checkbox" data-cookie-category="analytics">
+                </label>
+                <label class="cookie-category">
+                    <span>
+                        <span class="cookie-category__name">Маркетинговые</span>
+                        <span class="cookie-category__description">Оценка эффективности информационных и рекламных материалов.</span>
+                    </span>
+                    <input type="checkbox" data-cookie-category="marketing">
+                </label>
+            </div>
+
+            <div class="cookie-preferences__actions">
+                <button type="button" class="btn-outline" data-cookie-action="#">Только необходимые</button>
+                <button type="button" class="btn-accent" data-cookie-action="#">Подтвердить выбор</button>
+            </div>
+        </section>
+    </div>
+</div>
 
 
     <div
@@ -434,6 +542,6 @@
     </button>
 </div>
 
-    <script  data-navigate-once="true">window.livewireScriptConfig = {"csrf":"aqQ6wl0iW6FwIESLTZmpNSkxLaDIEzKUdjJ6qQgW","uri":"\/livewire\/update","progressBar":"","nonce":""};</script>
+    <script  data-navigate-once="true">window.livewireScriptConfig = {"csrf":"nGltuMmgxsc9wxzaSqc1TanUaqVYIUB704Hla2Gt","uri":"\/livewire\/update","progressBar":"","nonce":""};</script>
     </body>
 </html>

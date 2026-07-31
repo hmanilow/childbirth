@@ -24,11 +24,24 @@
 
                 <form method="POST" action="{{ route('checkout.create', $course->slug) }}" class="mt-8">
                     @csrf
-                    <p class="text-text-muted text-sm mb-6">
-                        Нажимая кнопку, вы соглашаетесь с
-                        <a href="{{ route('privacy') }}" class="text-accent-main hover:underline">политикой конфиденциальности</a>
-                        и <a href="{{ route('terms') }}" class="text-accent-main hover:underline">условиями использования</a>.
-                    </p>
+                    <div class="mb-6 space-y-4">
+                        <label class="consent-checkbox">
+                            <input name="privacy_consent" value="1" type="checkbox" class="consent-checkbox__input" required {{ old('privacy_consent') ? 'checked' : '' }}>
+                            <span>
+                                Я даю согласие на обработку персональных данных в соответствии с
+                                <a href="{{ route('privacy') }}" target="_blank">Политикой обработки персональных данных</a>
+                                и ознакомлен с
+                                <a href="{{ route('personal-data-consent') }}" target="_blank">Согласием на обработку персональных данных</a>
+                            </span>
+                        </label>
+                        @error('privacy_consent')<p class="error-message">{{ $message }}</p>@enderror
+
+                        <label class="consent-checkbox">
+                            <input name="offer_accepted" value="1" type="checkbox" class="consent-checkbox__input" required {{ old('offer_accepted') ? 'checked' : '' }}>
+                            <span>Я ознакомлен и принимаю условия <a href="{{ route('offer') }}" target="_blank">Договора-оферты</a>.</span>
+                        </label>
+                        @error('offer_accepted')<p class="error-message">{{ $message }}</p>@enderror
+                    </div>
                     <button type="submit" class="btn-accent w-full text-lg py-4">
                         Оплатить {{ number_format($course->price, 0, '.', ' ') }} ₽
                     </button>

@@ -15,13 +15,16 @@ class PageController extends Controller
 
     public function privacy(): View
     {
-        $page = Page::where('slug', 'privacy')->where('status', 'published')->first();
-        return view('privacy', compact('page'));
+        return view('legal.privacy');
     }
 
-    public function terms(): View
+    public function personalDataConsent(): View
     {
-        $page = Page::where('slug', 'terms')->where('status', 'published')->first();
-        return view('terms', compact('page'));
+        return view('legal.personal-data-consent');
+    }
+
+    public function offer(): View
+    {
+        return view('legal.offer');
     }
 }

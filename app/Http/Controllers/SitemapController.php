@@ -17,7 +17,8 @@ class SitemapController extends Controller
             ['loc' => url('/courses'),        'priority' => '0.9', 'changefreq' => 'weekly'],
             ['loc' => url('/contacts'),       'priority' => '0.6', 'changefreq' => 'yearly'],
             ['loc' => url('/privacy'),        'priority' => '0.3', 'changefreq' => 'yearly'],
-            ['loc' => url('/terms'),          'priority' => '0.3', 'changefreq' => 'yearly'],
+            ['loc' => url('/personal-data-consent'), 'priority' => '0.3', 'changefreq' => 'yearly'],
+            ['loc' => url('/offer'),          'priority' => '0.3', 'changefreq' => 'yearly'],
         ];
 
         $courses = Course::published()->get(['slug', 'updated_at']);

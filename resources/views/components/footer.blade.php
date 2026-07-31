@@ -64,8 +64,6 @@
                 <li><a href="{{ route('centers') }}" class="footer-link">Центры</a></li>
                 <li><a href="{{ route('reviews') }}" class="footer-link">Отзывы</a></li>
                 <li><a href="{{ route('contacts') }}" class="footer-link">Контакты</a></li>
-                <li><a href="{{ route('privacy') }}" class="footer-link">Политика конфиденциальности</a></li>
-                <li><a href="{{ route('terms') }}" class="footer-link">Пользовательское соглашение</a></li>
             </ul>
         </div>
 
@@ -93,9 +91,15 @@
     </div>
 
     <div class="border-t border-border-soft">
-        <div class="mx-auto flex max-w-7xl flex-col items-center justify-between gap-3 px-4 py-4 text-xs text-text-subtle sm:flex-row sm:px-6 lg:px-8">
+        <div class="mx-auto flex max-w-7xl flex-col gap-4 px-4 py-5 text-xs text-text-subtle sm:px-6 lg:px-8">
             <p>© {{ date('Y') }} {{ $siteName }}. Все права защищены.</p>
-            <a href="{{ route('courses.index') }}" class="transition-colors duration-200 hover:text-accent">Каталог курсов</a>
+            <nav class="flex flex-wrap gap-x-5 gap-y-3" aria-label="Юридическая информация">
+                <a href="{{ route('privacy') }}" class="transition-colors duration-200 hover:text-accent">Политика обработки персональных данных</a>
+                <a href="{{ route('personal-data-consent') }}" class="transition-colors duration-200 hover:text-accent">Согласие на обработку персональных данных</a>
+                <a href="{{ route('offer') }}" class="transition-colors duration-200 hover:text-accent">Договор-оферта</a>
+                <a href="{{ route('privacy') }}#cookies" class="transition-colors duration-200 hover:text-accent">Файлы cookie</a>
+                <button type="button" class="text-left transition-colors duration-200 hover:text-accent" data-cookie-settings>Настройки cookie</button>
+            </nav>
         </div>
     </div>
 </footer>
