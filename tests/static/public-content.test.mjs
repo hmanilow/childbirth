@@ -211,11 +211,13 @@ test('legal documents, form consents and cookie controls are published consisten
 
     assert.match(privacy, /https:\/\/рожаем-вместе\.рф\/privacy/);
     assert.match(privacy, /Контактный телефон: \+7 910 403 14 03/);
+    assert.match(privacy, /ИНН: 500112601300/);
     assert.match(privacy, /id="cookies"/);
     assert.match(consent, /Настоящее согласие вступает в силу/);
+    assert.match(consent, /ИНН: 500112601300/);
     assert.match(consent, /адрес: ______/);
     assert.match(offer, /https:\/\/рожаем-вместе\.рф\/offer/);
-    assert.match(offer, /ИНН: _______________/);
+    assert.match(offer, /ИНН: 500112601300/);
     assert.match(offer, /Банковские реквизиты: _______________/);
 
     for (const source of [contactForm, leadForm, register, checkout]) {
